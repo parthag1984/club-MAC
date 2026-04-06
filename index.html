@@ -1,0 +1,2731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majilpur Athletic Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Prata:wght@400&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #333;
+            background: #fff;
+            overflow-x: hidden;
+        }
+        h1,h2,h3,h4,h5 { font-family: 'Cormorant Garamond', serif; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; }
+
+        /* ========== VARIABLES ========== */
+        :root {
+            --navy: #1a3a52;
+            --navy-dark: #0f1c30;
+            --gold: #d4a574;
+            --gold-light: #e8c96b;
+            --white: #ffffff;
+            --off-white: #f8f6f1;
+            --gray-light: #f0eff0;
+            --gray: #888;
+            --text: #333;
+            --shadow: 0 8px 32px rgba(26,43,74,0.13);
+            --radius: 12px;
+            --transition: 0.3s ease;
+        }
+
+        /* ========== SCROLLBAR ========== */
+        ::-webkit-scrollbar { width: 7px; }
+        ::-webkit-scrollbar-track { background: var(--off-white); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+
+        /* ========== UTILITY ========== */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section-tag {
+            font-family: 'Lato', sans-serif;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #d4a574;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .section-title {
+            font-size: clamp(28px, 4vw, 48px);
+            color: #0a0e27;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--gray);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 28px;
+            border-radius: 6px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--navy);
+            box-shadow: 0 8px 20px rgba(201,168,76,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--gold-light), #f4e4a6);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(201,168,76,0.45);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--navy);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(201,168,76,0.35);
+        }
+
+        /* ========== NAVBAR ========== */
+        header {
+            background: transparent;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: none;
+            transition: background 0.45s ease, padding 0.45s ease, box-shadow 0.45s ease, backdrop-filter 0.45s ease;
+        }
+
+        header.scrolled {
+            background: rgba(15, 28, 48, 0.97);
+            padding: 12px 0;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.28);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        nav .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8em;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+            transition: all 0.3s ease;
+            object-fit: contain;
+        }
+
+        .nav-logo-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--navy);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        .nav-logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-style: normal;
+            position: relative;
+            display: inline-block;
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-logo:hover .nav-logo-text {
+            color: var(--gold);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 8px;
+        }
+
+        nav ul li a {
+            color: rgba(255,255,255,0.92);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            padding: 6px 10px 6px;
+            position: relative;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        /* Underline slide-in animation */
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 10px;
+            bottom: 0;
+            width: calc(100% - 20px);
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 2px;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+        }
+
+        nav ul li a.active-link {
+            color: var(--gold);
+        }
+
+        nav ul li a.active-link::after {
+            transform: scaleX(1);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Slideshow layers */
+        .hero-slides {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.4s ease-in-out;
+            transform: scale(1.04);
+            animation: heroKenBurns 8s ease-out forwards;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        @keyframes heroKenBurns {
+            0%   { transform: scale(1.04); }
+            100% { transform: scale(1.00); }
+        }
+
+        /* Dark gradient overlay */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background:
+                    linear-gradient(180deg,
+                    rgba(10,20,40,0.55) 0%,
+                    rgba(10,20,40,0.35) 45%,
+                    rgba(10,20,40,0.70) 100%
+                    );
+        }
+
+        /* Animated colour-shift gradient accent */
+        .hero-gradient-accent {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: linear-gradient(
+                    135deg,
+                    rgba(212,165,116,0.18) 0%,
+                    rgba(26,58,82,0.22) 50%,
+                    rgba(0,188,212,0.12) 100%
+            );
+            animation: accentShift 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes accentShift {
+            0%   { opacity: 0.6; background-position: 0% 50%; }
+            100% { opacity: 1;   background-position: 100% 50%; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            padding: 0 24px;
+        }
+
+        /* Eyebrow */
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Lato', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeSlideUp 0.9s ease 0.3s forwards;
+        }
+
+        .hero-eyebrow::before,
+        .hero-eyebrow::after {
+            content: '';
+            display: block;
+            width: 36px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.7;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -1px;
+            margin-bottom: 22px;
+            opacity: 0;
+            animation: fadeSlideUp 0.9s ease 0.55s forwards;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.82);
+            margin-bottom: 36px;
+            opacity: 0;
+            animation: fadeSlideUp 0.9s ease 0.75s forwards;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 64px;
+            opacity: 0;
+            animation: fadeSlideUp 0.9s ease 0.95s forwards;
+        }
+
+        .hero-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--navy);
+            border-radius: 6px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 24px rgba(212,165,116,0.35);
+            text-decoration: none;
+        }
+
+        .hero-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(212,165,116,0.5);
+        }
+
+        .hero-btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 30px;
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.55);
+            border-radius: 6px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .hero-btn-outline:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.9);
+            transform: translateY(-3px);
+        }
+
+        /* Stats row */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 32px;
+            opacity: 0;
+            animation: fadeSlideUp 0.9s ease 1.15s forwards;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            flex: 1;
+            min-width: 120px;
+            max-width: 180px;
+            padding: 0 24px;
+            border-right: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .hero-stat:last-child {
+            border-right: none;
+        }
+
+        .hero-stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .hero-stat-label {
+            font-family: 'Lato', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Scroll indicator */
+        .hero-scroll {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.5);
+            font-family: 'Lato', sans-serif;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeSlideUp 0.9s ease 1.4s forwards;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .hero-scroll:hover {
+            color: var(--gold);
+        }
+
+        .scroll-mouse {
+            width: 24px;
+            height: 38px;
+            border: 2px solid currentColor;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 5px;
+        }
+
+        .scroll-mouse-dot {
+            width: 4px;
+            height: 8px;
+            background: currentColor;
+            border-radius: 2px;
+            animation: scrollDot 1.8s ease-in-out infinite;
+        }
+
+        @keyframes scrollDot {
+            0%   { transform: translateY(0);   opacity: 1; }
+            60%  { transform: translateY(10px); opacity: 0; }
+            61%  { transform: translateY(0);   opacity: 0; }
+            100% { transform: translateY(0);   opacity: 1; }
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero .btn {
+            margin: 0 12px;
+        }
+
+
+        /* ========== FADE-IN SYSTEM ========== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.75s ease, transform 0.75s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== SECTION STRUCTURE ========== */
+        .page-section {
+            padding: 96px 0;
+        }
+        .page-section.alt-bg {
+            background: #f9f7f4;
+        }
+        .section-header {
+            margin-bottom: 56px;
+        }
+        .section-header.center {
+            text-align: center;
+        }
+        .section-header.center .section-subtitle {
+            margin: 0 auto;
+        }
+        .gold-line {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            border-radius: 2px;
+            margin: 16px 0;
+            box-shadow: 0 2px 8px rgba(212,165,116,0.35);
+        }
+        .section-header.center .gold-line {
+            margin: 16px auto;
+        }
+
+        /* ========== ABOUT ========== */
+        .about-intro {
+            max-width: 780px;
+            margin: 0 auto;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.85;
+            text-align: center;
+        }
+        .about-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 28px;
+            margin: 52px 0;
+        }
+        .about-pillar {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 14px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+        .about-pillar:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(26,58,82,0.1);
+            border-color: rgba(212,165,116,0.4);
+        }
+        .about-pillar-icon {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            background: rgba(212,165,116,0.12);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; color: var(--gold);
+            margin: 0 auto 16px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .about-pillar:hover .about-pillar-icon {
+            background: var(--gold);
+            color: var(--navy);
+            transform: scale(1.1);
+        }
+        .about-pillar h4 {
+            font-size: 17px; color: var(--navy); margin-bottom: 8px;
+        }
+        .about-pillar p {
+            font-size: 13.5px; color: var(--gray); line-height: 1.6;
+        }
+        /* Leadership grid */
+        .leadership-title {
+            font-size: 22px; color: var(--navy); text-align: center; margin-bottom: 32px;
+        }
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 28px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .leader-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 14px;
+            padding: 28px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+        .leader-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(26,58,82,0.12);
+            border-color: rgba(212,165,116,0.5);
+        }
+        .leader-card img {
+            width: 90px; height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(212,165,116,0.35);
+            margin-bottom: 14px;
+            transition: border-color 0.3s ease;
+        }
+        .leader-card:hover img { border-color: var(--gold); }
+        .leader-card h4 { font-size: 16px; color: var(--navy); margin-bottom: 5px; }
+        .leader-card .leader-role { font-size: 13px; color: var(--gold); font-weight: 700; margin-bottom: 4px; }
+        .leader-card small { font-size: 12px; color: var(--gray); }
+
+        /* ========== PROGRAMS ========== */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+        .program-card {
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .program-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 20px 48px rgba(26,58,82,0.13);
+        }
+        .program-card-img {
+            width: 100%; height: 210px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .program-card:hover .program-card-img { transform: scale(1.04); }
+        .program-card-img-wrap { overflow: hidden; }
+        .program-card-body {
+            padding: 26px 24px 28px;
+        }
+        .program-card-tag {
+            font-size: 10px; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--gold);
+            margin-bottom: 8px; display: block;
+        }
+        .program-card-body h3 {
+            font-size: 20px; color: var(--navy); margin-bottom: 10px;
+        }
+        .program-card-body p {
+            font-size: 14px; color: var(--gray); line-height: 1.7;
+        }
+
+        /* ========== NEWS ========== */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+        .news-card {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #eee;
+            overflow: hidden;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 44px rgba(26,58,82,0.11);
+        }
+        .news-card-top {
+            height: 6px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+        }
+        .news-card-body { padding: 28px 26px; }
+        .news-meta {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .news-meta i { font-size: 13px; }
+        .news-card-body h3 {
+            font-size: 19px; color: var(--navy); margin-bottom: 10px; line-height: 1.35;
+        }
+        .news-card-body p {
+            font-size: 14px; color: var(--gray); line-height: 1.7;
+        }
+
+        /* ========== COACHES ========== */
+        .coaches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+        }
+        .coach-card {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #eee;
+            padding: 36px 24px 28px;
+            text-align: center;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+        .coach-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 20px 48px rgba(26,58,82,0.12);
+            border-color: rgba(212,165,116,0.4);
+        }
+        .coach-card img {
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(212,165,116,0.3);
+            margin-bottom: 18px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .coach-card:hover img {
+            border-color: var(--gold);
+            transform: scale(1.05);
+        }
+        .coach-card h3 { font-size: 20px; color: var(--navy); margin-bottom: 6px; }
+        .coach-card .coach-role {
+            font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+        }
+        .coach-card p { font-size: 13.5px; color: var(--gray); line-height: 1.6; }
+
+        /* ========== EVENTS ========== */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+        .event-card {
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--navy);
+            color: #fff;
+            position: relative;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .event-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 24px 52px rgba(26,58,82,0.28);
+        }
+        .event-card-accent {
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+        }
+        .event-card-body { padding: 28px 26px 30px; }
+        .event-date-badge {
+            display: inline-flex; align-items: center; gap: 7px;
+            background: rgba(212,165,116,0.18);
+            border: 1px solid rgba(212,165,116,0.35);
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+            text-transform: uppercase; color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .event-card-body h3 { font-size: 20px; margin-bottom: 10px; }
+        .event-card-body p { font-size: 14px; color: rgba(255,255,255,0.72); line-height: 1.65; }
+
+        /* ========== GALLERY ========== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%; height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.07); }
+        .gallery-item-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(26,58,82,0.65) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            display: flex; align-items: flex-end; padding: 14px;
+        }
+        .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+        .gallery-item-overlay i { color: var(--gold); font-size: 20px; }
+
+        /* ========== ADMISSION ========== */
+        .admission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        .admission-card {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .admission-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 56px rgba(0,0,0,0.28);
+        }
+        .admission-card::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(10,20,40,0.85) 30%, rgba(10,20,40,0.25) 100%);
+        }
+        .admission-card-body {
+            position: relative; z-index: 1;
+            padding: 32px 28px;
+            color: #fff;
+        }
+        .admission-card-body h3 {
+            font-size: 24px; margin-bottom: 10px;
+        }
+        .admission-card-body p {
+            font-size: 14px; color: rgba(255,255,255,0.78); line-height: 1.65; margin-bottom: 20px;
+        }
+        .admission-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+        .admission-btn-primary {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 11px 24px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--navy); border-radius: 8px;
+            font-family: 'Lato', sans-serif; font-weight: 700; font-size: 13px;
+            border: none; cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px rgba(212,165,116,0.35);
+        }
+        .admission-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(212,165,116,0.5);
+        }
+        .admission-btn-outline {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 11px 20px;
+            background: rgba(255,255,255,0.12);
+            color: #fff; border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.35);
+            font-family: 'Lato', sans-serif; font-weight: 600; font-size: 13px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .admission-btn-outline:hover { background: rgba(255,255,255,0.22); }
+
+        /* ========== CONTACT ========== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.45fr;
+            gap: 56px;
+            align-items: start;
+        }
+        .contact-info-col h3 {
+            font-size: 28px; color: var(--navy); margin-bottom: 14px;
+        }
+        .contact-info-col > p {
+            color: var(--gray); line-height: 1.75; margin-bottom: 32px; font-size: 15px;
+        }
+        .contact-items { display: flex; flex-direction: column; gap: 22px; margin-bottom: 32px; }
+        .contact-item { display: flex; gap: 16px; }
+        .contact-icon {
+            width: 52px; height: 52px; flex-shrink: 0;
+            background: rgba(212,165,116,0.12); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: var(--gold);
+            box-shadow: 0 4px 12px rgba(212,165,116,0.15);
+            transition: background 0.3s, transform 0.3s;
+        }
+        .contact-item:hover .contact-icon {
+            background: var(--gold); color: var(--navy); transform: scale(1.08);
+        }
+        .contact-item-text h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+        .contact-item-text p { font-size: 13.5px; color: var(--gray); line-height: 1.6; }
+        .social-row { display: flex; gap: 10px; margin-bottom: 28px; }
+        .social-icon {
+            width: 42px; height: 42px; border-radius: 50%;
+            background: var(--navy); color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 12px rgba(26,58,82,0.2);
+        }
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--navy); transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 8px 20px rgba(212,165,116,0.4);
+        }
+        /* Contact form panel */
+        .contact-form-wrap {
+            position: relative;
+            background: #fff;
+            border-radius: 16px;
+            padding: 44px 40px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 36px rgba(0,0,0,0.07);
+            overflow: hidden;
+        }
+        .contact-form-wrap > * { position: relative; z-index: 1; }
+        .contact-form-wrap::before {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, #f4e4a6, var(--gold), var(--gold-light));
+            z-index: 2;
+        }
+        .contact-form-wrap::after {
+            content: '';
+            position: absolute; inset: -30%;
+            background:
+                    radial-gradient(circle at 20% 20%, rgba(212,165,116,0.22), transparent 44%),
+                    radial-gradient(circle at 80% 80%, rgba(26,58,82,0.14), transparent 48%);
+            opacity: 0.18;
+            animation: formGlow 3s ease-in-out infinite;
+            pointer-events: none; z-index: 0;
+        }
+        @keyframes formGlow {
+            0%,100% { opacity: 0.14; transform: scale(1); }
+            50% { opacity: 0.34; transform: scale(1.05); }
+        }
+        .form-head { margin-bottom: 22px; }
+        .form-head-tag {
+            display: inline-flex; align-items: center; gap: 7px;
+            font-size: 11px; font-weight: 700; letter-spacing: 1.7px;
+            text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+        }
+        .contact-form-wrap h3 {
+            font-size: 28px; color: var(--navy); margin-bottom: 8px; letter-spacing: 0.4px;
+        }
+        .form-head p { color: var(--gray); font-size: 14px; line-height: 1.6; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label {
+            display: block; font-size: 13px; font-weight: 700;
+            color: var(--navy); margin-bottom: 6px; letter-spacing: 0.2px;
+        }
+        .form-group label span { color: var(--gold); }
+        .form-control {
+            width: 100%; padding: 13px 15px; border-radius: 8px;
+            border: 1px solid #e5e7eb; background: #f9fafb;
+            font-family: 'Lato', sans-serif; font-size: 14px; color: var(--text);
+            transition: all 0.25s ease; outline: none;
+        }
+        .form-control::placeholder { color: #9ca3af; }
+        .form-control:hover { border-color: #d1d5db; background: #fafbfc; }
+        .form-control:focus {
+            border-color: var(--gold); background: #fff;
+            box-shadow: 0 0 0 3px rgba(212,165,116,0.12);
+        }
+        textarea.form-control { resize: vertical; min-height: 120px; }
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 14px center;
+        }
+        .form-submit {
+            width: 100%; justify-content: center;
+            border-radius: 10px; padding: 14px 20px;
+            font-size: 14px; letter-spacing: 0.6px;
+            box-shadow: 0 12px 32px rgba(212,165,116,0.35);
+        }
+        .form-submit:hover {
+            box-shadow: 0 16px 40px rgba(212,165,116,0.45);
+            transform: translateY(-2px);
+        }
+        .form-note {
+            margin-top: 10px; text-align: center; font-size: 12px; color: var(--gray);
+        }
+
+        /* ========== PREMIUM FOOTER ========== */
+        footer { background: #0a0e27; color: rgba(255,255,255,0.72); }
+        .footer-main { padding: 72px 0 40px; }
+        .footer-inner-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.4fr;
+            gap: 48px;
+        }
+        .footer-brand-desc {
+            font-size: 14px; line-height: 1.82; margin-top: 16px; margin-bottom: 24px;
+            color: rgba(255,255,255,0.6);
+        }
+        .footer-social-row { display: flex; gap: 10px; margin-bottom: 28px; }
+        .footer-social-icon {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(255,255,255,0.08); color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .footer-social-icon:hover {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--navy); transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 8px 18px rgba(212,165,116,0.4);
+        }
+        .footer-newsletter-title {
+            font-size: 13px; font-weight: 700; color: #fff;
+            font-family: 'Lato', sans-serif; margin-bottom: 11px;
+        }
+        .footer-newsletter-row { display: flex; gap: 8px; }
+        .footer-newsletter-input {
+            flex: 1; padding: 11px 14px; border-radius: 7px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.06); color: #fff;
+            font-size: 13px; outline: none; font-family: 'Lato', sans-serif;
+        }
+        .footer-newsletter-input::placeholder { color: rgba(255,255,255,0.38); }
+        .footer-newsletter-input:focus { border-color: var(--gold); }
+        .footer-newsletter-btn {
+            padding: 11px 16px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--navy); border: none; border-radius: 7px;
+            font-weight: 700; font-size: 13px; cursor: pointer;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .footer-newsletter-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+        .footer-col-heading {
+            font-family: 'Lato', sans-serif; font-size: 12px; font-weight: 700;
+            color: #fff; letter-spacing: 2.2px; text-transform: uppercase; margin-bottom: 20px;
+        }
+        .footer-links { display: flex; flex-direction: column; gap: 10px; }
+        .footer-links a {
+            font-size: 14px; color: rgba(255,255,255,0.58);
+            display: flex; align-items: center; gap: 7px;
+            transition: color 0.25s ease, padding-left 0.25s ease;
+        }
+        .footer-links a::before { content: '›'; color: var(--gold); font-size: 16px; }
+        .footer-links a:hover { color: var(--gold); padding-left: 5px; }
+        .footer-contact-list { display: flex; flex-direction: column; gap: 14px; }
+        .footer-contact-row {
+            display: flex; gap: 11px; align-items: flex-start; font-size: 14px;
+            color: rgba(255,255,255,0.62);
+        }
+        .footer-contact-row i { color: var(--gold); margin-top: 2px; flex-shrink: 0; }
+        .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 0; }
+        .footer-bottom {
+            max-width: 1200px; margin: 0 auto; padding: 22px 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 12px; font-size: 13px; color: rgba(255,255,255,0.45);
+        }
+        .footer-bottom-links { display: flex; gap: 20px; }
+        .footer-bottom-links a { color: rgba(255,255,255,0.45); transition: color 0.25s; }
+        .footer-bottom-links a:hover { color: var(--gold); }
+
+        /* ========== MODAL OVERLAY ========== */
+        .modal-overlay {
+            position: fixed; inset: 0; z-index: 2000;
+            background: rgba(15,28,48,0.78);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+        }
+        .modal-overlay.open {
+            opacity: 1; visibility: visible;
+        }
+        .modal-box {
+            background: #fff;
+            border-radius: 20px;
+            width: 100%; max-width: 620px;
+            max-height: 90vh; overflow-y: auto;
+            transform: translateY(28px) scale(0.97);
+            transition: transform 0.35s cubic-bezier(0.34,1.26,0.64,1);
+            box-shadow: 0 28px 72px rgba(0,0,0,0.28);
+        }
+        .modal-overlay.open .modal-box {
+            transform: translateY(0) scale(1);
+        }
+        .modal-header {
+            padding: 32px 36px 0;
+            display: flex; justify-content: space-between; align-items: flex-start;
+        }
+        .modal-tag {
+            font-family: 'Lato', sans-serif;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 6px; display: block;
+        }
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px; color: var(--navy);
+        }
+        .modal-subtitle {
+            font-size: 13px; color: var(--gray);
+            margin-top: 4px; display: flex; align-items: center; gap: 6px;
+        }
+        .modal-subtitle i { color: var(--gold); }
+        .modal-close-btn {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: #f0eff0; border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 15px; color: var(--gray);
+            transition: background 0.25s ease, color 0.25s ease;
+            flex-shrink: 0; margin-left: 16px;
+        }
+        .modal-close-btn:hover { background: var(--gold); color: var(--navy); }
+        .modal-body { padding: 28px 36px 36px; }
+        /* Top gold strip on modal box */
+        .modal-box::before {
+            content: '';
+            display: block; width: 100%; height: 4px;
+            border-radius: 20px 20px 0 0;
+            background: linear-gradient(90deg, #f4e4a6, var(--gold), var(--gold-light));
+        }
+        /* success state */
+        .modal-success {
+            text-align: center; padding: 20px; display: none;
+        }
+        .modal-success-icon {
+            width: 72px; height: 72px;
+            background: rgba(16,185,129,0.1); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 34px; color: #10b981; margin: 0 auto 16px;
+        }
+        .modal-success h3 { font-size: 22px; color: var(--navy); margin-bottom: 8px; }
+        .modal-success p { color: var(--gray); font-size: 14px; }
+        /* member card inside modal */
+        .member-modal-photo {
+            width: 120px; height: 120px; border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(212,165,116,0.4);
+            margin-bottom: 16px;
+            transition: border-color 0.3s;
+        }
+        .member-modal-role {
+            font-family: 'Lato', sans-serif;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 12px;
+        }
+        .member-modal-desc {
+            color: var(--gray); font-size: 14px; line-height: 1.75;
+            margin-bottom: 20px; max-width: 480px; margin-left: auto; margin-right: auto;
+        }
+        .member-modal-details {
+            background: #f9f7f4;
+            border-left: 3px solid var(--gold);
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            text-align: left;
+        }
+        .member-modal-details p {
+            font-size: 13.5px; color: #555; margin: 6px 0;
+        }
+        .member-modal-details strong { color: var(--navy); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1a3a52;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00bcd4;
+            box-shadow: 0 0 8px rgba(0,188,212,0.2);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .form-actions .btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px 20px;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: #ddd;
+            color: #1a3a52;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #ddd;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: #1a3a52;
+            color: white;
+        }
+
+        /* ========== PHONE NOTIFICATION POPUP ========== */
+        #phone-notification {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 9999;
+            background: #ffffff;
+            border-radius: 14px;
+            box-shadow: 0 12px 40px rgba(26,43,74,0.18), 0 2px 8px rgba(0,0,0,0.08);
+            border: 1.5px solid rgba(16,185,129,0.25);
+            padding: 18px 28px 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 320px;
+            max-width: 440px;
+            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(420px);
+        }
+
+        #phone-notification.show {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateX(0);
+        }
+
+        .notification-icon {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            background: rgba(16,185,129,0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #059669;
+        }
+
+        .notification-body {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: #059669;
+            margin-bottom: 3px;
+            letter-spacing: 0.2px;
+        }
+
+        .notification-text {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .notification-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #aaa;
+            font-size: 14px;
+            padding: 4px;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .notification-close:hover {
+            color: #333;
+        }
+
+        /* ========== SMS NOTIFICATION ========== */
+        #sms-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 9999;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 280px;
+            max-width: 380px;
+            transform: translateX(-420px);
+            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #sms-notification.show {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateX(0);
+        }
+
+        #sms-notification i {
+            color: white;
+            font-size: 16px;
+        }
+
+        #sms-notification-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        #sms-notification-title {
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        #sms-notification-message {
+            font-weight: 400;
+            font-size: 13px;
+            opacity: 0.95;
+        }
+
+        /* ========== NTFY.SH PUSH NOTIFICATION ========== */
+        #ntfy-push-notification {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 9999;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 18px 24px 18px 20px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 320px;
+            max-width: 420px;
+            transform: translateX(450px);
+            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #ntfy-push-notification.show {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateX(0);
+        }
+
+        .ntfy-push-icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .ntfy-push-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .ntfy-push-title {
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .ntfy-push-message {
+            font-weight: 400;
+            font-size: 13px;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
+
+        .ntfy-push-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+            padding: 4px;
+            line-height: 1;
+            transition: color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .ntfy-push-close:hover {
+            color: white;
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+            .footer-grid > div:first-child { grid-column: 1 / -1; }
+        }
+        @media (max-width: 768px) {
+            nav ul { gap: 8px; font-size: 0.85em; }
+            .page-section { padding: 64px 0; }
+            .programs-grid, .coaches-grid, .events-grid,
+            .news-grid, .admission-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .contact-form-wrap { padding: 28px 20px; }
+            .modal-content { width: 95%; padding: 25px; }
+            .form-actions { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="nav-logo">
+            <img src="./logo-sample.png" alt="Majilpur Athletic Club Logo" class="nav-logo-img">
+            <div class="nav-logo-text">Majilpur Athletic Club</div>
+        </div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#coaches">Coaches</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#admission">Admission</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="hero" id="hero">
+    <!-- Background slides -->
+    <div class="hero-slides" id="heroSlides">
+        <div class="hero-slide active" style="background-image: url('./2023-08-06.webp');"></div>
+        <div class="hero-slide" style="background-image: url('./2023-09-18.webp');"></div>
+        <div class="hero-slide" style="background-image: url('./2026-01-25.webp');"></div>
+        <div class="hero-slide" style="background-image: url('./2023-01-06.webp');"></div>
+        <div class="hero-slide" style="background-image: url('./2023-08-06 (1).webp');"></div>
+    </div>
+
+    <!-- Animated gradient accent -->
+    <div class="hero-gradient-accent"></div>
+
+    <!-- Content -->
+    <div class="hero-content">
+        <div class="hero-eyebrow">
+            <span>Est. &nbsp; Majilpur, West Bengal</span>
+        </div>
+
+        <h1>Majilpur<br><span>Athletic Club</span></h1>
+
+        <p class="hero-sub">Excellence in Sports Training &nbsp;·&nbsp; Cricket &amp; Football</p>
+
+        <div class="hero-btns">
+            <a href="#admission" class="hero-btn-primary">
+                <i class="fas fa-trophy"></i> Join Now
+            </a>
+            <a href="#programs" class="hero-btn-outline">
+                <i class="fas fa-play-circle"></i> Our Programs
+            </a>
+            <a href="#about" class="hero-btn-outline">
+                <i class="fas fa-users"></i> About Us
+            </a>
+        </div>
+
+        <!-- Stats row -->
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-number" data-target="25">0</div>
+                <div class="hero-stat-label">Years of Excellence</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number" data-target="500">0</div>
+                <div class="hero-stat-label">Athletes Trained</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number" data-target="40">0</div>
+                <div class="hero-stat-label">Trophies Won</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number" data-target="10">0</div>
+                <div class="hero-stat-label">Expert Coaches</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero-scroll" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+        <div class="scroll-mouse"><div class="scroll-mouse-dot"></div></div>
+        <span>Scroll</span>
+    </div>
+</div>
+
+<!-- ========== ABOUT ========== -->
+<section class="page-section" id="about">
+    <div class="container">
+        <div class="section-header center fade-in">
+            <span class="section-tag">Who We Are</span>
+            <h2 class="section-title">About Us</h2>
+            <div class="gold-line"></div>
+            <p class="section-subtitle">Majilpur Athletic Club is dedicated to fostering a love for sports among the community, developing champions through world-class coaching and facilities.</p>
+        </div>
+
+        <div class="about-pillars fade-in">
+            <div class="about-pillar">
+                <div class="about-pillar-icon"><i class="fas fa-medal"></i></div>
+                <h4>Championship Legacy</h4>
+                <p>Decades of regional and district titles across cricket and football.</p>
+            </div>
+            <div class="about-pillar">
+                <div class="about-pillar-icon"><i class="fas fa-users"></i></div>
+                <h4>Community Driven</h4>
+                <p>Building stronger bonds through sport, outreach, and youth development.</p>
+            </div>
+            <div class="about-pillar">
+                <div class="about-pillar-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                <h4>Expert Coaching</h4>
+                <p>Certified coaches with district and state-level training experience.</p>
+            </div>
+            <div class="about-pillar">
+                <div class="about-pillar-icon"><i class="fas fa-child"></i></div>
+                <h4>Youth First</h4>
+                <p>Special programmes for juniors to discover and develop their potential.</p>
+            </div>
+        </div>
+
+        <div class="fade-in" style="border-top: 1px solid #eee; padding-top: 52px; margin-top: 12px;">
+            <h3 class="leadership-title">Leadership &amp; Management</h3>
+            <div class="leadership-grid">
+                <div class="leader-card" onclick="openModal('memberRajeshModal')">
+                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=rajesh-kumar&scale=90" alt="Rajesh Kumar">
+                    <h4>Rajesh Kumar</h4>
+                    <p class="leader-role">Cricket Committee President</p>
+                    <small>District Cricket Association Member</small>
+                </div>
+                <div class="leader-card" onclick="openModal('memberPriyaModal')">
+                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya-patel&scale=90" alt="Priya Patel">
+                    <h4>Priya Patel</h4>
+                    <p class="leader-role">Football Committee President</p>
+                    <small>District Football Association President</small>
+                </div>
+                <div class="leader-card">
+                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=arjun-das&scale=90" alt="Club Secretary">
+                    <h4>Arjun Das</h4>
+                    <p class="leader-role">General Secretary</p>
+                    <small>Club Administration</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== PROGRAMS ========== -->
+<section class="page-section alt-bg" id="programs">
+    <div class="container">
+        <div class="section-header center fade-in">
+            <span class="section-tag">What We Offer</span>
+            <h2 class="section-title">Our Programs</h2>
+            <div class="gold-line"></div>
+            <p class="section-subtitle">Structured coaching programmes for all age groups and skill levels, led by certified coaches.</p>
+        </div>
+        <div class="programs-grid">
+            <div class="program-card fade-in">
+                <div class="program-card-img-wrap">
+                    <img src="./2023-01-06 (1).webp" alt="Cricket Coaching" class="program-card-img">
+                </div>
+                <div class="program-card-body">
+                    <span class="program-card-tag"><i class="fas fa-cricket"></i> &nbsp;Cricket</span>
+                    <h3>Cricket Coaching Camp</h3>
+                    <p>From fundamentals to advanced strategy — our cricket programme develops batting, bowling, and fielding skills under district-level expert guidance.</p>
+                </div>
+            </div>
+            <div class="program-card fade-in">
+                <div class="program-card-img-wrap">
+                    <img src="./2023-09-18.webp" alt="Football Coaching" class="program-card-img">
+                </div>
+                <div class="program-card-body">
+                    <span class="program-card-tag"><i class="fas fa-futbol"></i> &nbsp;Football</span>
+                    <h3>Football Coaching Camp</h3>
+                    <p>Enhance dribbling, passing, and tactical awareness. Expert coaches bring professional techniques to every age group.</p>
+                </div>
+            </div>
+            <div class="program-card fade-in">
+                <div class="program-card-img-wrap">
+                    <img src="./2022-03-20.webp" alt="Community Events" class="program-card-img">
+                </div>
+                <div class="program-card-body">
+                    <span class="program-card-tag"><i class="fas fa-flag-checkered"></i> &nbsp;Events</span>
+                    <h3>Community Events</h3>
+                    <p>Tournaments, charity runs, and inter-club events that bring athletes and supporters together throughout the year.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== NEWS ========== -->
+<section class="page-section" id="news">
+    <div class="container">
+        <div class="section-header center fade-in">
+            <span class="section-tag">Stay Updated</span>
+            <h2 class="section-title">Latest News</h2>
+            <div class="gold-line"></div>
+            <p class="section-subtitle">The latest achievements, announcements, and stories from Majilpur Athletic Club.</p>
+        </div>
+        <div class="news-grid">
+            <div class="news-card fade-in">
+                <div class="news-card-top"></div>
+                <div class="news-card-body">
+                    <div class="news-meta"><i class="fas fa-trophy"></i> April 1, 2026</div>
+                    <h3>Club Championship Winners</h3>
+                    <p>Our cricket team clinched the regional championship title. Congratulations to every player and coach for their extraordinary dedication and teamwork!</p>
+                </div>
+            </div>
+            <div class="news-card fade-in">
+                <div class="news-card-top"></div>
+                <div class="news-card-body">
+                    <div class="news-meta"><i class="fas fa-futbol"></i> March 25, 2026</div>
+                    <h3>New Football Training Sessions</h3>
+                    <p>Advanced training sessions for football enthusiasts are now underway, led by our newly onboarded international coaching staff.</p>
+                </div>
+            </div>
+            <div class="news-card fade-in">
+                <div class="news-card-top"></div>
+                <div class="news-card-body">
+                    <div class="news-meta"><i class="fas fa-hands-helping"></i> March 15, 2026</div>
+                    <h3>Community Outreach Program</h3>
+                    <p>We launched a new initiative to bring sport and fitness opportunities to underprivileged youth across the Majilpur region.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== COACHES ========== -->
+<section class="page-section alt-bg" id="coaches">
+    <div class="container">
+        <div class="section-header center fade-in">
+            <span class="section-tag">The Team</span>
+            <h2 class="section-title">Our Expert Coaches</h2>
+            <div class="gold-line"></div>
+            <p class="section-subtitle">Passionate, certified coaches committed to unlocking the potential of every athlete.</p>
+        </div>
+        <div class="coaches-grid">
+            <div class="coach-card fade-in">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=john-doe&scale=110" alt="John Doe">
+                <h3>John Doe</h3>
+                <p class="coach-role">Football Coach</p>
+                <p>10+ years of grassroots and competitive football coaching at district and state levels.</p>
+            </div>
+            <div class="coach-card fade-in">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=john-smith&scale=110" alt="John Smith">
+                <h3>John Smith</h3>
+                <p class="coach-role">Cricket Coach</p>
+                <p>Former district cricketer with BCCI Level-2 coaching certification and 8 years of club coaching.</p>
+            </div>
+            <div class="coach-card fade-in">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike-johnson&scale=110" alt="Mike Johnson">
+                <h3>Mike Johnson</h3>
+                <p class="coach-role">Youth Development Coach</p>
+                <p>Specialist in junior athlete development, sports psychology, and performance training.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== EVENTS ========== -->
+<section class="page-section" id="events">
+    <div class="container">
+        <div class="section-header center fade-in">
+            <span class="section-tag">On The Calendar</span>
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="gold-line"></div>
+            <p class="section-subtitle">Mark your calendars — there's always something exciting happening at Majilpur Athletic Club.</p>
+        </div>
+        <div class="events-grid">
+            <div class="event-card fade-in">
+                <div class="event-card-accent"></div>
+                <div class="event-card-body">
+                    <div class="event-date-badge"><i class="fas fa-calendar-alt"></i> May 10, 2026</div>
+                    <h3>Cricket Tournament</h3>
+                    <p>Our annual inter-club cricket tournament. Open to all skill levels — register early to secure your spot.</p>
+                </div>
+            </div>
+            <div class="event-card fade-in">
+                <div class="event-card-accent"></div>
+                <div class="event-card-body">
+                    <div class="event-date-badge"><i class="fas fa-calendar-alt"></i> May 15, 2026</div>
+                    <h3>Football Clinic</h3>
+                    <p>Free beginner football clinic. Learn fundamentals directly from our expert coaching staff — no experience needed.</p>
+                </div>
+            </div>
+            <div class="event-card fade-in">
+                <div class="event-card-accent"></div>
+                <div class="event-card-body">
+                    <div class="event-date-badge"><i class="fas fa-calendar-alt"></i> May 20, 2026</div>
+                    <h3>Community Charity Run</h3>
+                    <p>Join our annual 5K charity run to support local causes. All proceeds go to youth sports development.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section class="page-section alt-bg" id="gallery">
+    <div class="container">
+        <div class="section-header center fade-in">
+            <span class="section-tag">Moments</span>
+            <h2 class="section-title">Gallery</h2>
+            <div class="gold-line"></div>
+            <p class="section-subtitle">Glimpses of the passion, hard work, and celebration that define our club.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in"><img src="./2022-03-20.webp" alt="Club Event 1"><div class="gallery-item-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item fade-in"><img src="./2023-01-06.webp" alt="Club Event 2"><div class="gallery-item-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item fade-in"><img src="./2023-01-06 (1).webp" alt="Club Event 3"><div class="gallery-item-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item fade-in"><img src="./2023-08-06.webp" alt="Club Event 4"><div class="gallery-item-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item fade-in"><img src="./2023-08-06 (1).webp" alt="Club Event 5"><div class="gallery-item-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item fade-in"><img src="./2023-08-06 (2).webp" alt="Club Event 6"><div class="gallery-item-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item fade-in"><img src="./2023-09-18.webp" alt="Club Event 7"><div class="gallery-item-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item fade-in"><img src="./2026-01-25.webp" alt="Club Event 8"><div class="gallery-item-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item fade-in"><img src="./2026-01-25 (1).webp" alt="Club Event 9"><div class="gallery-item-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item fade-in"><img src="./2026-01-25 (2).webp" alt="Club Event 10"><div class="gallery-item-overlay"><i class="fas fa-expand-alt"></i></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ADMISSION ========== -->
+<section class="page-section" id="admission">
+    <div class="container">
+        <div class="section-header center fade-in">
+            <span class="section-tag">Join Us</span>
+            <h2 class="section-title">Admission</h2>
+            <div class="gold-line"></div>
+            <p class="section-subtitle">Take the first step toward sporting excellence. Apply for our coaching programmes today.</p>
+        </div>
+        <div class="admission-grid">
+            <div class="admission-card fade-in" style="background-image: url('./2023-01-06 (1).webp');">
+                <div class="admission-card-body">
+                    <span class="section-tag" style="margin-bottom:8px;">Cricket</span>
+                    <h3>Cricket Coaching Camp</h3>
+                    <p>Apply for our structured cricket programme and begin your journey to excellence under expert guidance.</p>
+                    <div class="admission-btns">
+                        <button onclick="openModal('cricketFormModal')" class="admission-btn-primary"><i class="fas fa-paper-plane"></i> Apply Now</button>
+                        <a href="#" onclick="downloadForm('cricket'); return false;" class="admission-btn-outline"><i class="fas fa-download"></i> Download Form</a>
+                    </div>
+                </div>
+            </div>
+            <div class="admission-card fade-in" style="background-image: url('./2023-09-18.webp');">
+                <div class="admission-card-body">
+                    <span class="section-tag" style="margin-bottom:8px;">Football</span>
+                    <h3>Football Coaching Camp</h3>
+                    <p>Join our football programme and become part of a winning team driven by discipline, teamwork, and skill.</p>
+                    <div class="admission-btns">
+                        <button onclick="openModal('footballFormModal')" class="admission-btn-primary"><i class="fas fa-paper-plane"></i> Apply Now</button>
+                        <a href="#" onclick="downloadForm('football'); return false;" class="admission-btn-outline"><i class="fas fa-download"></i> Download Form</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="page-section alt-bg" id="contact">
+    <div class="container">
+        <div class="section-header center fade-in">
+            <span class="section-tag">Get In Touch</span>
+            <h2 class="section-title">Contact Us</h2>
+            <div class="gold-line"></div>
+            <p class="section-subtitle">Our team is ready to help. Whether you have a question or want to join, reach out anytime.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info-col fade-in">
+                <h3>Let's Start a Conversation</h3>
+                <p>Whether you're enrolling for the first time or looking for more information about our programmes, we're here to guide you every step of the way.</p>
+                <div class="contact-items">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-item-text">
+                            <h4>Location</h4>
+                            <p>Majilpur Haridas Dutta Road, Joynagar Majilpur, Word no - 3<br>Kolkata, West Bengal — 743337</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="contact-item-text">
+                            <h4>Phone</h4>
+                            <p>+91 XXXXXXXXXX (Cricket)<br>+91 XXXXXXXXXX (Football)</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-item-text">
+                            <h4>Email</h4>
+                            <p>info@majilpurathleticclub.com<br>cricket@majilpurathleticclub.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                        <div class="contact-item-text">
+                            <h4>Working Hours</h4>
+                            <p>Mon – Sat: 9:00 AM – 6:00 PM<br>Sunday: 10:00 AM – 3:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-row">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form-wrap fade-in">
+                <div class="form-head">
+                    <span class="form-head-tag"><i class="fas fa-comments"></i>&nbsp; Quick Response</span>
+                    <h3>Send Us a Message</h3>
+                    <p>Share your requirements and we'll get back to you within 24 hours.</p>
+                </div>
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact-name">Full Name <span>*</span></label>
+                            <input type="text" class="form-control" id="contact-name" name="name" placeholder="e.g. Rahul Sharma" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email Address <span>*</span></label>
+                            <input type="email" class="form-control" id="contact-email" name="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact-phone">Phone Number <span>*</span></label>
+                            <input type="tel" class="form-control" id="contact-phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-subject">Subject</label>
+                            <select class="form-control" id="contact-subject" name="subject">
+                                <option value="">Select Subject</option>
+                                <option>Cricket Coaching Enquiry</option>
+                                <option>Football Coaching Enquiry</option>
+                                <option>Event Information</option>
+                                <option>General Inquiry</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message <span>*</span></label>
+                        <textarea class="form-control" id="contact-message" name="message" placeholder="Tell us how we can help you…" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                    <p class="form-note">We typically respond within 24 business hours.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== PREMIUM FOOTER ========== -->
+<footer>
+    <div class="footer-main">
+        <div class="footer-inner-container">
+            <div class="footer-grid">
+                <!-- Brand -->
+                <div>
+                    <div style="display:flex;align-items:center;gap:14px;margin-bottom:4px;">
+                        <img src="./logo.JPG" alt="MAC Logo" style="height:44px;width:auto;object-fit:contain;border-radius:5px;opacity:0.9;">
+                        <span style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#fff;letter-spacing:2px;text-transform:uppercase;">Majilpur Athletic Club</span>
+                    </div>
+                    <p class="footer-brand-desc">Fostering sporting excellence and community spirit in Majilpur since our founding. Dedicated to developing champions on and off the field.</p>
+                    <div class="footer-social-row">
+                        <a href="#" class="footer-social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="footer-social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <div>
+                        <p class="footer-newsletter-title"><label for="footer-newsletter-email">Subscribe to our Newsletter</label></p>
+                        <div class="footer-newsletter-row">
+                            <input type="email" id="footer-newsletter-email" class="footer-newsletter-input" placeholder="Enter your email">
+                            <button class="footer-newsletter-btn" onclick="subscribeNewsletter()">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <p class="footer-col-heading">Quick Links</p>
+                    <div class="footer-links">
+                        <a href="#about">About Us</a>
+                        <a href="#programs">Our Programs</a>
+                        <a href="#coaches">Coaches</a>
+                        <a href="#events">Events</a>
+                        <a href="#gallery">Gallery</a>
+                        <a href="#admission">Admission</a>
+                        <a href="#contact">Contact Us</a>
+                    </div>
+                </div>
+
+                <!-- Sports -->
+                <div>
+                    <p class="footer-col-heading">Our Sports</p>
+                    <div class="footer-links">
+                        <a href="#programs">Cricket Coaching</a>
+                        <a href="#programs">Football Coaching</a>
+                        <a href="#events">Tournaments</a>
+                        <a href="#events">Community Events</a>
+                        <a href="#admission">Junior Programmes</a>
+                        <a href="#admission">Apply Now</a>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <p class="footer-col-heading">Contact Info</p>
+                    <div class="footer-contact-list">
+                        <div class="footer-contact-row"><i class="fas fa-map-marker-alt"></i><span>Majilpur, Near XYZ Park,<br>Kolkata, West Bengal — 700000</span></div>
+                        <div class="footer-contact-row"><i class="fas fa-phone-alt"></i><span>+91 XXXXXXXXXX</span></div>
+                        <div class="footer-contact-row"><i class="fas fa-envelope"></i><span>info@majilpurathleticclub.com</span></div>
+                        <div class="footer-contact-row"><i class="fas fa-clock"></i><span>Mon–Sat: 9:00 AM – 6:00 PM</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+        <p>&copy; 2026 Majilpur Athletic Club. All rights reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Disclaimer</a>
+            <a href="#">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== CRICKET APPLICATION MODAL ===== -->
+<div class="modal-overlay" id="cricketFormModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <div>
+                <span class="modal-tag"><i class="fas fa-cricket"></i> &nbsp;Cricket</span>
+                <h2 class="modal-title">Cricket Coaching Application</h2>
+                <div class="modal-subtitle"><i class="fas fa-shield-alt"></i> Majilpur Athletic Club</div>
+            </div>
+            <button class="modal-close-btn" onclick="closeModal('cricketFormModal')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <div id="cricket-form-wrap">
+                <form id="cricketForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cricket-name">Full Name <span>*</span></label>
+                            <input type="text" class="form-control" id="cricket-name" name="name" placeholder="e.g. Rahul Sharma" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cricket-age">Age <span>*</span></label>
+                            <input type="number" class="form-control" id="cricket-age" name="age" placeholder="e.g. 16" min="5" max="60" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cricket-contact">Phone Number <span>*</span></label>
+                            <input type="tel" class="form-control" id="cricket-contact" name="contact" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cricket-email">Email Address <span>*</span></label>
+                            <input type="email" class="form-control" id="cricket-email" name="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cricket-address">Address <span>*</span></label>
+                        <input type="text" class="form-control" id="cricket-address" name="address" placeholder="Your full address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cricket-experience">Previous Cricket Experience</label>
+                        <textarea class="form-control" id="cricket-experience" name="experience" placeholder="Describe any prior cricket experience, coaching or matches played…"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">
+                        <i class="fas fa-paper-plane"></i> Submit Application
+                    </button>
+                    <p class="form-note">We typically respond within 24 business hours.</p>
+                </form>
+            </div>
+            <div class="modal-success" id="cricket-success">
+                <div class="modal-success-icon"><i class="fas fa-check"></i></div>
+                <h3>Application Submitted!</h3>
+                <p>Thank you for your interest in our Cricket programme. Our coaching team will get in touch with you within 24 hours.</p>
+                <button class="btn btn-primary" style="margin-top:20px" onclick="closeModal('cricketFormModal')">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== FOOTBALL APPLICATION MODAL ===== -->
+<div class="modal-overlay" id="footballFormModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <div>
+                <span class="modal-tag"><i class="fas fa-futbol"></i> &nbsp;Football</span>
+                <h2 class="modal-title">Football Coaching Application</h2>
+                <div class="modal-subtitle"><i class="fas fa-shield-alt"></i> Majilpur Athletic Club</div>
+            </div>
+            <button class="modal-close-btn" onclick="closeModal('footballFormModal')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <div id="football-form-wrap">
+                <form id="footballForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="football-name">Full Name <span>*</span></label>
+                            <input type="text" class="form-control" id="football-name" name="name" placeholder="e.g. Arjun Das" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="football-age">Age <span>*</span></label>
+                            <input type="number" class="form-control" id="football-age" name="age" placeholder="e.g. 14" min="5" max="60" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="football-contact">Phone Number <span>*</span></label>
+                            <input type="tel" class="form-control" id="football-contact" name="contact" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="football-email">Email Address <span>*</span></label>
+                            <input type="email" class="form-control" id="football-email" name="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="football-address">Address <span>*</span></label>
+                            <input type="text" class="form-control" id="football-address" name="address" placeholder="Your full address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="football-position">Preferred Position</label>
+                            <select class="form-control" id="football-position" name="position">
+                                <option value="">Select Position</option>
+                                <option>Goalkeeper</option>
+                                <option>Defender</option>
+                                <option>Midfielder</option>
+                                <option>Forward / Striker</option>
+                                <option>Not sure yet</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="football-experience">Previous Football Experience</label>
+                        <textarea class="form-control" id="football-experience" name="experience" placeholder="Describe any prior football experience, clubs or tournaments…"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">
+                        <i class="fas fa-paper-plane"></i> Submit Application
+                    </button>
+                    <p class="form-note">We typically respond within 24 business hours.</p>
+                </form>
+            </div>
+            <div class="modal-success" id="football-success">
+                <div class="modal-success-icon"><i class="fas fa-check"></i></div>
+                <h3>Application Submitted!</h3>
+                <p>Thank you for your interest in our Football programme. Our coaching team will get in touch with you within 24 hours.</p>
+                <button class="btn btn-primary" style="margin-top:20px" onclick="closeModal('footballFormModal')">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== RAJESH KUMAR MEMBER MODAL ===== -->
+<div class="modal-overlay" id="memberRajeshModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <div>
+                <span class="modal-tag"><i class="fas fa-user-tie"></i> &nbsp;Leadership</span>
+                <h2 class="modal-title">Rajesh Kumar</h2>
+                <div class="modal-subtitle"><i class="fas fa-cricket"></i> Cricket Committee President</div>
+            </div>
+            <button class="modal-close-btn" onclick="closeModal('memberRajeshModal')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=rajesh-kumar&scale=120" alt="Rajesh Kumar" class="member-modal-photo">
+            <p class="member-modal-role">Cricket Committee President</p>
+            <p class="member-modal-desc">Rajesh Kumar is a distinguished cricket administrator with over 20 years of experience in sports management. As President of the Cricket Committee, he leads all cricket initiatives and represents the club at the District Cricket Association level.</p>
+            <div class="member-modal-details">
+                <p><strong>Position:</strong> Cricket Committee President</p>
+                <p><strong>Experience:</strong> 20+ years in Cricket Administration</p>
+                <p><strong>Affiliation:</strong> District Cricket Association Member</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== PRIYA PATEL MEMBER MODAL ===== -->
+<div class="modal-overlay" id="memberPriyaModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <div>
+                <span class="modal-tag"><i class="fas fa-user-tie"></i> &nbsp;Leadership</span>
+                <h2 class="modal-title">Priya Patel</h2>
+                <div class="modal-subtitle"><i class="fas fa-futbol"></i> Football Committee President</div>
+            </div>
+            <button class="modal-close-btn" onclick="closeModal('memberPriyaModal')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya-patel&scale=120" alt="Priya Patel" class="member-modal-photo">
+            <p class="member-modal-role">Football Committee President</p>
+            <p class="member-modal-desc">Priya Patel is a dynamic sports leader with extensive experience in grassroots football development. As President of the Football Committee, she oversees all football activities and serves as the District Football Association President.</p>
+            <div class="member-modal-details">
+                <p><strong>Position:</strong> Football Committee President</p>
+                <p><strong>Experience:</strong> 18+ years in Football Administration</p>
+                <p><strong>Affiliation:</strong> District Football Association President</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ===== MODAL FUNCTIONS (overlay pattern) =====
+    function openModal(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        // reset success panels each open
+        const success = el.querySelector('.modal-success');
+        const formWrap = el.querySelector('[id$="-form-wrap"]') || el.querySelector('form');
+        if (success) success.style.display = 'none';
+        if (formWrap) formWrap.style.display = '';
+    }
+
+    function closeModal(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    // Close on backdrop click
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal-overlay')) {
+            e.target.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal-overlay.open').forEach(m => {
+                m.classList.remove('open');
+            });
+            document.body.style.overflow = '';
+        }
+    });
+
+    // ===== CRICKET FORM SUBMIT =====
+    document.getElementById('cricketForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = {
+            name: document.getElementById('cricket-name').value,
+            email: document.getElementById('cricket-email').value,
+            phone: document.getElementById('cricket-contact').value,
+            type: 'Cricket'
+        };
+        showPhoneNotification(formData);
+        showSmsNotification(formData);
+        showNtfyPushNotification(formData);
+        sendNtfyAlert(formData);
+        // Show inline success
+        document.getElementById('cricket-form-wrap').style.display = 'none';
+        document.getElementById('cricket-success').style.display = 'block';
+        this.reset();
+    });
+
+    // ===== FOOTBALL FORM SUBMIT =====
+    document.getElementById('footballForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = {
+            name: document.getElementById('football-name').value,
+            email: document.getElementById('football-email').value,
+            phone: document.getElementById('football-contact').value,
+            type: 'Football'
+        };
+        showPhoneNotification(formData);
+        showSmsNotification(formData);
+        showNtfyPushNotification(formData);
+        sendNtfyAlert(formData);
+        // Show inline success
+        document.getElementById('football-form-wrap').style.display = 'none';
+        document.getElementById('football-success').style.display = 'block';
+        this.reset();
+    });
+
+    // ===== CONTACT FORM SUBMIT =====
+    if (document.getElementById('contactForm')) {
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                name: document.getElementById('contact-name').value,
+                email: document.getElementById('contact-email').value,
+                phone: document.getElementById('contact-phone').value,
+                subject: document.getElementById('contact-subject').value,
+                message: document.getElementById('contact-message').value,
+                type: 'Contact Form'
+            };
+            showPhoneNotification(formData);
+            showSmsNotification(formData);
+            showNtfyPushNotification(formData);
+            sendNtfyAlert(formData);
+            // Show confirmation note inline
+            const note = this.querySelector('.form-note');
+            if (note) { note.textContent = '✅ Message sent! We\'ll get back to you within 24 hours.'; note.style.color = '#10b981'; note.style.fontWeight = '700'; }
+            this.reset();
+        });
+    }
+
+    // Show Phone Notification
+    function showPhoneNotification(formData) {
+        let notification = document.getElementById('phone-notification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'phone-notification';
+            notification.innerHTML = `
+                <div class="notification-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="notification-body">
+                    <div class="notification-title">MESSAGE RECEIVED</div>
+                    <div class="notification-text" id="notification-message"></div>
+                </div>
+                <button class="notification-close" onclick="closeNotification()">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            document.body.appendChild(notification);
+        }
+
+        // Update notification content
+        const message = formData.type === 'Contact Form'
+            ? `${formData.name} - ${formData.subject}`
+            : `${formData.name} (${formData.type}) - Will contact soon`;
+
+        document.getElementById('notification-message').textContent = message;
+
+        // Show notification
+        notification.classList.add('show');
+
+        // Auto close after 5 seconds
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 5000);
+    }
+
+    function closeNotification() {
+        const notification = document.getElementById('phone-notification');
+        if (notification) {
+            notification.classList.remove('show');
+        }
+    }
+
+    // Show SMS Notification
+    function showSmsNotification(formData) {
+        let smsNotif = document.getElementById('sms-notification');
+        if (!smsNotif) {
+            smsNotif = document.createElement('div');
+            smsNotif.id = 'sms-notification';
+            smsNotif.innerHTML = `
+                <i class="fas fa-envelope"></i>
+                <div id="sms-notification-text">
+                    <div id="sms-notification-title">SMS NOTIFICATION</div>
+                    <div id="sms-notification-message"></div>
+                </div>
+            `;
+            document.body.appendChild(smsNotif);
+        }
+
+        // Update SMS notification content
+        const message = formData.type === 'Contact Form'
+            ? `Contact inquiry received. SMS sent to ${formData.phone}`
+            : `Confirmation sent to ${formData.phone}`;
+
+        document.getElementById('sms-notification-title').textContent = 'SMS NOTIFICATION';
+        document.getElementById('sms-notification-message').textContent = message;
+
+        // Show SMS notification
+        smsNotif.classList.add('show');
+
+        // Auto close after 6 seconds
+        setTimeout(() => {
+            smsNotif.classList.remove('show');
+        }, 6000);
+    }
+
+    // Show ntfy.sh Push Notification
+    function showNtfyPushNotification(formData) {
+        let ntfyNotif = document.getElementById('ntfy-push-notification');
+        if (!ntfyNotif) {
+            ntfyNotif = document.createElement('div');
+            ntfyNotif.id = 'ntfy-push-notification';
+            ntfyNotif.innerHTML = `
+                <div class="ntfy-push-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="ntfy-push-body">
+                    <div class="ntfy-push-title">ALERT</div>
+                    <div class="ntfy-push-message" id="ntfy-push-message"></div>
+                </div>
+                <button class="ntfy-push-close" onclick="closeNtfyNotification()">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            document.body.appendChild(ntfyNotif);
+        }
+
+        // Update ntfy notification content
+        document.getElementById('ntfy-push-message').textContent =
+            `${formData.name} (${formData.type}) - ${formData.phone}`;
+
+        // Show ntfy notification
+        ntfyNotif.classList.add('show');
+
+        // Auto close after 7 seconds
+        setTimeout(() => {
+            ntfyNotif.classList.remove('show');
+        }, 7000);
+    }
+
+    function closeNtfyNotification() {
+        const ntfyNotif = document.getElementById('ntfy-push-notification');
+        if (ntfyNotif) {
+            ntfyNotif.classList.remove('show');
+        }
+    }
+
+    // Send ntfy.sh Alert via Push Notification
+    function sendNtfyAlert(formData) {
+        const ntfyTopic = 'mac_alerts'; // ntfy.sh topic
+
+        let message, title;
+        if (formData.type === 'Contact Form') {
+            title = `Contact Form Submission`;
+            message = `📧 NEW CONTACT INQUIRY\n\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`;
+        } else {
+            title = `${formData.type} Coaching Camp Application`;
+            message = `🏆 NEW ${formData.type.toUpperCase()} APPLICATION\n\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}`;
+        }
+
+        // Send to ntfy.sh
+        fetch(`https://ntfy.sh/${ntfyTopic}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'text/plain',
+                'Title': title
+            },
+            body: message
+        })
+            .then(response => {
+                console.log('✅ ntfy.sh Alert Sent Successfully');
+                console.log('Topic:', ntfyTopic);
+                console.log('Title:', title);
+                console.log('Message:', message);
+            })
+            .catch(error => {
+                console.error('Error sending ntfy.sh alert:', error);
+            });
+    }
+
+    // Download Form Function
+    function downloadForm(sport) {
+        const formContent = sport === 'cricket' ? getCricketFormHTML() : getFootballFormHTML();
+        const element = document.createElement('a');
+        element.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(formContent));
+        element.setAttribute('download', `Majilpur_${sport.charAt(0).toUpperCase() + sport.slice(1)}_Application_Form.html`);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    }
+
+    function getCricketFormHTML() {
+        return `
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cricket Coaching Camp Application Form</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
+    .container { max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid #1a3a52; padding-bottom: 20px; }
+    .header h1 { color: #1a3a52; margin: 0; font-size: 1.8em; }
+    .header p { color: #00bcd4; margin: 5px 0; }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 5px; color: #1a3a52; font-weight: bold; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: Arial; }
+    input:focus, textarea:focus { outline: none; border-color: #00bcd4; box-shadow: 0 0 5px rgba(0,188,212,0.3); }
+    .button { text-align: center; margin-top: 30px; }
+    button { background-color: #1a3a52; color: white; padding: 12px 30px; border: none; border-radius: 4px; cursor: pointer; font-size: 1em; }
+    button:hover { background-color: #00bcd4; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🏏 Majilpur Athletic Club</h1>
+        <p>Cricket Coaching Camp Application Form</p>
+    </div>
+    <form>
+        <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" required>
+        </div>
+        <div class="form-group">
+            <label>Age *</label>
+            <input type="number" required>
+        </div>
+        <div class="form-group">
+            <label>Contact Number *</label>
+            <input type="tel" required>
+        </div>
+        <div class="form-group">
+            <label>Email *</label>
+            <input type="email" required>
+        </div>
+        <div class="form-group">
+            <label>Address *</label>
+            <textarea rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Previous Cricket Experience</label>
+            <textarea rows="3"></textarea>
+        </div>
+        <div class="button">
+            <button type="print" onclick="window.print()">Print Form</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+        `;
+    }
+
+    /* ========== FADE-IN ON SCROLL ========== */
+    (function () {
+        const els = document.querySelectorAll('.fade-in');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        els.forEach(el => io.observe(el));
+    })();
+
+    /* ========== NEWSLETTER ========== */
+    function subscribeNewsletter() {
+        const inp = document.getElementById('footer-newsletter-email');
+        if (!inp || !inp.value.includes('@')) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+        alert('Thank you for subscribing! You\'ll hear from us soon.');
+        inp.value = '';
+    }
+
+
+    (function () {
+        const header = document.querySelector('header');
+        const navLinks = document.querySelectorAll('nav ul li a');
+        const sections = document.querySelectorAll('div.container section[id], div#hero');
+
+        function onScroll() {
+            // Solid / transparent toggle
+            if (window.scrollY > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Active link highlight (scroll-spy)
+            let current = '';
+            sections.forEach(sec => {
+                const top = sec.offsetTop - 100;
+                if (window.scrollY >= top) {
+                    current = sec.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active-link');
+                const href = link.getAttribute('href').replace('#', '');
+                if (href === current) link.classList.add('active-link');
+            });
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll(); // run once on load
+    })();
+
+    /* ========== HERO SLIDESHOW ========== */
+    (function () {
+        const slides = document.querySelectorAll('.hero-slide');
+        let current = 0;
+
+        function nextSlide() {
+            slides[current].classList.remove('active');
+            // Reset ken-burns
+            slides[current].style.animation = 'none';
+            void slides[current].offsetWidth;
+            slides[current].style.animation = '';
+
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+            slides[current].style.animation = 'none';
+            void slides[current].offsetWidth;
+            slides[current].style.animation = 'heroKenBurns 8s ease-out forwards';
+        }
+
+        setInterval(nextSlide, 5000);
+    })();
+
+    /* ========== HERO STATS COUNTER ========== */
+    (function () {
+        const counters = document.querySelectorAll('.hero-stat-number[data-target]');
+        let started = false;
+
+        function startCounters() {
+            if (started) return;
+            started = true;
+            counters.forEach(el => {
+                const target = parseInt(el.dataset.target, 10);
+                const suffix = el.dataset.suffix || (target >= 100 ? '+' : '+');
+                let count = 0;
+                const step = Math.ceil(target / 60);
+                const timer = setInterval(() => {
+                    count = Math.min(count + step, target);
+                    el.textContent = count + (count === target ? suffix : '');
+                    if (count >= target) clearInterval(timer);
+                }, 30);
+            });
+        }
+
+        // Trigger when hero stats scroll into view
+        const observer = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting) startCounters();
+        }, { threshold: 0.4 });
+
+        const statsEl = document.querySelector('.hero-stats');
+        if (statsEl) observer.observe(statsEl);
+    })();
+
+    function getFootballFormHTML() {
+        return `
+<!DOCTYPE html>
+<html>
+<head>
+<title>Football Coaching Camp Application Form</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
+    .container { max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid #1a3a52; padding-bottom: 20px; }
+    .header h1 { color: #1a3a52; margin: 0; font-size: 1.8em; }
+    .header p { color: #00bcd4; margin: 5px 0; }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 5px; color: #1a3a52; font-weight: bold; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: Arial; }
+    input:focus, textarea:focus { outline: none; border-color: #00bcd4; box-shadow: 0 0 5px rgba(0,188,212,0.3); }
+    .button { text-align: center; margin-top: 30px; }
+    button { background-color: #1a3a52; color: white; padding: 12px 30px; border: none; border-radius: 4px; cursor: pointer; font-size: 1em; }
+    button:hover { background-color: #00bcd4; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>⚽ Majilpur Athletic Club</h1>
+        <p>Football Coaching Camp Application Form</p>
+    </div>
+    <form>
+        <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" required>
+        </div>
+        <div class="form-group">
+            <label>Age *</label>
+            <input type="number" required>
+        </div>
+        <div class="form-group">
+            <label>Contact Number *</label>
+            <input type="tel" required>
+        </div>
+        <div class="form-group">
+            <label>Email *</label>
+            <input type="email" required>
+        </div>
+        <div class="form-group">
+            <label>Address *</label>
+            <textarea rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Preferred Position (Forward, Midfielder, Goalkeeper, etc.)</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <label>Previous Football Experience</label>
+            <textarea rows="3"></textarea>
+        </div>
+        <div class="button">
+            <button type="print" onclick="window.print()">Print Form</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+        `;
+    }
+</script>
+</body>
+</html>
