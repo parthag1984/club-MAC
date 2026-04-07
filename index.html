@@ -1892,7 +1892,7 @@
             <p class="section-subtitle">Our team is ready to help. Whether you have a question or want to join, reach out anytime.</p>
         </div>
         <div class="contact-grid">
-            <div class="contact-info-col fade-in">
+            <div class="contact-info-col fade-in">.
                 <h3>Let's Start a Conversation</h3>
                 <p>Whether you're enrolling for the first time or looking for more information about our programmes, we're here to guide you every step of the way.</p>
                 <div class="contact-items">
@@ -2365,6 +2365,11 @@
         document.getElementById('cricket-form-wrap').style.display = 'none';
         document.getElementById('cricket-success').style.display = 'block';
         this.reset();
+
+        // Auto close modal after 5 seconds
+        setTimeout(() => {
+            closeModal('cricketFormModal');
+        }, 5000);
     });
 
     // ===== FOOTBALL FORM SUBMIT =====
@@ -2384,6 +2389,11 @@
         document.getElementById('football-form-wrap').style.display = 'none';
         document.getElementById('football-success').style.display = 'block';
         this.reset();
+
+        // Auto close modal after 5 seconds
+        setTimeout(() => {
+            closeModal('footballFormModal');
+        }, 5000);
     });
 
     // ===== CONTACT FORM SUBMIT =====
@@ -2529,7 +2539,7 @@
 
     // Send ntfy.sh Alert via Push Notification
     function sendNtfyAlert(formData) {
-        const ntfyTopic = 'mac_alerts'; // ntfy.sh topic
+        const ntfyTopic = 'mac-alert'; // ntfy.sh topic
 
         let message, title;
         if (formData.type === 'Contact Form') {
@@ -2813,3 +2823,4 @@
 </script>
 </body>
 </html>
+
