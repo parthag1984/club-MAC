@@ -2,19 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, shrink-to-fit=no">
     <title>Majilpur Athletic Club</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Prata:wght@400&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         /* ========== RESET & BASE ========== */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
         body {
             font-family: 'Lato', sans-serif;
             color: #333;
             background: #fff;
             overflow-x: hidden;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            tap-highlight-color: rgba(0,0,0,0);
         }
         h1,h2,h3,h4,h5 { font-family: 'Cormorant Garamond', serif; }
         a { text-decoration: none; color: inherit; }
@@ -1613,44 +1619,171 @@
         }
         .map-open-link i { font-size: 14px; }
 
+        /* ========== RESPONSIVE / MOBILE ========== */
+
+        /* Tablets & small desktops */
         @media (max-width: 900px) {
-            .contact-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; gap: 36px; }
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
             .footer-grid > div:first-child { grid-column: 1 / -1; }
+            .programs-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+            .coaches-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
         }
+
+        /* Mobile */
         @media (max-width: 768px) {
+            /* Navbar */
             nav ul { display: none; }
             .hamburger { display: flex; }
-            .page-section { padding: 64px 0; }
-            .programs-grid, .coaches-grid, .events-grid,
-            .news-grid, .admission-grid { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-bottom { flex-direction: column; text-align: center; }
-            .contact-form-wrap { padding: 28px 20px; }
-            .modal-content { width: 95%; padding: 25px; }
-            .form-actions { flex-direction: column; }
-            .hero h1 { font-size: clamp(2.4rem, 9vw, 4rem); }
-            .hero-btns { gap: 10px; }
-            .hero-stat { min-width: 80px; padding: 0 10px; }
-            .hero-stat-number { font-size: 1.8rem; }
-            .modal-header { padding: 24px 20px 0; }
-            .modal-body { padding: 20px 20px 28px; }
-            .about-pillars { grid-template-columns: 1fr 1fr; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            nav { padding: 0 16px; }
             .nav-logo-text { font-size: 14px; letter-spacing: 1px; }
             .nav-logo-img { height: 38px; }
+
+            /* Sections */
+            .page-section { padding: 56px 0; }
+            .section-header { margin-bottom: 36px; }
+            .container { padding: 0 16px; }
+
+            /* Grids to single column */
+            .programs-grid,
+            .coaches-grid,
+            .events-grid,
+            .news-grid,
+            .admission-grid { grid-template-columns: 1fr; }
+            .about-pillars { grid-template-columns: 1fr 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .leadership-grid { grid-template-columns: 1fr 1fr; }
+
+            /* Forms */
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .contact-form-wrap { padding: 28px 18px; }
+            .form-actions { flex-direction: column; }
+
+            /* Footer */
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom-links { justify-content: center; flex-wrap: wrap; gap: 12px; }
+            .footer-main { padding: 48px 0 28px; }
+            .footer-newsletter-row { flex-direction: column; gap: 10px; }
+            .footer-newsletter-btn { width: 100%; padding: 12px; }
+
+            /* Hero */
+            .hero h1 { font-size: clamp(2.2rem, 9vw, 3.6rem); }
+            .hero-btns { gap: 10px; flex-direction: column; align-items: center; }
+            .hero-btn-primary,
+            .hero-btn-outline { width: 100%; max-width: 280px; justify-content: center; }
+            .hero-stat { min-width: 80px; padding: 0 10px; }
+            .hero-stat-number { font-size: 1.8rem; }
+            .hero-content { padding: 0 16px; }
+
+            /* Modal */
+            .modal-header { padding: 24px 20px 0; }
+            .modal-body { padding: 20px 20px 28px; }
+            .modal-box { max-width: 100%; border-radius: 16px; }
+            .modal-overlay { padding: 12px; }
+
+            /* Notification popups - reposition for mobile */
+            #phone-notification {
+                top: auto;
+                bottom: 80px;
+                right: 12px;
+                left: 12px;
+                min-width: unset;
+                max-width: unset;
+                width: calc(100% - 24px);
+                transform: translateY(200px);
+                border-radius: 12px;
+            }
+            #phone-notification.show { transform: translateY(0); }
+
+            #sms-notification {
+                bottom: 16px;
+                left: 12px;
+                right: 12px;
+                min-width: unset;
+                max-width: unset;
+                width: calc(100% - 24px);
+                transform: translateY(200px);
+                border-radius: 10px;
+            }
+            #sms-notification.show { transform: translateY(0); }
+
+            #ntfy-push-notification {
+                top: auto;
+                bottom: 80px;
+                right: 12px;
+                left: 12px;
+                min-width: unset;
+                max-width: unset;
+                width: calc(100% - 24px);
+                transform: translateY(200px);
+                border-radius: 12px;
+            }
+            #ntfy-push-notification.show { transform: translateY(0); }
+
+            /* Touch-friendly tap targets */
+            .btn, .hero-btn-primary, .hero-btn-outline,
+            .admission-btn-primary, .admission-btn-outline { min-height: 44px; }
+            .social-icon, .footer-social-icon { width: 46px; height: 46px; }
+            .mobile-nav a { min-height: 50px; display: flex; align-items: center; }
+
+            /* Map */
+            .map-embed-wrap iframe { height: 200px; }
         }
+
+        /* Small phones */
         @media (max-width: 480px) {
+            /* Grids */
             .about-pillars { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: 1fr; }
-            .hero-stats { gap: 8px; }
-            .hero-stat { min-width: 70px; padding: 0 8px; }
+            .leadership-grid { grid-template-columns: 1fr; }
+
+            /* Hero */
+            .hero h1 { font-size: clamp(1.9rem, 10vw, 3rem); letter-spacing: -0.5px; }
+            .hero-eyebrow { font-size: 9px; letter-spacing: 1.8px; }
+            .hero-stats { gap: 4px; flex-wrap: wrap; justify-content: center; }
+            .hero-stat { min-width: 70px; padding: 0 8px; flex: 0 0 auto; }
             .hero-stat-number { font-size: 1.5rem; }
-            .hero-eyebrow { font-size: 9px; letter-spacing: 2px; }
-            .admission-card { min-height: 320px; }
+            .hero-sub { font-size: 0.9rem; }
+            .hero-btns { margin-bottom: 40px; }
+
+            /* Cards */
+            .admission-card { min-height: 300px; }
+            .program-card-img { height: 180px; }
+            .gallery-item img { height: 180px; }
+            .section-title { font-size: clamp(22px, 7vw, 36px); }
+
+            /* Footer */
             .footer-grid { grid-template-columns: 1fr; }
             .footer-bottom-links { flex-wrap: wrap; gap: 10px; justify-content: center; }
+
+            /* Notifications */
+            #phone-notification, #sms-notification, #ntfy-push-notification {
+                bottom: 12px;
+                font-size: 12px;
+            }
+
+            /* Forms */
+            .contact-form-wrap { padding: 22px 14px; }
+            .form-control { padding: 11px 12px; }
+            .modal-box { border-radius: 14px; }
+            .modal-header { padding: 20px 16px 0; }
+            .modal-body { padding: 16px 16px 24px; }
+
+            /* General spacing */
+            .page-section { padding: 44px 0; }
+            .container { padding: 0 14px; }
+            nav { padding: 0 14px; }
+        }
+
+        /* Very small phones */
+        @media (max-width: 360px) {
+            .hero h1 { font-size: 1.75rem; }
+            .nav-logo-text { display: none; }
+            .hero-stat { padding: 0 6px; }
+            .hero-stat-number { font-size: 1.3rem; }
+            .hero-stat-label { font-size: 8px; letter-spacing: 1px; }
+            .section-title { font-size: 20px; }
         }
     </style>
 </head>
