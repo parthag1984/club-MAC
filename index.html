@@ -1032,6 +1032,22 @@
             box-shadow: 0 0 0 3px rgba(212,165,116,0.12);
         }
         textarea.form-control { resize: vertical; min-height: 120px; }
+        input[type="date"].form-control {
+            cursor: pointer;
+            color: var(--text);
+        }
+        input[type="date"].form-control::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            opacity: 0.6;
+            filter: invert(30%) sepia(60%) saturate(400%) hue-rotate(5deg);
+            transition: opacity 0.2s ease;
+        }
+        input[type="date"].form-control::-webkit-calendar-picker-indicator:hover {
+            opacity: 1;
+        }
+        input[type="date"].form-control:not(:valid):not(:focus) {
+            color: #9ca3af;
+        }
         select.form-control {
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -1785,6 +1801,147 @@
             .hero-stat-label { font-size: 8px; letter-spacing: 1px; }
             .section-title { font-size: 20px; }
         }
+
+        /* ========== WELL-WISHERS ========== */
+        .wellwishers-layout {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 36px;
+            align-items: start;
+        }
+        .wishers-form-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 36px 32px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 8px 32px rgba(26,58,82,0.08);
+            position: sticky;
+            top: 96px;
+            overflow: hidden;
+        }
+        .wishers-form-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, #f4e4a6, var(--gold), var(--gold-light));
+        }
+        .wishers-form-head { margin-bottom: 22px; }
+        .wishers-form-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 11px; font-weight: 700; letter-spacing: 1.8px;
+            text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+        }
+        .wishers-form-card h3 { font-size: 24px; color: var(--navy); margin-bottom: 6px; }
+        .wishers-form-card > p  { font-size: 13.5px; color: var(--gray); line-height: 1.6; }
+        .wisher-char-count {
+            text-align: right; font-size: 11.5px; color: var(--gray);
+            margin-top: 4px; font-weight: 600;
+        }
+        /* Star rating */
+        .star-rating { display: flex; gap: 6px; cursor: pointer; }
+        .star-rating i {
+            font-size: 26px; color: #d1d5db;
+            transition: color 0.18s ease, transform 0.18s ease;
+        }
+        .star-rating i.active,
+        .star-rating i.hovered { color: #f59e0b; transform: scale(1.15); }
+
+        /* Feed */
+        .wishers-feed { }
+        .wishers-feed-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 22px; flex-wrap: wrap; gap: 10px;
+        }
+        .wishers-feed-header h3 { font-size: 22px; color: var(--navy); }
+        .wishers-count {
+            font-size: 11.5px; font-weight: 700; letter-spacing: 1.2px;
+            text-transform: uppercase; color: var(--gold);
+            background: rgba(212,165,116,0.1);
+            border: 1px solid rgba(212,165,116,0.3);
+            padding: 4px 14px; border-radius: 20px;
+        }
+        .wishers-list {
+            display: flex; flex-direction: column; gap: 16px;
+            max-height: 660px; overflow-y: auto;
+            padding-right: 6px;
+        }
+        .wishers-list::-webkit-scrollbar { width: 4px; }
+        .wishers-list::-webkit-scrollbar-thumb { background: rgba(212,165,116,0.45); border-radius: 4px; }
+
+        /* Single wish card */
+        .wish-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 20px 22px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 10px rgba(26,58,82,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: wishSlideIn 0.45s cubic-bezier(0.34,1.26,0.64,1) both;
+        }
+        .wish-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(26,58,82,0.1);
+        }
+        @keyframes wishSlideIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .wish-card-top {
+            display: flex; align-items: center; gap: 13px; margin-bottom: 12px;
+        }
+        .wish-avatar {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--navy), #2a5a72);
+            color: #fff; font-family: 'Cormorant Garamond', serif;
+            font-size: 20px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; box-shadow: 0 3px 10px rgba(26,58,82,0.2);
+            text-transform: uppercase;
+        }
+        .wish-meta { flex: 1; min-width: 0; }
+        .wish-name  { font-weight: 700; color: var(--navy); font-size: 15px; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .wish-relation {
+            font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+            text-transform: uppercase; color: var(--gold);
+        }
+        .wish-stars { display: flex; gap: 3px; margin-left: auto; flex-shrink: 0; }
+        .wish-stars i { font-size: 13px; color: #f59e0b; }
+        .wish-stars i.empty { color: #d1d5db; }
+        .wish-text {
+            font-size: 14px; color: #555; line-height: 1.75;
+            border-left: 3px solid rgba(212,165,116,0.45);
+            padding-left: 14px; margin: 0; font-style: italic;
+        }
+        .wish-date {
+            font-size: 11px; color: #bbb; margin-top: 10px;
+            display: flex; align-items: center; gap: 5px;
+        }
+        .wish-date i { font-size: 10px; color: var(--gold); }
+        /* NEW badge */
+        .wish-new-badge {
+            display: inline-block;
+            font-size: 9px; font-weight: 700; letter-spacing: 1px;
+            text-transform: uppercase; background: #10b981; color: #fff;
+            padding: 2px 7px; border-radius: 10px; margin-left: 8px;
+            vertical-align: middle;
+        }
+        /* Empty state */
+        .wishers-empty {
+            text-align: center; padding: 52px 24px; color: var(--gray); font-size: 14px;
+        }
+        .wishers-empty i { font-size: 44px; color: rgba(212,165,116,0.3); margin-bottom: 14px; display: block; }
+
+        /* Responsive well-wishers */
+        @media (max-width: 960px) {
+            .wellwishers-layout { grid-template-columns: 1fr; gap: 28px; }
+            .wishers-form-card { position: static; }
+            .wishers-list { max-height: 500px; }
+        }
+        @media (max-width: 480px) {
+            .wishers-form-card { padding: 24px 18px 28px; border-radius: 14px; }
+            .wishers-feed-header h3 { font-size: 18px; }
+            .wish-card { padding: 16px 16px; border-radius: 12px; }
+            .wish-text { font-size: 13.5px; }
+        }
     </style>
 </head>
 <body>
@@ -1802,6 +1959,7 @@
             <li><a href="#coaches">Coaches</a></li>
             <li><a href="#events">Events</a></li>
             <li><a href="#admission">Admission</a></li>
+            <li><a href="#wellwishers">Well-Wishers</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" onclick="toggleMobileNav()">
@@ -1819,6 +1977,7 @@
     <a href="#coaches"   onclick="closeMobileNav()"><i class="fas fa-chalkboard-teacher"  style="width:20px;color:var(--gold)"></i> Coaches</a>
     <a href="#events"    onclick="closeMobileNav()"><i class="fas fa-calendar-alt"        style="width:20px;color:var(--gold)"></i> Events</a>
     <a href="#admission" onclick="closeMobileNav()"><i class="fas fa-trophy"              style="width:20px;color:var(--gold)"></i> Admission</a>
+    <a href="#wellwishers" onclick="closeMobileNav()"><i class="fas fa-heart"             style="width:20px;color:var(--gold)"></i> Well-Wishers</a>
     <a href="#contact"   onclick="closeMobileNav()"><i class="fas fa-envelope"            style="width:20px;color:var(--gold)"></i> Contact</a>
     <div class="mobile-nav-footer">
         <a href="#admission" onclick="closeMobileNav()" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);border-radius:8px;padding:12px 22px;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;display:inline-flex;align-items:center;gap:7px;text-decoration:none;">
@@ -1847,7 +2006,7 @@
     <!-- Content -->
     <div class="hero-content">
         <div class="hero-eyebrow">
-            <span>Est. &nbsp; Majilpur, West Bengal</span>
+            <span>Est. 1945 &nbsp;·&nbsp; Majilpur, West Bengal</span>
         </div>
 
         <h1>Majilpur<br><span>Athletic Club</span></h1>
@@ -1931,13 +2090,13 @@
             <h3 class="leadership-title">Leadership &amp; Management</h3>
             <div class="leadership-grid">
                 <div class="leader-card" onclick="openModal('memberShibModal')">
-                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=shib-shankae-banerjee&scale=90" alt="Shib Shankae Banerjee">
-                    <h4>Shib Shankae Banerjee</h4>
+                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=shib-shankar-banerjee&scale=90" alt="Shib Shankar Banerjee">
+                    <h4>Shib Shankar Banerjee</h4>
                     <p class="leader-role">Club President</p>
                     <small>Chief Administrator</small>
                 </div>
                 <div class="leader-card" onclick="openModal('memberSukantoModal')">
-                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sukanto-mukherjee&scale=90" alt="Sukanto Mukherjee">
+                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sukanta-mukherjee&scale=90" alt="Sukanta Mukherjee">
                     <h4>Sukanta Mukherjee</h4>
                     <p class="leader-role">General Secretary</p>
                     <small>Club Administration</small>
@@ -1955,7 +2114,7 @@
                     <small>Cricket Committee Lead</small>
                 </div>
                 <div class="leader-card" onclick="openModal('memberSobhojitModal')">
-                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sobhojit-chakraborty&scale=90" alt="Sobhojit Chakraborty">
+                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=subhojit-chakraborty&scale=90" alt="Subhojit Chakraborty">
                     <h4>Subhojit Chakraborty</h4>
                     <p class="leader-role">Treasurer</p>
                     <small>Financial Administration</small>
@@ -2177,6 +2336,84 @@
     </div>
 </section>
 
+<!-- ========== WELL-WISHERS ========== -->
+<section class="page-section alt-bg" id="wellwishers">
+    <div class="container">
+        <div class="section-header center fade-in">
+            <span class="section-tag">Community Love</span>
+            <h2 class="section-title">Well-Wishers</h2>
+            <div class="gold-line"></div>
+            <p class="section-subtitle">Share your warm wishes, messages, and support for Majilpur Athletic Club. Your words inspire our athletes every day.</p>
+        </div>
+
+        <div class="wellwishers-layout">
+            <!-- Submit Form -->
+            <div class="wishers-form-card fade-in">
+                <div class="wishers-form-head">
+                    <span class="wishers-form-tag"><i class="fas fa-heart"></i> &nbsp;Leave a Message</span>
+                    <h3>Send Your Wishes</h3>
+                    <p>Your message will be displayed on this page for the entire community to see.</p>
+                </div>
+                <form id="wellWishersForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="wisher-name">Your Name <span>*</span></label>
+                            <input type="text" class="form-control" id="wisher-name" placeholder="e.g. Rahul Das" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="wisher-relation">Relation to Club</label>
+                            <select class="form-control" id="wisher-relation">
+                                <option value="">Select…</option>
+                                <option>Club Member</option>
+                                <option>Parent / Guardian</option>
+                                <option>Alumni</option>
+                                <option>Coach</option>
+                                <option>Supporter / Fan</option>
+                                <option>Sponsor</option>
+                                <option>Community Member</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="wisher-message">Your Message <span>*</span></label>
+                        <textarea class="form-control" id="wisher-message" rows="4"
+                                  placeholder="Share your wishes, memories, or words of encouragement…" required
+                                  maxlength="300"></textarea>
+                        <div class="wisher-char-count"><span id="wisher-char-num">0</span>/300</div>
+                    </div>
+                    <!-- Star Rating -->
+                    <div class="form-group">
+                        <label>Your Rating</label>
+                        <div class="star-rating" id="starRating">
+                            <i class="fas fa-star" data-v="1"></i>
+                            <i class="fas fa-star" data-v="2"></i>
+                            <i class="fas fa-star" data-v="3"></i>
+                            <i class="fas fa-star" data-v="4"></i>
+                            <i class="fas fa-star" data-v="5"></i>
+                        </div>
+                        <input type="hidden" id="wisher-rating" value="5">
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit" style="width:100%;justify-content:center;">
+                        <i class="fas fa-paper-plane"></i> Post Your Wish
+                    </button>
+                </form>
+            </div>
+
+            <!-- Comments Feed -->
+            <div class="wishers-feed fade-in">
+                <div class="wishers-feed-header">
+                    <h3><i class="fas fa-comments" style="color:var(--gold);margin-right:10px;"></i>Community Wishes</h3>
+                    <span class="wishers-count" id="wishersCount">0 messages</span>
+                </div>
+                <div class="wishers-list" id="wishersList">
+                    <!-- seeded default messages -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ========== CONTACT ========== -->
 <section class="page-section alt-bg" id="contact">
     <div class="container">
@@ -2195,7 +2432,7 @@
                         <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="contact-item-text">
                             <h4>Location</h4>
-                            <p>Majilpur Haridas Dutta Road, Joynagar Majilpur, Word no - 5<br>Kolkata, West Bengal — 743337</p>
+                            <p>Majilpur Haridas Dutta Road, Joynagar Majilpur, Word no - 3<br>Kolkata, West Bengal — 743337</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -2224,14 +2461,14 @@
                 <!-- Embedded Google Map -->
                 <div class="map-embed-wrap">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.748!2d88.4226875!3d22.1683125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a024112fd3cc309%3A0x1e9cef4fb7373972!2sMajilpur%20Athletic%20Club!5e0!3m2!1sen!2sin!4v1712000000000"
-                        width="100%"
-                        height="220"
-                        style="border:0;"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Majilpur Athletic Club Location">
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.748!2d88.4226875!3d22.1683125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a024112fd3cc309%3A0x1e9cef4fb7373972!2sMajilpur%20Athletic%20Club!5e0!3m2!1sen!2sin!4v1712000000000"
+                            width="100%"
+                            height="220"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Majilpur Athletic Club Location">
                     </iframe>
                     <a href="https://www.google.com/maps/place/Majilpur+Athletic+Club/@22.1683125,88.4226875,17z/data=!3m1!4b1!4m6!3m5!1s0x3a024112fd3cc309:0x1e9cef4fb7373972!8m2!3d22.1683125!4d88.4226875!16s%2Fg%2F11fx7tpl_t"
                        target="_blank" rel="noopener noreferrer" class="map-open-link">
@@ -2332,6 +2569,7 @@
                         <a href="#events">Events</a>
                         <a href="#gallery">Gallery</a>
                         <a href="#admission">Admission</a>
+                        <a href="#wellwishers">Well-Wishers</a>
                         <a href="#contact">Contact Us</a>
                     </div>
                 </div>
@@ -2394,8 +2632,21 @@
                             <input type="text" class="form-control" id="cricket-name" name="name" placeholder="e.g. Rahul Sharma" required>
                         </div>
                         <div class="form-group">
-                            <label for="cricket-age">Age <span>*</span></label>
-                            <input type="number" class="form-control" id="cricket-age" name="age" placeholder="e.g. 16" min="5" max="60" required>
+                            <label>Date of Birth &amp; Age <span>*</span></label>
+                            <div style="display:flex;gap:10px;align-items:center;">
+                                <input type="date" class="form-control" id="cricket-dob" name="dob" required
+                                       max="2021-04-07" min="1964-04-07"
+                                       aria-label="Date of Birth"
+                                       oninput="syncAge('cricket-dob','cricket-age')"
+                                       style="flex:1;">
+                                <div style="position:relative;flex:0 0 82px;">
+                                    <input type="text" class="form-control" id="cricket-age" name="age"
+                                           readonly placeholder="Age"
+                                           aria-label="Age (auto-calculated)"
+                                           style="text-align:center;background:#f0f4f8;color:var(--navy);font-weight:700;cursor:default;padding-right:28px;">
+                                    <span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--gray);pointer-events:none;">yrs</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
@@ -2452,8 +2703,21 @@
                             <input type="text" class="form-control" id="football-name" name="name" placeholder="e.g. Arjun Das" required>
                         </div>
                         <div class="form-group">
-                            <label for="football-age">Age <span>*</span></label>
-                            <input type="number" class="form-control" id="football-age" name="age" placeholder="e.g. 14" min="5" max="60" required>
+                            <label>Date of Birth &amp; Age <span>*</span></label>
+                            <div style="display:flex;gap:10px;align-items:center;">
+                                <input type="date" class="form-control" id="football-dob" name="dob" required
+                                       max="2021-04-07" min="1964-04-07"
+                                       aria-label="Date of Birth"
+                                       oninput="syncAge('football-dob','football-age')"
+                                       style="flex:1;">
+                                <div style="position:relative;flex:0 0 82px;">
+                                    <input type="text" class="form-control" id="football-age" name="age"
+                                           readonly placeholder="Age"
+                                           aria-label="Age (auto-calculated)"
+                                           style="text-align:center;background:#f0f4f8;color:var(--navy);font-weight:700;cursor:default;padding-right:28px;">
+                                    <span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--gray);pointer-events:none;">yrs</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
@@ -2509,15 +2773,15 @@
         <div class="modal-header">
             <div>
                 <span class="modal-tag"><i class="fas fa-user-tie"></i> &nbsp;Leadership</span>
-                <h2 class="modal-title">Shib Shankae Banerjee</h2>
+                <h2 class="modal-title">Shib Shankar Banerjee</h2>
                 <div class="modal-subtitle"><i class="fas fa-crown"></i> Club President</div>
             </div>
             <button class="modal-close-btn" onclick="closeModal('memberShibModal')"><i class="fas fa-times"></i></button>
         </div>
         <div class="modal-body" style="text-align:center;">
-            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=shib-shankae-banerjee&scale=120" alt="Shib Shankae Banerjee" class="member-modal-photo">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=shib-shankar-banerjee&scale=120" alt="Shib Shankar Banerjee" class="member-modal-photo">
             <p class="member-modal-role">Club President</p>
-            <p class="member-modal-desc">Shib Shankae Banerjee is the Chief Administrator and Club President of Majilpur Athletic Club. He provides strategic leadership and oversees all club operations, ensuring excellence in sports training and community engagement.</p>
+            <p class="member-modal-desc">Shib Shankar Banerjee is the Chief Administrator and Club President of Majilpur Athletic Club. He provides strategic leadership and oversees all club operations, ensuring excellence in sports training and community engagement.</p>
             <div class="member-modal-details">
                 <p><strong>Position:</strong> Club President</p>
                 <p><strong>Role:</strong> Chief Administrator</p>
@@ -2527,7 +2791,7 @@
     </div>
 </div>
 
-<!-- ===== SUKANTA MUKHERJEE MEMBER MODAL ===== -->
+<!-- ===== SUKANTO MUKHERJEE MEMBER MODAL ===== -->
 <div class="modal-overlay" id="memberSukantoModal">
     <div class="modal-box">
         <div class="modal-header">
@@ -2539,7 +2803,7 @@
             <button class="modal-close-btn" onclick="closeModal('memberSukantoModal')"><i class="fas fa-times"></i></button>
         </div>
         <div class="modal-body" style="text-align:center;">
-            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sukanto-mukherjee&scale=120" alt="Sukanta Mukherjee" class="member-modal-photo">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sukanta-mukherjee&scale=120" alt="Sukanta Mukherjee" class="member-modal-photo">
             <p class="member-modal-role">General Secretary</p>
             <p class="member-modal-desc">Sukanta Mukherjee serves as the General Secretary, managing club administration, coordinating between different departments, and ensuring smooth operations of all club activities and programmes.</p>
             <div class="member-modal-details">
@@ -2599,7 +2863,7 @@
     </div>
 </div>
 
-<!-- ===== SUBHOJIT CHAKRABORTY MEMBER MODAL ===== -->
+<!-- ===== SOBHOJIT CHAKRABORTY MEMBER MODAL ===== -->
 <div class="modal-overlay" id="memberSobhojitModal">
     <div class="modal-box">
         <div class="modal-header">
@@ -2611,7 +2875,7 @@
             <button class="modal-close-btn" onclick="closeModal('memberSobhojitModal')"><i class="fas fa-times"></i></button>
         </div>
         <div class="modal-body" style="text-align:center;">
-            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sobhojit-chakraborty&scale=120" alt="Subhojit Chakraborty" class="member-modal-photo">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=subhojit-chakraborty&scale=120" alt="Subhojit Chakraborty" class="member-modal-photo">
             <p class="member-modal-role">Treasurer</p>
             <p class="member-modal-desc">Subhojit Chakraborty manages the club's finances, budgets, and financial planning. He ensures transparent financial operations and sustainable growth of the club.</p>
             <div class="member-modal-details">
@@ -2624,6 +2888,143 @@
 </div>
 
 <script>
+    // ===== SYNC AGE FROM DOB =====
+    function syncAge(dobId, ageId) {
+        const dobInput = document.getElementById(dobId);
+        const ageInput = document.getElementById(ageId);
+        if (!dobInput || !ageInput || !dobInput.value) { ageInput.value = ''; return; }
+        const dob   = new Date(dobInput.value);
+        const today = new Date();
+        let age = today.getFullYear() - dob.getFullYear();
+        const m = today.getMonth() - dob.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+        ageInput.value = age >= 0 ? age : '';
+    }
+
+    // ===== WELL-WISHERS =====
+    (function () {
+        // Seed data
+        const seedWishes = [
+            { name: 'Arpita Sen',      relation: 'Parent / Guardian',  rating: 5, message: 'My son has grown so much as a cricketer here. The coaches are dedicated and the environment is fantastic. Proud to be part of the MAC family!', date: 'March 28, 2026' },
+            { name: 'Debashis Roy',    relation: 'Alumni',             rating: 5, message: 'Spent my best years training at Majilpur Athletic Club. The discipline and values I learned here have shaped my life. Wishing the club many more decades of glory!', date: 'March 15, 2026' },
+            { name: 'Tanmoy Ghosh',    relation: 'Community Member',   rating: 4, message: 'A true gem for the Majilpur community. The tournaments organised here bring everyone together. Keep inspiring the youth!', date: 'February 22, 2026' },
+            { name: 'Priya Mondal',    relation: 'Supporter / Fan',    rating: 5, message: 'Every match I have watched here has been thrilling. The spirit of the players is incredible. Wishing MAC all the success in 2026!', date: 'January 10, 2026' },
+        ];
+
+        let wishes = JSON.parse(localStorage.getItem('macWishes') || 'null') || seedWishes;
+
+        function saveWishes() { localStorage.setItem('macWishes', JSON.stringify(wishes)); }
+
+        function formatDate(d) {
+            const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            const dt = new Date(d);
+            return isNaN(dt) ? d : months[dt.getMonth()] + ' ' + dt.getDate() + ', ' + dt.getFullYear();
+        }
+
+        function starsHTML(rating, total = 5) {
+            let h = '';
+            for (let i = 1; i <= total; i++)
+                h += `<i class="fas fa-star${i <= rating ? '' : ' empty'}"></i>`;
+            return h;
+        }
+
+        function renderWishes(highlightFirst) {
+            const list  = document.getElementById('wishersList');
+            const count = document.getElementById('wishersCount');
+            if (!list) return;
+            count.textContent = wishes.length + (wishes.length === 1 ? ' message' : ' messages');
+            if (wishes.length === 0) {
+                list.innerHTML = `<div class="wishers-empty"><i class="fas fa-heart"></i><p>No wishes yet — be the first to leave a message!</p></div>`;
+                return;
+            }
+            list.innerHTML = wishes.map((w, idx) => `
+                <div class="wish-card" style="animation-delay:${idx * 0.06}s">
+                    <div class="wish-card-top">
+                        <div class="wish-avatar">${w.name.trim().charAt(0)}</div>
+                        <div class="wish-meta">
+                            <div class="wish-name">${w.name}${highlightFirst && idx === 0 ? '<span class="wish-new-badge">New</span>' : ''}</div>
+                            <div class="wish-relation">${w.relation || 'Well-Wisher'}</div>
+                        </div>
+                        <div class="wish-stars">${starsHTML(w.rating)}</div>
+                    </div>
+                    <p class="wish-text">"${w.message}"</p>
+                    <div class="wish-date"><i class="fas fa-clock"></i>${w.date}</div>
+                </div>
+            `).join('');
+        }
+
+        // Star rating interaction
+        let selectedRating = 5;
+        const starEls = document.querySelectorAll('#starRating i');
+        function setStars(val, cls) {
+            starEls.forEach(s => {
+                const v = parseInt(s.dataset.v);
+                s.classList.toggle(cls, v <= val);
+            });
+        }
+        setStars(5, 'active');
+        starEls.forEach(s => {
+            s.addEventListener('mouseenter', () => setStars(parseInt(s.dataset.v), 'hovered'));
+            s.addEventListener('mouseleave', () => { starEls.forEach(x => x.classList.remove('hovered')); setStars(selectedRating, 'active'); });
+            s.addEventListener('click', () => {
+                selectedRating = parseInt(s.dataset.v);
+                document.getElementById('wisher-rating').value = selectedRating;
+                starEls.forEach(x => x.classList.remove('active'));
+                setStars(selectedRating, 'active');
+            });
+        });
+
+        // Character counter
+        const msgArea = document.getElementById('wisher-message');
+        const charNum = document.getElementById('wisher-char-num');
+        if (msgArea && charNum) {
+            msgArea.addEventListener('input', () => {
+                charNum.textContent = msgArea.value.length;
+                charNum.style.color = msgArea.value.length > 270 ? '#ef4444' : 'var(--gray)';
+            });
+        }
+
+        // Form submit
+        const form = document.getElementById('wellWishersForm');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const name     = document.getElementById('wisher-name').value.trim();
+                const relation = document.getElementById('wisher-relation').value;
+                const message  = document.getElementById('wisher-message').value.trim();
+                const rating   = parseInt(document.getElementById('wisher-rating').value) || 5;
+                if (!name || !message) return;
+                const today = new Date();
+                const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                const dateStr = months[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
+                wishes.unshift({ name, relation: relation || 'Well-Wisher', rating, message, date: dateStr });
+                saveWishes();
+                renderWishes(true);
+
+                // Scroll to feed on mobile
+                const feed = document.querySelector('.wishers-feed');
+                if (feed && window.innerWidth <= 960) feed.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                // Reset
+                form.reset();
+                selectedRating = 5;
+                starEls.forEach(x => x.classList.remove('active', 'hovered'));
+                setStars(5, 'active');
+                document.getElementById('wisher-rating').value = 5;
+                if (charNum) charNum.textContent = '0';
+
+                // Brief confirmation
+                const btn = form.querySelector('button[type="submit"]');
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Posted!';
+                btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
+                setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; }, 2500);
+            });
+        }
+
+        renderWishes(false);
+    })();
+
     // ===== MOBILE NAV =====
     function toggleMobileNav() {
         const nav = document.getElementById('mobileNav');
@@ -2690,7 +3091,7 @@
     <div class="section-label">Personal Details</div>
     <div class="row">
       <div class="field"><label>Full Name</label><div class="val">${data.name || '—'}</div></div>
-      <div class="field"><label>Age</label><div class="val">${data.age || '—'}</div></div>
+      <div class="field"><label>Date of Birth</label><div class="val">${data.dob ? new Date(data.dob).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}) : '—'}${data.age ? ' &nbsp;(Age: ' + data.age + ')' : ''}</div></div>
     </div>
     <div class="row">
       <div class="field"><label>Phone Number</label><div class="val">${data.phone || '—'}</div></div>
@@ -2757,12 +3158,25 @@
         }
     });
 
+    // ===== HELPER: Calculate age from DOB string =====
+    function calculateAge(dobStr) {
+        const dob = new Date(dobStr);
+        const today = new Date();
+        let age = today.getFullYear() - dob.getFullYear();
+        const m = today.getMonth() - dob.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+        return age;
+    }
+
     // ===== CRICKET FORM SUBMIT =====
     document.getElementById('cricketForm').addEventListener('submit', function(e) {
         e.preventDefault();
+        const dobVal = document.getElementById('cricket-dob').value;
+        const age = dobVal ? calculateAge(dobVal) : '';
         const data = {
             name:       document.getElementById('cricket-name').value,
-            age:        document.getElementById('cricket-age').value,
+            dob:        dobVal,
+            age:        age,
             phone:      document.getElementById('cricket-contact').value,
             email:      document.getElementById('cricket-email').value,
             address:    document.getElementById('cricket-address').value,
@@ -2783,9 +3197,12 @@
     // ===== FOOTBALL FORM SUBMIT =====
     document.getElementById('footballForm').addEventListener('submit', function(e) {
         e.preventDefault();
+        const dobVal = document.getElementById('football-dob').value;
+        const age = dobVal ? calculateAge(dobVal) : '';
         const data = {
             name:       document.getElementById('football-name').value,
-            age:        document.getElementById('football-age').value,
+            dob:        dobVal,
+            age:        age,
             phone:      document.getElementById('football-contact').value,
             email:      document.getElementById('football-email').value,
             address:    document.getElementById('football-address').value,
@@ -3233,4 +3650,3 @@
 </script>
 </body>
 </html>
-
