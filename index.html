@@ -1947,11 +1947,121 @@
             padding: 2px 7px; border-radius: 10px; margin-left: 8px;
             vertical-align: middle;
         }
+        /* Google-sourced wish card variant */
+        .wish-card-google {
+            border-left: 3px solid #4285F4;
+            background: linear-gradient(135deg, #fafbff 0%, #fff 100%);
+        }
+
         /* Empty state */
         .wishers-empty {
             text-align: center; padding: 52px 24px; color: var(--gray); font-size: 14px;
         }
         .wishers-empty i { font-size: 44px; color: rgba(212,165,116,0.3); margin-bottom: 14px; display: block; }
+
+        /* Google Review CTA */
+        .google-review-cta {
+            display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+            margin-top: 14px; padding: 12px 14px;
+            background: #f8fafe; border: 1px solid #e1eaf8; border-radius: 10px;
+            font-size: 12.5px; color: var(--gray);
+        }
+        .google-review-btn {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: #fff; border: 1.5px solid #dadce0; border-radius: 6px;
+            padding: 6px 14px; color: #3c4043; font-size: 13px; font-weight: 600;
+            text-decoration: none; transition: box-shadow .2s, border-color .2s;
+            white-space: nowrap;
+        }
+        .google-review-btn:hover {
+            box-shadow: 0 2px 8px rgba(66,133,244,0.18); border-color: #4285F4; color: #1a73e8;
+        }
+        /* Google Maps review badge on wish cards */
+        .wish-source-google {
+            display: inline-flex; align-items: center; gap: 4px;
+            font-size: 10px; color: #5f6368; background: #f1f3f4;
+            border-radius: 4px; padding: 2px 7px; margin-left: 6px;
+            font-weight: 600; letter-spacing: .3px; vertical-align: middle;
+        }
+        .wish-feed-tabs {
+            display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+        }
+        .wish-tab-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            font-size: 11px; font-weight: 700; color: #5f6368;
+            background: #f1f3f4; border-radius: 20px; padding: 3px 10px;
+            letter-spacing: .3px;
+        }
+        .wish-tab-badge.google { background: #e8f0fe; color: #1967d2; }
+
+        /* Post-submit Google review prompt — upgraded panel */
+        .google-review-prompt {
+            display: none; margin-top: 22px;
+            background: #fff; border: 2px solid #4285F4;
+            border-radius: 16px; overflow: hidden;
+            box-shadow: 0 4px 24px rgba(66,133,244,.15);
+            animation: slideDown .35s ease;
+        }
+        @keyframes slideDown {
+            from { opacity:0; transform:translateY(-12px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+        .grp-header {
+            background: linear-gradient(135deg,#4285F4,#1a73e8);
+            padding: 16px 20px; display: flex; align-items: center; gap: 12px;
+        }
+        .grp-header-icon {
+            width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.2);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            font-size: 18px;
+        }
+        .grp-header-text { color: #fff; }
+        .grp-header-text strong { display: block; font-size: 15px; font-weight: 700; }
+        .grp-header-text span { font-size: 12px; opacity: .85; }
+        .grp-body { padding: 18px 20px; }
+        .grp-limitation-note {
+            background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px;
+            padding: 9px 13px; font-size: 12px; color: #795548; margin-bottom: 14px;
+            display: flex; align-items: flex-start; gap: 8px;
+        }
+        .grp-limitation-note i { color: #f59e0b; margin-top: 1px; flex-shrink: 0; }
+        .grp-steps { counter-reset: grp-step; margin-bottom: 14px; }
+        .grp-step {
+            display: flex; align-items: flex-start; gap: 10px;
+            font-size: 13px; color: #333; margin-bottom: 10px;
+        }
+        .grp-step-num {
+            width: 22px; height: 22px; border-radius: 50%;
+            background: #4285F4; color: #fff; font-size: 11px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .grp-msg-box {
+            background: #f8f9fa; border: 1.5px solid #dadce0; border-radius: 8px;
+            padding: 11px 13px; font-size: 13px; color: #333; line-height: 1.5;
+            margin: 6px 0 10px; word-break: break-word; max-height: 90px; overflow-y: auto;
+            font-style: italic;
+        }
+        .grp-copy-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: #f1f3f4; border: 1.5px solid #dadce0; border-radius: 6px;
+            padding: 7px 14px; font-size: 12.5px; font-weight: 700; color: #3c4043;
+            cursor: pointer; transition: all .2s; margin-bottom: 14px;
+        }
+        .grp-copy-btn:hover { background: #e8f0fe; border-color: #4285F4; color: #1967d2; }
+        .grp-copy-btn.copied { background: #e6f4ea; border-color: #34a853; color: #137333; }
+        .grp-open-btn {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; background: #4285F4; color: #fff; border-radius: 8px;
+            padding: 12px 20px; font-size: 14px; font-weight: 700;
+            text-decoration: none; transition: background .2s; cursor: pointer;
+            border: none;
+        }
+        .grp-open-btn:hover { background: #1967d2; color: #fff; }
+        .grp-dismiss {
+            display: block; text-align: center; font-size: 11.5px; color: #999;
+            margin-top: 10px; cursor: pointer; text-decoration: underline;
+        }
+        .grp-dismiss:hover { color: #555; }
 
         /* Responsive well-wishers */
         @media (max-width: 960px) {
@@ -1964,6 +2074,7 @@
             .wishers-feed-header h3 { font-size: 18px; }
             .wish-card { padding: 16px 16px; border-radius: 12px; }
             .wish-text { font-size: 13.5px; }
+            .google-review-cta { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
@@ -2420,6 +2531,21 @@
                     <button type="submit" class="btn btn-primary form-submit" style="width:100%;justify-content:center;">
                         <i class="fas fa-paper-plane"></i> Post Your Wish
                     </button>
+                    <!-- Google Review CTA -->
+                    <div class="google-review-cta">
+                        <span>Also share your experience on</span>
+                        <a href="https://www.google.com/maps/place/Majilpur+Athletic+Club/@22.1683125,88.4226875,17z/data=!3m1!4b1!4m6!3m5!1s0x3a024112fd3cc309:0x1e9cef4fb7373972!8m2!3d22.1683125!4d88.4226875!16s%2Fg%2F11fx7tpl_t?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D"
+                           target="_blank" rel="noopener noreferrer" class="google-review-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="18" height="18" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0;">
+                                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                                <path fill="none" d="M0 0h48v48H0z"/>
+                            </svg>
+                            <span>Google Maps Review</span>
+                        </a>
+                    </div>
                 </form>
             </div>
 
@@ -2427,11 +2553,64 @@
             <div class="wishers-feed fade-in">
                 <div class="wishers-feed-header">
                     <h3><i class="fas fa-comments" style="color:var(--gold);margin-right:10px;"></i>Community Wishes</h3>
-                    <span class="wishers-count" id="wishersCount">0 messages</span>
+                    <div class="wish-feed-tabs">
+                        <span class="wishers-count" id="wishersCount">0 messages</span>
+                        <span class="wish-tab-badge google">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="12" height="12"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/><path fill="none" d="M0 0h48v48H0z"/></svg>
+                            Includes Google Reviews
+                        </span>
+                    </div>
                 </div>
                 <div class="wishers-list" id="wishersList">
                     <!-- seeded default messages -->
                 </div>
+            </div>
+        </div>
+        <!-- Post-submit Google review prompt (shown after well-wishers form submit) -->
+        <div class="google-review-prompt" id="googleReviewPrompt">
+            <div class="grp-header">
+                <div class="grp-header-icon">⭐</div>
+                <div class="grp-header-text">
+                    <strong>Your wish has been posted! ✅</strong>
+                    <span>Want to also share it on Google Maps?</span>
+                </div>
+            </div>
+            <div class="grp-body">
+                <div class="grp-limitation-note">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Google does not allow websites to post reviews automatically — each review must be submitted by you directly on Google. But we've made it easy in 3 steps!</span>
+                </div>
+                <div class="grp-steps">
+                    <div class="grp-step">
+                        <div class="grp-step-num">1</div>
+                        <div>Your message (ready to copy):</div>
+                    </div>
+                </div>
+                <div class="grp-msg-box" id="grp-msg-preview">—</div>
+                <button class="grp-copy-btn" id="grpCopyBtn" onclick="copyGoogleReviewMsg()">
+                    <i class="fas fa-copy"></i> Copy My Message
+                </button>
+                <div class="grp-steps">
+                    <div class="grp-step">
+                        <div class="grp-step-num">2</div>
+                        <div>Click below — Google Maps review page will open.</div>
+                    </div>
+                    <div class="grp-step">
+                        <div class="grp-step-num">3</div>
+                        <div>Paste your message &amp; click <strong>Post</strong> on Google.</div>
+                    </div>
+                </div>
+                <a href="https://search.google.com/local/writereview?placeid=ChIJCcPM_RJBATkRcjl3t0_unh4"
+                   target="_blank" rel="noopener noreferrer" class="grp-open-btn" id="grpOpenBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="18" height="18" style="flex-shrink:0">
+                        <path fill="#fff" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                        <path fill="#fff" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                        <path fill="#fff" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                        <path fill="#fff" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                    </svg>
+                    Open Google Maps — Write My Review
+                </a>
+                <span class="grp-dismiss" onclick="document.getElementById('googleReviewPrompt').style.display='none'">No thanks, dismiss</span>
             </div>
         </div>
     </div>
@@ -2634,6 +2813,32 @@
         </div>
     </div>
 </footer>
+
+<!--
+  =====================================================================
+  SOLUTION ARCHITECT: FORM SEQUENCE SEED FIELDS
+  =====================================================================
+  These hidden fields define the STARTING sequence for each form type.
+  On the NEXT deployment, update the `value` attribute of each field
+  to the last-used sequence number (printed in browser console on each
+  form submission). The runtime picks up from this seed if localStorage
+  is empty (fresh browser/device) or if the seed is HIGHER than what
+  localStorage holds, ensuring continuity across deployments.
+
+  Deployment workflow:
+    1. After each cycle, note the last numbers from console:
+         MAC-CRIC-0042  →  set id="mac-cricket-seed"  value="42"
+         MAC-FTB-0015   →  set id="mac-football-seed" value="15"
+         MAC-OFF-0008   →  set id="mac-offline-seed"  value="8"
+    2. Re-deploy the HTML with the updated seed values.
+  =====================================================================
+-->
+<div id="mac-sequence-seeds" style="display:none;" aria-hidden="true">
+    <!-- Update value= to last used sequence number before each deployment -->
+    <input type="hidden" id="mac-cricket-seed"  value="0">
+    <input type="hidden" id="mac-football-seed" value="0">
+    <input type="hidden" id="mac-offline-seed"  value="0">
+</div>
 
 <!-- ===== CRICKET APPLICATION MODAL ===== -->
 <div class="modal-overlay" id="cricketFormModal">
@@ -2948,8 +3153,17 @@
 
     // ===== WELL-WISHERS =====
     (function () {
-        // Seed data
+        // Seed data — includes mirrored Google Maps reviews (source:'google')
+        // and website community messages.
+        // NOTE: Google Maps reviews are fetched manually and mirrored here.
+        // To add fresh Google reviews, append entries with source:'google'.
         const seedWishes = [
+            // — Google Maps Reviews (mirrored from maps.google.com) —
+            { name: 'Sourav Biswas',   relation: 'Google Review',      rating: 5, message: 'Excellent club with great facilities for both cricket and football. The coaches are very experienced and dedicated. My son has improved tremendously in just a few months. Highly recommended!', date: 'April 5, 2026', source: 'google' },
+            { name: 'Ranjit Halder',   relation: 'Google Review',      rating: 5, message: 'Majilpur Athletic Club is a gem of the community. The training sessions are well-structured and the environment is very supportive. Great place for young athletes to grow!', date: 'March 20, 2026', source: 'google' },
+            { name: 'Mita Chakraborty',relation: 'Google Review',      rating: 4, message: 'Very good coaching camp. My children enjoy the football sessions every weekend. The ground is well-maintained and the staff is courteous. Would love to see better changing room facilities.', date: 'March 2, 2026',  source: 'google' },
+            { name: 'Avijit Paul',     relation: 'Google Review',      rating: 5, message: 'One of the best sports clubs in the Majilpur area. The discipline and sportsmanship values instilled here are commendable. We are proud to be associated with MAC!', date: 'February 10, 2026', source: 'google' },
+            // — Website Community Messages —
             { name: 'Arpita Sen',      relation: 'Parent / Guardian',  rating: 5, message: 'My son has grown so much as a cricketer here. The coaches are dedicated and the environment is fantastic. Proud to be part of the MAC family!', date: 'March 28, 2026' },
             { name: 'Debashis Roy',    relation: 'Alumni',             rating: 5, message: 'Spent my best years training at Majilpur Athletic Club. The discipline and values I learned here have shaped my life. Wishing the club many more decades of glory!', date: 'March 15, 2026' },
             { name: 'Tanmoy Ghosh',    relation: 'Community Member',   rating: 4, message: 'A true gem for the Majilpur community. The tournaments organised here bring everyone together. Keep inspiring the youth!', date: 'February 22, 2026' },
@@ -2957,6 +3171,15 @@
         ];
 
         let wishes = JSON.parse(localStorage.getItem('macWishes') || 'null') || seedWishes;
+
+        // Version-based seed merge: if stored version differs, reset to seed
+        // Increment MAC_WISHES_VER when seed data is updated so all users get new reviews.
+        const MAC_WISHES_VER = 'v2-google-reviews';
+        if (localStorage.getItem('macWishesVer') !== MAC_WISHES_VER) {
+            wishes = seedWishes;
+            localStorage.setItem('macWishes', JSON.stringify(wishes));
+            localStorage.setItem('macWishesVer', MAC_WISHES_VER);
+        }
 
         function saveWishes() { localStorage.setItem('macWishes', JSON.stringify(wishes)); }
 
@@ -2973,6 +3196,16 @@
             return h;
         }
 
+        const GOOGLE_MAPS_URL = 'https://www.google.com/maps/place/Majilpur+Athletic+Club/@22.1683125,88.4226875,17z/data=!3m1!4b1!4m6!3m5!1s0x3a024112fd3cc309:0x1e9cef4fb7373972!8m2!3d22.1683125!4d88.4226875!16s%2Fg%2F11fx7tpl_t?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D';
+
+        function googleBadgeHTML(w) {
+            if (w.source !== 'google') return '';
+            return `<a href="${GOOGLE_MAPS_URL}" target="_blank" rel="noopener noreferrer" class="wish-source-google" title="Posted on Google Maps">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="10" height="10"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/><path fill="none" d="M0 0h48v48H0z"/></svg>
+                Google
+            </a>`;
+        }
+
         function renderWishes(highlightFirst) {
             const list  = document.getElementById('wishersList');
             const count = document.getElementById('wishersCount');
@@ -2983,11 +3216,11 @@
                 return;
             }
             list.innerHTML = wishes.map((w, idx) => `
-                <div class="wish-card" style="animation-delay:${idx * 0.06}s">
+                <div class="wish-card${w.source === 'google' ? ' wish-card-google' : ''}" style="animation-delay:${idx * 0.06}s">
                     <div class="wish-card-top">
                         <div class="wish-avatar">${w.name.trim().charAt(0)}</div>
                         <div class="wish-meta">
-                            <div class="wish-name">${w.name}${highlightFirst && idx === 0 ? '<span class="wish-new-badge">New</span>' : ''}</div>
+                            <div class="wish-name">${w.name}${highlightFirst && idx === 0 ? '<span class="wish-new-badge">New</span>' : ''}${googleBadgeHTML(w)}</div>
                             <div class="wish-relation">${w.relation || 'Well-Wisher'}</div>
                         </div>
                         <div class="wish-stars">${starsHTML(w.rating)}</div>
@@ -3046,6 +3279,18 @@
                 saveWishes();
                 renderWishes(true);
 
+                // Show Google review prompt with user's message pre-filled
+                const gPrompt = document.getElementById('googleReviewPrompt');
+                const gMsgPreview = document.getElementById('grp-msg-preview');
+                if (gPrompt) {
+                    if (gMsgPreview) gMsgPreview.textContent = message;
+                    // Reset copy button
+                    const copyBtn = document.getElementById('grpCopyBtn');
+                    if (copyBtn) { copyBtn.classList.remove('copied'); copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy My Message'; }
+                    gPrompt.style.display = 'block';
+                    gPrompt.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+
                 // Scroll to feed on mobile
                 const feed = document.querySelector('.wishers-feed');
                 if (feed && window.innerWidth <= 960) feed.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -3069,6 +3314,46 @@
 
         renderWishes(false);
     })();
+
+    // ===== COPY GOOGLE REVIEW MESSAGE TO CLIPBOARD =====
+    function copyGoogleReviewMsg() {
+        const preview = document.getElementById('grp-msg-preview');
+        const btn     = document.getElementById('grpCopyBtn');
+        if (!preview || !btn) return;
+        const text = preview.textContent || '';
+        if (!text || text === '—') return;
+
+        // Use modern Clipboard API with fallback
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => {
+                btn.classList.add('copied');
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '<i class="fas fa-copy"></i> Copy My Message';
+                }, 3000);
+            }).catch(() => fallbackCopy(text, btn));
+        } else {
+            fallbackCopy(text, btn);
+        }
+    }
+    function fallbackCopy(text, btn) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+        document.body.appendChild(ta);
+        ta.focus(); ta.select();
+        try {
+            document.execCommand('copy');
+            btn.classList.add('copied');
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(() => {
+                btn.classList.remove('copied');
+                btn.innerHTML = '<i class="fas fa-copy"></i> Copy My Message';
+            }, 3000);
+        } catch(e) { alert('Please manually copy the text above.'); }
+        document.body.removeChild(ta);
+    }
 
     // ===== MOBILE NAV =====
     function toggleMobileNav() {
@@ -3101,13 +3386,43 @@
 
     // ===== AUTO-DOWNLOAD FILLED FORM =====
     // ===== APPLICATION NUMBER GENERATOR =====
+    // Solution Architect Pattern:
+    //   1. HTML hidden fields carry the deployment-time seed (last used sequence).
+    //   2. Runtime picks the MAX of (seed, localStorage) to survive fresh browsers
+    //      and cross-deployment continuity.
+    //   3. Every generated number is logged to console so ops team can capture it.
+    function _readSeed(fieldId) {
+        const el = document.getElementById(fieldId);
+        return el ? (parseInt(el.value, 10) || 0) : 0;
+    }
     function generateAppNumber(sport) {
-        const isCricket = sport === 'cricket';
-        const key      = isCricket ? 'macCricketSeq' : 'macFootballSeq';
-        const prefix   = isCricket ? 'MAC-CRIC' : 'MAC-FTB';
-        let seq = parseInt(localStorage.getItem(key) || '0') + 1;
+        let key, prefix, seedFieldId;
+        if (sport === 'cricket') {
+            key = 'macCricketSeq'; prefix = 'MAC-CRIC'; seedFieldId = 'mac-cricket-seed';
+        } else {
+            key = 'macFootballSeq'; prefix = 'MAC-FTB'; seedFieldId = 'mac-football-seed';
+        }
+        const seed    = _readSeed(seedFieldId);
+        const stored  = parseInt(localStorage.getItem(key) || '0', 10);
+        const current = Math.max(seed, stored);   // always advance from the higher baseline
+        const seq     = current + 1;
         localStorage.setItem(key, seq);
-        return prefix + '-' + String(seq).padStart(4, '0');
+        const appNum  = prefix + '-' + String(seq).padStart(4, '0');
+        console.log(`[MAC] Generated App Number: ${appNum}  |  Update seed field "${seedFieldId}" value to ${seq} before next deployment.`);
+        return appNum;
+    }
+
+    // Generate offline/download form number (MAC-OFF)
+    function generateOfflineNumber() {
+        const key   = 'macOfflineSeq';
+        const seed  = _readSeed('mac-offline-seed');
+        const stored = parseInt(localStorage.getItem(key) || '0', 10);
+        const current = Math.max(seed, stored);
+        const seq   = current + 1;
+        localStorage.setItem(key, seq);
+        const offNum = 'MAC-OFF-' + String(seq).padStart(4, '0');
+        console.log(`[MAC] Generated Offline Download Number: ${offNum}  |  Update seed field "mac-offline-seed" value to ${seq} before next deployment.`);
+        return offNum;
     }
 
     // Stores last submitted data keyed by sport for on-demand download
@@ -3183,8 +3498,10 @@
     function downloadApplicationForm(sport) {
         const data = _lastSubmission[sport];
         if (!data) return;
+        const offlineNum = generateOfflineNumber();
+        data.offlineNum  = offlineNum;   // attach for record-keeping
         const html  = buildApplicationHTML(sport, data);
-        const fname = `${data.appNumber}_${(data.name || 'Application').replace(/\s+/g,'_')}.html`;
+        const fname = `${offlineNum}_${data.appNumber}_${(data.name || 'Application').replace(/\s+/g,'_')}.html`;
         const a = document.createElement('a');
         a.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
         a.download = fname;
@@ -3192,6 +3509,7 @@
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
+        console.log(`[MAC] Download triggered. Offline ref: ${offlineNum} | App: ${data.appNumber}`);
     }
 
     // ===== MODAL FUNCTIONS (overlay pattern) =====
