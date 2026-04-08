@@ -2827,17 +2827,19 @@
 
   Deployment workflow:
     1. After each cycle, note the last numbers from console:
-         MAC-CRIC-0042  →  set id="mac-cricket-seed"  value="42"
-         MAC-FTB-0015   →  set id="mac-football-seed" value="15"
-         MAC-OFF-0008   →  set id="mac-offline-seed"  value="8"
+         MAC-CRIC-0042      →  set id="mac-cricket-seed"      value="42"
+         MAC-FTB-0015       →  set id="mac-football-seed"     value="15"
+         MAC-CRIC-OFF-0008  →  set id="mac-cric-off-seed"     value="8"
+         MAC-FTB-OFF-0005   →  set id="mac-ftb-off-seed"      value="5"
     2. Re-deploy the HTML with the updated seed values.
   =====================================================================
 -->
 <div id="mac-sequence-seeds" style="display:none;" aria-hidden="true">
     <!-- Update value= to last used sequence number before each deployment -->
-    <input type="hidden" id="mac-cricket-seed"  value="0">
-    <input type="hidden" id="mac-football-seed" value="0">
-    <input type="hidden" id="mac-offline-seed"  value="0">
+    <input type="hidden" id="mac-cricket-seed"   value="0">
+    <input type="hidden" id="mac-football-seed"  value="0">
+    <input type="hidden" id="mac-cric-off-seed"  value="0"><!-- MAC-CRIC-OFF series (cricket downloads) -->
+    <input type="hidden" id="mac-ftb-off-seed"   value="0"><!-- MAC-FTB-OFF series  (football downloads) -->
 </div>
 
 <!-- ===== CRICKET APPLICATION MODAL ===== -->
@@ -3412,16 +3414,22 @@
         return appNum;
     }
 
-    // Generate offline/download form number (MAC-OFF)
-    function generateOfflineNumber() {
-        const key   = 'macOfflineSeq';
-        const seed  = _readSeed('mac-offline-seed');
-        const stored = parseInt(localStorage.getItem(key) || '0', 10);
+    // Generate offline/download form number — sport-specific
+    // Cricket  → MAC-CRIC-OFF-0001, MAC-CRIC-OFF-0002 …
+    // Football → MAC-FTB-OFF-0001,  MAC-FTB-OFF-0002  …
+    function generateOfflineNumber(sport) {
+        const isCricket  = (sport === 'cricket');
+        const key        = isCricket ? 'macCricOffSeq'   : 'macFtbOffSeq';
+        const prefix     = isCricket ? 'MAC-CRIC-OFF'    : 'MAC-FTB-OFF';
+        const seedFieldId= isCricket ? 'mac-cric-off-seed': 'mac-ftb-off-seed';
+
+        const seed    = _readSeed(seedFieldId);
+        const stored  = parseInt(localStorage.getItem(key) || '0', 10);
         const current = Math.max(seed, stored);
-        const seq   = current + 1;
+        const seq     = current + 1;
         localStorage.setItem(key, seq);
-        const offNum = 'MAC-OFF-' + String(seq).padStart(4, '0');
-        console.log(`[MAC] Generated Offline Download Number: ${offNum}  |  Update seed field "mac-offline-seed" value to ${seq} before next deployment.`);
+        const offNum  = prefix + '-' + String(seq).padStart(4, '0');
+        console.log(`[MAC] Download ID: ${offNum}  |  Update seed field "${seedFieldId}" value to ${seq} before next deployment.`);
         return offNum;
     }
 
@@ -3436,7 +3444,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MAC — ${isCricket ? 'Cricket' : 'Football'} Application ${data.appNumber}</title>
+<title>MAC — ${isCricket ? 'Cricket' : 'Football'} ${data.offlineNum || ''} / ${data.appNumber}</title>
 <style>
   *{box-sizing:border-box}
   body{font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:20px}
@@ -3444,12 +3452,15 @@
   .hdr{background:linear-gradient(135deg,#1a3a52,#2a5a72);color:#fff;padding:32px 36px;text-align:center}
   .hdr h1{margin:0;font-size:1.55em;letter-spacing:1px}
   .hdr p{margin:6px 0 0;opacity:.8;font-size:.9em}
-  .app-num{display:inline-block;margin-top:14px;padding:8px 22px;border-radius:8px;background:rgba(212,165,116,.18);border:1.5px dashed rgba(212,165,116,.7);color:#d4a574;font-size:1.15em;font-weight:700;letter-spacing:2px}
-  .app-num-label{display:block;font-size:.65em;letter-spacing:2px;text-transform:uppercase;opacity:.8;margin-bottom:3px}
+  .num-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+  .app-num{display:inline-block;padding:8px 22px;border-radius:8px;background:rgba(212,165,116,.18);border:1.5px dashed rgba(212,165,116,.7);color:#d4a574;font-size:1.1em;font-weight:700;letter-spacing:2px}
+  .off-num{display:inline-block;padding:8px 22px;border-radius:8px;background:rgba(255,255,255,.12);border:1.5px dashed rgba(255,255,255,.5);color:#fff;font-size:1.1em;font-weight:700;letter-spacing:2px}
+  .num-label{display:block;font-size:.62em;letter-spacing:2px;text-transform:uppercase;opacity:.75;margin-bottom:3px}
   .body{padding:32px 36px}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
   .field label{display:block;font-size:.72em;font-weight:700;color:#1a3a52;text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px}
   .field .val{background:#f9f7f4;border:1px solid #e5e7eb;border-radius:6px;padding:10px 14px;font-size:.9em;color:#333;min-height:38px;word-break:break-word}
+  .off-val{background:#eef2ff;border-color:#c7d2fe;color:#3730a3;font-weight:700}
   .section-label{font-size:.7em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#d4a574;margin:24px 0 12px;border-bottom:2px solid #f0eff0;padding-bottom:6px}
   .ftr{background:#0a0e27;color:rgba(255,255,255,.6);text-align:center;padding:18px;font-size:.8em}
   .ftr strong{color:#d4a574}
@@ -3461,13 +3472,20 @@
   <div class="hdr">
     <h1>🏆 Majilpur Athletic Club</h1>
     <p>${isCricket ? 'Cricket' : 'Football'} Coaching Camp — Application</p>
-    <div class="app-num"><span class="app-num-label">Application No.</span>${data.appNumber}</div>
+    <div class="num-row">
+      <div class="app-num"><span class="num-label">Application No.</span>${data.appNumber}</div>
+      ${data.offlineNum ? `<div class="off-num"><span class="num-label">Download ID</span>${data.offlineNum}</div>` : ''}
+    </div>
   </div>
   <div class="body">
     <div class="section-label">Submission Details</div>
     <div class="row">
       <div class="field"><label>Application No.</label><div class="val" style="font-weight:700;color:#1a3a52">${data.appNumber}</div></div>
       <div class="field"><label>Date Submitted</label><div class="val">${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})}</div></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>Download ID</label><div class="val off-val">${data.offlineNum || '—'}</div></div>
+      <div class="field"><label>Downloaded On</label><div class="val">${new Date().toLocaleString('en-IN',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}</div></div>
     </div>
     <div class="section-label">Personal Details</div>
     <div class="row">
@@ -3498,9 +3516,11 @@
     function downloadApplicationForm(sport) {
         const data = _lastSubmission[sport];
         if (!data) return;
-        const offlineNum = generateOfflineNumber();
-        data.offlineNum  = offlineNum;   // attach for record-keeping
+        // Generate sport-specific offline/download ID
+        const offlineNum    = generateOfflineNumber(sport);   // MAC-CRIC-OFF-XXXX or MAC-FTB-OFF-XXXX
+        data.offlineNum     = offlineNum;
         const html  = buildApplicationHTML(sport, data);
+        // Filename:  MAC-CRIC-OFF-0001_MAC-CRIC-0001_Rahul_Sharma.html
         const fname = `${offlineNum}_${data.appNumber}_${(data.name || 'Application').replace(/\s+/g,'_')}.html`;
         const a = document.createElement('a');
         a.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
@@ -3509,7 +3529,7 @@
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        console.log(`[MAC] Download triggered. Offline ref: ${offlineNum} | App: ${data.appNumber}`);
+        console.log(`[MAC] Download complete. ID: ${offlineNum} | App: ${data.appNumber} | File: ${fname}`);
     }
 
     // ===== MODAL FUNCTIONS (overlay pattern) =====
