@@ -2893,6 +2893,16 @@
                         <label for="cricket-address">Address <span>*</span></label>
                         <input type="text" class="form-control" id="cricket-address" name="address" placeholder="Your full address" required>
                     </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cricket-parent">Father's / Mother's Name <span>*</span></label>
+                            <input type="text" class="form-control" id="cricket-parent" name="parent" placeholder="e.g. Suresh Sharma" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cricket-school">School / Institution <span>*</span></label>
+                            <input type="text" class="form-control" id="cricket-school" name="school" placeholder="e.g. Majilpur High School" required>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="cricket-experience">Previous Cricket Experience</label>
                         <textarea class="form-control" id="cricket-experience" name="experience" placeholder="Describe any prior cricket experience, coaching or matches played…"></textarea>
@@ -2986,6 +2996,16 @@
                                 <option>Forward / Striker</option>
                                 <option>Not sure yet</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="football-parent">Father's / Mother's Name <span>*</span></label>
+                            <input type="text" class="form-control" id="football-parent" name="parent" placeholder="e.g. Ranjit Das" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="football-school">School / Institution <span>*</span></label>
+                            <input type="text" class="form-control" id="football-school" name="school" placeholder="e.g. Majilpur High School" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -3454,7 +3474,6 @@
   .hdr p{margin:6px 0 0;opacity:.8;font-size:.9em}
   .num-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
   .app-num{display:inline-block;padding:8px 22px;border-radius:8px;background:rgba(212,165,116,.18);border:1.5px dashed rgba(212,165,116,.7);color:#d4a574;font-size:1.1em;font-weight:700;letter-spacing:2px}
-  .off-num{display:inline-block;padding:8px 22px;border-radius:8px;background:rgba(255,255,255,.12);border:1.5px dashed rgba(255,255,255,.5);color:#fff;font-size:1.1em;font-weight:700;letter-spacing:2px}
   .num-label{display:block;font-size:.62em;letter-spacing:2px;text-transform:uppercase;opacity:.75;margin-bottom:3px}
   .body{padding:32px 36px}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
@@ -3474,7 +3493,6 @@
     <p>${isCricket ? 'Cricket' : 'Football'} Coaching Camp — Application</p>
     <div class="num-row">
       <div class="app-num"><span class="num-label">Application No.</span>${data.appNumber}</div>
-      ${data.offlineNum ? `<div class="off-num"><span class="num-label">Download ID</span>${data.offlineNum}</div>` : ''}
     </div>
   </div>
   <div class="body">
@@ -3482,10 +3500,6 @@
     <div class="row">
       <div class="field"><label>Application No.</label><div class="val" style="font-weight:700;color:#1a3a52">${data.appNumber}</div></div>
       <div class="field"><label>Date Submitted</label><div class="val">${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})}</div></div>
-    </div>
-    <div class="row">
-      <div class="field"><label>Download ID</label><div class="val off-val">${data.offlineNum || '—'}</div></div>
-      <div class="field"><label>Downloaded On</label><div class="val">${new Date().toLocaleString('en-IN',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}</div></div>
     </div>
     <div class="section-label">Personal Details</div>
     <div class="row">
@@ -3497,6 +3511,10 @@
       <div class="field"><label>Email Address</label><div class="val">${data.email || '—'}</div></div>
     </div>
     <div class="field" style="margin-bottom:18px"><label>Address</label><div class="val">${data.address || '—'}</div></div>
+    <div class="row">
+      <div class="field"><label>Father's / Mother's Name</label><div class="val">${data.parent || '—'}</div></div>
+      <div class="field"><label>School / Institution</label><div class="val">${data.school || '—'}</div></div>
+    </div>
     <div class="section-label">${isCricket ? 'Cricket' : 'Football'} Details</div>
     ${isCricket
       ? `<div class="field"><label>Previous Cricket Experience</label><div class="val" style="min-height:60px">${data.experience || 'None stated'}</div></div>`
@@ -3603,6 +3621,8 @@
             phone:      document.getElementById('cricket-contact').value,
             email:      document.getElementById('cricket-email').value,
             address:    document.getElementById('cricket-address').value,
+            parent:     document.getElementById('cricket-parent').value,
+            school:     document.getElementById('cricket-school').value,
             experience: document.getElementById('cricket-experience').value,
             type: 'Cricket'
         };
@@ -3635,6 +3655,8 @@
             email:      document.getElementById('football-email').value,
             address:    document.getElementById('football-address').value,
             position:   document.getElementById('football-position').value,
+            parent:     document.getElementById('football-parent').value,
+            school:     document.getElementById('football-school').value,
             experience: document.getElementById('football-experience').value,
             type: 'Football'
         };
@@ -3826,79 +3848,136 @@
             });
     }
 
-    // Download Form Function
+    // Download Form Function — same look & feel as filled application form, fields left blank
     function downloadForm(sport) {
-        const formContent = sport === 'cricket' ? getCricketFormHTML() : getFootballFormHTML();
-        const element = document.createElement('a');
-        element.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(formContent));
-        element.setAttribute('download', `Majilpur_${sport.charAt(0).toUpperCase() + sport.slice(1)}_Application_Form.html`);
-        element.style.display = 'none';
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
+        const offlineNum = generateOfflineNumber(sport);
+        const html  = buildBlankFormHTML(sport, offlineNum);
+        const fname = `${offlineNum}_${sport === 'cricket' ? 'Cricket' : 'Football'}_Admission_Form.html`;
+        const a = document.createElement('a');
+        a.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
+        a.download = fname;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        console.log(`[MAC] Blank form download: ${offlineNum} | File: ${fname}`);
     }
 
-    function getCricketFormHTML() {
-        return `
-<!DOCTYPE html>
-<html>
+    // Builds a blank (empty-field) version of the application form — identical styling to buildApplicationHTML
+    function buildBlankFormHTML(sport, offlineNum) {
+        const isCricket = sport === 'cricket';
+        const today     = new Date().toLocaleDateString('en-IN', {day:'numeric', month:'long', year:'numeric'});
+        // Reuse the exact same CSS & layout as buildApplicationHTML
+        return `<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Cricket Coaching Camp Application Form</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MAC — ${isCricket ? 'Cricket' : 'Football'} Admission Form ${offlineNum}</title>
 <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
-    .container { max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid #1a3a52; padding-bottom: 20px; }
-    .header h1 { color: #1a3a52; margin: 0; font-size: 1.8em; }
-    .header p { color: #00bcd4; margin: 5px 0; }
-    .form-group { margin-bottom: 20px; }
-    label { display: block; margin-bottom: 5px; color: #1a3a52; font-weight: bold; }
-    input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: Arial; }
-    input:focus, textarea:focus { outline: none; border-color: #00bcd4; box-shadow: 0 0 5px rgba(0,188,212,0.3); }
-    .button { text-align: center; margin-top: 30px; }
-    button { background-color: #1a3a52; color: white; padding: 12px 30px; border: none; border-radius: 4px; cursor: pointer; font-size: 1em; }
-    button:hover { background-color: #00bcd4; }
+  *{box-sizing:border-box}
+  body{font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:20px}
+  .wrap{max-width:660px;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.13);overflow:hidden}
+  .hdr{background:linear-gradient(135deg,#1a3a52,#2a5a72);color:#fff;padding:32px 36px;text-align:center}
+  .hdr h1{margin:0;font-size:1.55em;letter-spacing:1px}
+  .hdr p{margin:6px 0 0;opacity:.8;font-size:.9em}
+  .num-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+  .app-num{display:inline-block;padding:8px 22px;border-radius:8px;background:rgba(212,165,116,.18);border:1.5px dashed rgba(212,165,116,.7);color:#d4a574;font-size:1.1em;font-weight:700;letter-spacing:2px}
+  .num-label{display:block;font-size:.62em;letter-spacing:2px;text-transform:uppercase;opacity:.75;margin-bottom:3px}
+  .body{padding:32px 36px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+  .field label{display:block;font-size:.72em;font-weight:700;color:#1a3a52;text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px}
+  .field .val{background:#f9f7f4;border:1px solid #e5e7eb;border-radius:6px;padding:10px 14px;font-size:.9em;color:#333;min-height:38px;word-break:break-word}
+  .field .val.blank{background:#fff;border-bottom:2px solid #1a3a52;border-top:none;border-left:none;border-right:none;border-radius:0;color:transparent}
+  .field .val.blank-box{background:#fff;border:1.5px solid #b0bec5}
+  .section-label{font-size:.7em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#d4a574;margin:24px 0 12px;border-bottom:2px solid #f0eff0;padding-bottom:6px}
+  .ftr{background:#0a0e27;color:rgba(255,255,255,.6);text-align:center;padding:18px;font-size:.8em}
+  .ftr strong{color:#d4a574}
+  .sig-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+  .sig-block label{display:block;font-size:.68em;font-weight:700;color:#1a3a52;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+  .sig-line{border-bottom:1.5px solid #1a3a52;height:36px;margin-bottom:4px}
+  .sig-hint{font-size:.65em;color:#999}
+  .office-box{border:1.5px dashed #b0bec5;border-radius:7px;padding:14px 18px;margin-top:20px}
+  .office-title{font-size:.65em;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin-bottom:10px}
+  .office-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .office-row label{font-size:.62em;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:4px}
+  @media print{body{background:#fff;padding:0}.wrap{box-shadow:none;border-radius:0}}
 </style>
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <h1>🏏 Majilpur Athletic Club</h1>
-        <p>Cricket Coaching Camp Application Form</p>
+<div class="wrap">
+  <div class="hdr">
+    <h1>🏆 Majilpur Athletic Club</h1>
+    <p>${isCricket ? '🏏 Cricket' : '⚽ Football'} Coaching Camp — Admission Form</p>
+    <div class="num-row">
+      <div class="app-num"><span class="num-label">Form ID</span>${offlineNum}</div>
     </div>
-    <form>
-        <div class="form-group">
-            <label>Full Name *</label>
-            <input type="text" required>
-        </div>
-        <div class="form-group">
-            <label>Age *</label>
-            <input type="number" required>
-        </div>
-        <div class="form-group">
-            <label>Contact Number *</label>
-            <input type="tel" required>
-        </div>
-        <div class="form-group">
-            <label>Email *</label>
-            <input type="email" required>
-        </div>
-        <div class="form-group">
-            <label>Address *</label>
-            <textarea rows="3" required></textarea>
-        </div>
-        <div class="form-group">
-            <label>Previous Cricket Experience</label>
-            <textarea rows="3"></textarea>
-        </div>
-        <div class="button">
-            <button type="print" onclick="window.print()">Print Form</button>
-        </div>
-    </form>
+  </div>
+  <div class="body">
+    <div class="section-label">Form Details</div>
+    <div class="row">
+      <div class="field"><label>Form ID</label><div class="val" style="font-weight:700;color:#1a3a52">${offlineNum}</div></div>
+      <div class="field"><label>Date</label><div class="val">${today}</div></div>
+    </div>
+
+    <div class="section-label">Personal Details</div>
+    <div class="row">
+      <div class="field"><label>Full Name <span style="color:#e53e3e">*</span></label><div class="val blank-box">&nbsp;</div></div>
+      <div class="field"><label>Date of Birth &amp; Age <span style="color:#e53e3e">*</span></label><div class="val blank-box">&nbsp;</div></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>Phone Number <span style="color:#e53e3e">*</span></label><div class="val blank-box">&nbsp;</div></div>
+      <div class="field"><label>Email Address <span style="color:#888;font-weight:400">(optional)</span></label><div class="val blank-box">&nbsp;</div></div>
+    </div>
+    <div class="field" style="margin-bottom:18px"><label>Full Address <span style="color:#e53e3e">*</span></label><div class="val blank-box" style="min-height:54px">&nbsp;</div></div>
+    <div class="row">
+      <div class="field"><label>Father's / Mother's Name <span style="color:#e53e3e">*</span></label><div class="val blank-box">&nbsp;</div></div>
+      <div class="field"><label>School / Institution <span style="color:#e53e3e">*</span></label><div class="val blank-box">&nbsp;</div></div>
+    </div>
+
+    <div class="section-label">${isCricket ? 'Cricket' : 'Football'} Details</div>
+    ${isCricket
+      ? `<div class="field"><label>Previous Cricket Experience</label><div class="val blank-box" style="min-height:60px">&nbsp;</div></div>`
+      : `<div class="row">
+           <div class="field"><label>Preferred Position</label>
+             <div class="val blank-box" style="font-size:.82em;color:#555">
+               ☐ Goalkeeper &nbsp; ☐ Defender &nbsp; ☐ Midfielder<br>☐ Forward / Striker &nbsp; ☐ Not sure yet
+             </div>
+           </div>
+           <div class="field"><label>Previous Football Experience</label><div class="val blank-box" style="min-height:60px">&nbsp;</div></div>
+         </div>`
+    }
+
+    <div class="sig-row">
+      <div class="sig-block">
+        <label>Applicant / Guardian Signature</label>
+        <div class="sig-line"></div>
+        <div class="sig-hint">Signature with date</div>
+      </div>
+      <div class="sig-block">
+        <label>Parent / Guardian Name &amp; Contact</label>
+        <div class="sig-line"></div>
+        <div class="sig-hint">If applicant is a minor</div>
+      </div>
+    </div>
+
+    <div class="office-box">
+      <div class="office-title">🔒 For Office Use Only</div>
+      <div class="office-row">
+        <div><label>Received By</label><div class="val blank-box">&nbsp;</div></div>
+        <div><label>Verified By</label><div class="val blank-box">&nbsp;</div></div>
+        <div><label>Enrolment Date</label><div class="val blank-box">&nbsp;</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="ftr"><strong>Majilpur Athletic Club</strong> &nbsp;·&nbsp; Est. 1945 &nbsp;·&nbsp; Majilpur, Kolkata, West Bengal 743337<br>info@majilpurathleticclub.com &nbsp;·&nbsp; Form ID: ${offlineNum}</div>
 </div>
 </body>
-</html>
-        `;
+</html>`;
     }
+
+    function getCricketFormHTML() { return buildBlankFormHTML('cricket', generateOfflineNumber('cricket')); }
+    function getFootballFormHTML() { return buildBlankFormHTML('football', generateOfflineNumber('football')); }
 
     /* ========== FADE-IN ON SCROLL ========== */
     (function () {
