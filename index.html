@@ -2492,7 +2492,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="wisher-name">Your Name <span>*</span></label>
-                            <input type="text" class="form-control" id="wisher-name" placeholder="e.g. Rahul Das" required>
+                            <input type="text" class="form-control" id="wisher-name" placeholder="e.g. Partha Gayen" required>
                         </div>
                         <div class="form-group">
                             <label for="wisher-relation">Relation to Club</label>
@@ -2696,7 +2696,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="contact-name">Full Name <span>*</span></label>
-                            <input type="text" class="form-control" id="contact-name" name="name" placeholder="e.g. Rahul Sharma" required>
+                            <input type="text" class="form-control" id="contact-name" name="name" placeholder="e.g. Partha Gayen" required>
                         </div>
                         <div class="form-group">
                             <label for="contact-email">Email Address <span>*</span></label>
@@ -2859,7 +2859,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="cricket-name">Full Name <span>*</span></label>
-                            <input type="text" class="form-control" id="cricket-name" name="name" placeholder="e.g. Rahul Sharma" required>
+                            <input type="text" class="form-control" id="cricket-name" name="name" placeholder="e.g. Partha Gayen" required>
                         </div>
                         <div class="form-group">
                             <label>Date of Birth &amp; Age <span>*</span></label>
@@ -3538,8 +3538,8 @@
         const offlineNum    = generateOfflineNumber(sport);   // MAC-CRIC-OFF-XXXX or MAC-FTB-OFF-XXXX
         data.offlineNum     = offlineNum;
         const html  = buildApplicationHTML(sport, data);
-        // Filename:  MAC-CRIC-OFF-0001_MAC-CRIC-0001_Rahul_Sharma.html
-        const fname = `${offlineNum}_${data.appNumber}_${(data.name || 'Application').replace(/\s+/g,'_')}.html`;
+        // Filename:  MAC-CRIC-OFF-0001_MAC-CRIC-0001_Partha_Gayen.html
+        const fname = `${data.appNumber}_${(data.name || 'Application').replace(/\s+/g,'_')}.html`;
         const a = document.createElement('a');
         a.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
         a.download = fname;
