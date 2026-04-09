@@ -3539,7 +3539,7 @@
         data.offlineNum     = offlineNum;
         const html  = buildApplicationHTML(sport, data);
         // Filename:  MAC-CRIC-OFF-0001_MAC-CRIC-0001_Partha_Gayen.html
-        const fname = `${data.appNumber}_${(data.name || 'Application').replace(/\s+/g,'_')}.html`;
+        const fname = `${offlineNum}_${data.appNumber}_${(data.name || 'Application').replace(/\s+/g,'_')}.html`;
         const a = document.createElement('a');
         a.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
         a.download = fname;
