@@ -2226,31 +2226,31 @@
             <h3 class="leadership-title">Leadership &amp; Management</h3>
             <div class="leadership-grid">
                 <div class="leader-card" onclick="openModal('memberShibModal')">
-                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=shib-shankar-banerjee&scale=90" alt="Shib Shankar Banerjee">
+                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=shib-shankar-banerjee&scale=120" alt="Shib Shankar Banerjee">
                     <h4>Shib Shankar Banerjee</h4>
                     <p class="leader-role">Club President</p>
                     <small>Chief Administrator</small>
                 </div>
                 <div class="leader-card" onclick="openModal('memberSukantoModal')">
-                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sukanta-mukherjee&scale=90" alt="Sukanta Mukherjee">
+                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sukanta-mukherjee&scale=120" alt="Sukanta Mukherjee">
                     <h4>Sukanta Mukherjee</h4>
                     <p class="leader-role">General Secretary</p>
                     <small>Club Administration</small>
                 </div>
                 <div class="leader-card" onclick="openModal('memberSasankaModal')">
-                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sasanka-ranjan-ghosh&scale=90" alt="Sasanka Ranjan Ghosh">
+                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sasanka-ranjan-ghosh&scale=120" alt="Sasanka Ranjan Ghosh">
                     <h4>Sasanka Ranjan Ghosh</h4>
                     <p class="leader-role">Football Secretary</p>
                     <small>Football Committee Lead</small>
                 </div>
                 <div class="leader-card" onclick="openModal('memberDebasishModal')">
-                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=debasish-naskar&scale=90" alt="Debasish Naskar">
+                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=debasish-naskar&scale=120" alt="Debasish Naskar">
                     <h4>Debasish Naskar</h4>
                     <p class="leader-role">Cricket Secretary</p>
                     <small>Cricket Committee Lead</small>
                 </div>
                 <div class="leader-card" onclick="openModal('memberSobhojitModal')">
-                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=subhojit-chakraborty&scale=90" alt="Subhojit Chakraborty">
+                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=subhojit-chakraborty&scale=120" alt="Subhojit Chakraborty">
                     <h4>Subhojit Chakraborty</h4>
                     <p class="leader-role">Treasurer</p>
                     <small>Financial Administration</small>
@@ -3282,6 +3282,48 @@
         img.src = './images/logo-sample.png?' + Date.now();
     })();
 
+    // ===== SPORT BACKGROUND IMAGES (loaded as base64 for PDF embedding) =====
+    var MAC_CRICKET_IMG_SRC = null;  // base64 PNG of cricket photo
+    var MAC_FOOTBALL_IMG_SRC = null; // base64 PNG of football photo
+    var _cricketImgReady  = false;
+    var _footballImgReady = false;
+
+    function _loadSportImage(src, onDone) {
+        var img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = function () {
+            try {
+                // Resize to a reasonable canvas size to keep base64 manageable
+                var maxW = 800, maxH = 400;
+                var ratio = Math.min(maxW / (img.naturalWidth || 800), maxH / (img.naturalHeight || 400));
+                var cw = Math.round((img.naturalWidth  || 800) * ratio);
+                var ch = Math.round((img.naturalHeight || 400) * ratio);
+                var c = document.createElement('canvas');
+                c.width = cw; c.height = ch;
+                var ctx = c.getContext('2d');
+                ctx.drawImage(img, 0, 0, cw, ch);
+                var b64 = c.toDataURL('image/jpeg', 0.75);
+                onDone(b64.length > 100 ? b64 : null);
+            } catch (e) {
+                console.warn('[MAC] Could not convert sport image:', e.message);
+                onDone(null);
+            }
+        };
+        img.onerror = function () { onDone(null); };
+        img.src = src + '?' + Date.now();
+    }
+
+    _loadSportImage('./images/2023-01-06 (1).webp', function(b64) {
+        MAC_CRICKET_IMG_SRC = b64;
+        _cricketImgReady = true;
+        console.log('[MAC] Cricket image ' + (b64 ? 'loaded (' + Math.round(b64.length / 1024) + ' KB)' : 'failed, will use vector art'));
+    });
+    _loadSportImage('./images/2023-09-18.webp', function(b64) {
+        MAC_FOOTBALL_IMG_SRC = b64;
+        _footballImgReady = true;
+        console.log('[MAC] Football image ' + (b64 ? 'loaded (' + Math.round(b64.length / 1024) + ' KB)' : 'failed, will use vector art'));
+    });
+
     // ===== SYNC AGE FROM DOB =====
     function syncAge(dobId, ageId) {
         const dobInput = document.getElementById(dobId);
@@ -3625,7 +3667,7 @@
         return Math.max(ny1, ny2);
     }
 
-    // â”€â”€ Pentagon helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ï¿½ï¿½ï¿½â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Pentagon helper ─────────────────────────────────────────────────
     function _pentaPoints(cx, cy, r, rot) {
         var pts = [];
         for (var i=0; i<5; i++) {
@@ -3643,7 +3685,7 @@
         pdf.lines(lines, pts[0][0], pts[0][1], [1,1], style||'F', true);
     }
 
-    // â”€â”€ Main PDF builder â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Main PDF builder ─────────────────────────────────────────────────
     function _buildPDF(sport, data) {
         var jsPDF = window.jspdf && window.jspdf.jsPDF;
         if (!jsPDF) { alert('PDF library not loaded. Please check your internet connection.'); return null; }
@@ -3652,68 +3694,85 @@
         var isCricket = (sport === 'cricket');
         var pdf = new jsPDF({orientation:'portrait', unit:'mm', format:'a4'});
         var PW=210, PH=297, M=14, CW=PW-M*2;
-        var HDR=68; // header height mm
+        var HDR=85; // header height mm (taller to showcase the photo)
 
-        // â”€â”€ HEADER BG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ï¿½ï¿½ï¿½â”€â”€â”€â”€
-        _fillRect(pdf, 0, 0, PW, HDR, 26, 58, 82);
-        _fillRect(pdf, 0, HDR-5, PW, 5, 20, 46, 66);
-
-        // â”€â”€ SPORT VECTOR ART â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-        if (isCricket) {
-            // Left: stumps + bat + ball
-            var stx=18, sty=10, sth=32, stgap=5;
-            pdf.setDrawColor(212,165,116); pdf.setLineWidth(1.2);
-            [stx, stx+stgap, stx+stgap*2].forEach(function(sx){
-                pdf.line(sx, sty, sx, sty+sth);
-                pdf.setLineWidth(0.8); pdf.line(sx-1,sty,sx+1,sty); pdf.setLineWidth(1.2);
-            });
-            pdf.setLineWidth(0.7); pdf.line(stx-1,sty,stx+stgap*2+1,sty);
-            pdf.setLineWidth(2.8); pdf.line(10,48,34,20);
-            pdf.setLineWidth(1.3); pdf.line(34,20,38,14);
-            pdf.setFillColor(180,30,30); pdf.circle(8,38,4,'F');
-            pdf.setDrawColor(255,200,200); pdf.setLineWidth(0.4);
-            pdf.line(5,36,11,36); pdf.line(4,38,12,38); pdf.line(5,40,11,40);
-            // Right: stumps + bat + ball (mirror)
-            var stx2=PW-28;
-            pdf.setDrawColor(212,165,116); pdf.setLineWidth(1.2);
-            [stx2, stx2+stgap, stx2+stgap*2].forEach(function(sx){
-                pdf.line(sx,sty,sx,sty+sth);
-                pdf.setLineWidth(0.8); pdf.line(sx-1,sty,sx+1,sty); pdf.setLineWidth(1.2);
-            });
-            pdf.setLineWidth(0.7); pdf.line(stx2-1,sty,stx2+stgap*2+1,sty);
-            pdf.setLineWidth(2.8); pdf.line(PW-10,48,PW-34,20);
-            pdf.setLineWidth(1.3); pdf.line(PW-34,20,PW-38,14);
-            pdf.setFillColor(180,30,30); pdf.circle(PW-8,38,4,'F');
-            pdf.setDrawColor(255,200,200); pdf.setLineWidth(0.4);
-            pdf.line(PW-11,36,PW-5,36); pdf.line(PW-12,38,PW-4,38); pdf.line(PW-11,40,PW-5,40);
-        } else {
-            // Left: football
-            var fcx=22, fcy=30, fcr=17;
-            pdf.setDrawColor(212,165,116); pdf.setLineWidth(0.8);
-            pdf.setFillColor(255,255,255); pdf.circle(fcx,fcy,fcr,'FD');
-            pdf.setFillColor(30,30,30);
-            _drawPoly(pdf, _pentaPoints(fcx,fcy,5.5,0), 'F');
-            pdf.setFillColor(60,60,60);
-            for (var pi=0; pi<5; pi++) {
-                var a1=(pi*72-90)*Math.PI/180;
-                _drawPoly(pdf, _pentaPoints(fcx+Math.cos(a1)*10.5, fcy+Math.sin(a1)*10.5, 4.2, a1+Math.PI), 'F');
+        // ── HEADER: real sport photo + dark overlay ─────────────────────────
+        var sportImgSrc = isCricket ? MAC_CRICKET_IMG_SRC : MAC_FOOTBALL_IMG_SRC;
+        var photoPlaced = false;
+        if (sportImgSrc && sportImgSrc.indexOf('data:') === 0) {
+            try {
+                // Stretch photo across full header width & height
+                pdf.addImage(sportImgSrc, 'JPEG', 0, 0, PW, HDR);
+                photoPlaced = true;
+            } catch(e) {
+                console.warn('[MAC] Sport photo embed failed:', e.message);
             }
-            pdf.setDrawColor(212,165,116); pdf.setLineWidth(1); pdf.circle(fcx,fcy,fcr,'D');
-            // Right: football
-            var fcx2=PW-22;
-            pdf.setFillColor(255,255,255); pdf.circle(fcx2,fcy,fcr,'FD');
-            pdf.setFillColor(30,30,30);
-            _drawPoly(pdf, _pentaPoints(fcx2,fcy,5.5,0), 'F');
-            pdf.setFillColor(60,60,60);
-            for (var pi2=0; pi2<5; pi2++) {
-                var a2=(pi2*72-90)*Math.PI/180;
-                _drawPoly(pdf, _pentaPoints(fcx2+Math.cos(a2)*10.5, fcy+Math.sin(a2)*10.5, 4.2, a2+Math.PI), 'F');
-            }
-            pdf.setDrawColor(212,165,116); pdf.setLineWidth(1); pdf.circle(fcx2,fcy,fcr,'D');
         }
+        // Dark navy overlay for readability (always drawn – makes text legible over photo)
+        pdf.setFillColor(15, 32, 54);
+        if (photoPlaced) {
+            // Semi-transparent overlay: draw many thin strips to approximate 70% opacity
+            for (var _oi = 0; _oi < HDR; _oi += 0.35) {
+                pdf.rect(0, _oi, PW, 0.35, 'F');
+            }
+        } else {
+            // Solid navy fallback – also draw sport vector art
+            pdf.setFillColor(26, 58, 82);
+            pdf.rect(0, 0, PW, HDR, 'F');
+            // ── FALLBACK SPORT VECTOR ART ──────────────────────────────────
+            if (isCricket) {
+                var stx=18, sty=10, sth=38, stgap=5;
+                pdf.setDrawColor(212,165,116); pdf.setLineWidth(1.2);
+                [stx, stx+stgap, stx+stgap*2].forEach(function(sx){
+                    pdf.line(sx,sty,sx,sty+sth);
+                    pdf.setLineWidth(0.8); pdf.line(sx-1,sty,sx+1,sty); pdf.setLineWidth(1.2);
+                });
+                pdf.setLineWidth(0.7); pdf.line(stx-1,sty,stx+stgap*2+1,sty);
+                pdf.setLineWidth(2.8); pdf.line(10,55,34,22);
+                pdf.setLineWidth(1.3); pdf.line(34,22,38,16);
+                pdf.setFillColor(180,30,30); pdf.circle(8,42,4,'F');
+                var stx2=PW-28;
+                pdf.setDrawColor(212,165,116); pdf.setLineWidth(1.2);
+                [stx2, stx2+stgap, stx2+stgap*2].forEach(function(sx){
+                    pdf.line(sx,sty,sx,sty+sth);
+                    pdf.setLineWidth(0.8); pdf.line(sx-1,sty,sx+1,sty); pdf.setLineWidth(1.2);
+                });
+                pdf.setLineWidth(0.7); pdf.line(stx2-1,sty,stx2+stgap*2+1,sty);
+                pdf.setLineWidth(2.8); pdf.line(PW-10,55,PW-34,22);
+                pdf.setLineWidth(1.3); pdf.line(PW-34,22,PW-38,16);
+                pdf.setFillColor(180,30,30); pdf.circle(PW-8,42,4,'F');
+            } else {
+                var fcx=22, fcy=36, fcr=18;
+                pdf.setFillColor(255,255,255); pdf.circle(fcx,fcy,fcr,'FD');
+                pdf.setFillColor(30,30,30);
+                _drawPoly(pdf, _pentaPoints(fcx,fcy,5.5,0), 'F');
+                pdf.setFillColor(60,60,60);
+                for (var pi=0; pi<5; pi++) {
+                    var a1=(pi*72-90)*Math.PI/180;
+                    _drawPoly(pdf, _pentaPoints(fcx+Math.cos(a1)*10.5,fcy+Math.sin(a1)*10.5,4.2,a1+Math.PI), 'F');
+                }
+                pdf.setDrawColor(212,165,116); pdf.setLineWidth(1); pdf.circle(fcx,fcy,fcr,'D');
+                var fcx2=PW-22;
+                pdf.setFillColor(255,255,255); pdf.circle(fcx2,fcy,fcr,'FD');
+                pdf.setFillColor(30,30,30);
+                _drawPoly(pdf, _pentaPoints(fcx2,fcy,5.5,0), 'F');
+                pdf.setFillColor(60,60,60);
+                for (var pi2=0; pi2<5; pi2++) {
+                    var a2=(pi2*72-90)*Math.PI/180;
+                    _drawPoly(pdf, _pentaPoints(fcx2+Math.cos(a2)*10.5,fcy+Math.sin(a2)*10.5,4.2,a2+Math.PI), 'F');
+                }
+                pdf.setDrawColor(212,165,116); pdf.setLineWidth(1); pdf.circle(fcx2,fcy,fcr,'D');
+            }
+        }
+        // Gold accent bar at bottom of header
+        pdf.setFillColor(212, 165, 116);
+        pdf.rect(0, HDR-2, PW, 2, 'F');
+        // Subtle top gold line
+        pdf.setFillColor(212, 165, 116);
+        pdf.rect(0, 0, PW, 1, 'F');
 
-        // â”€â”€ LOGO (logo-sample.png centred) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-        var logoSz=28, logoX=PW/2-logoSz/2, logoY=6;
+        // ── LOGO (logo-sample.png centred over header) ─────────────────────
+        var logoSz=30, logoX=PW/2-logoSz/2, logoY=7;
         if (typeof MAC_LOGO_SRC==='string' && MAC_LOGO_SRC.indexOf('data:image/png')===0) {
             try { pdf.addImage(MAC_LOGO_SRC,'PNG',logoX,logoY,logoSz,logoSz); } catch(e){}
         } else {
@@ -3723,21 +3782,20 @@
             pdf.text('MAC', PW/2, logoY+logoSz/2+4, {align:'center'});
         }
 
-        // â”€â”€ HEADER TEXT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-        _textC(pdf, 'MAJILPUR ATHLETIC CLUB', PW, 40, 212,165,116, 13, 'bold');
-        _textC(pdf, (isCricket?'Cricket':'Football')+' Coaching Camp  \u2014  '+(isBlank?'Admission Form':'Application'), PW, 47, 255,255,255, 9, 'normal');
-        _textC(pdf, 'Est. 1945', PW, 53, 180,140,90, 7.5, 'italic');
+        // ── HEADER TEXT ─────────────────────────────────────────────────────
+        _textC(pdf, 'MAJILPUR ATHLETIC CLUB', PW, logoY+logoSz+8, 212,165,116, 13, 'bold');
+        _textC(pdf, (isCricket?'Cricket':'Football')+' Coaching Camp  \u2014  '+(isBlank?'Admission Form':'Application'), PW, logoY+logoSz+17, 255,255,255, 9, 'normal');
+        _textC(pdf, 'Est. 1945', PW, logoY+logoSz+24, 180,140,90, 7.5, 'italic');
 
-        // â”€â”€ BADGE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ── BADGE (application / form ID) ───────────────────────────────────
         var badgeLabel = isBlank ? (data&&data.offlineNum?data.offlineNum:'') : (data.appNumber||'');
         if (badgeLabel) {
-            var bw=76, bh=9, bx=PW/2-bw/2, by=57;
+            var bw=80, bh=9, bx=PW/2-bw/2, by=logoY+logoSz+29;
             pdf.setFillColor(40,70,100); pdf.rect(bx,by,bw,bh,'F');
             pdf.setDrawColor(212,165,116); pdf.setLineWidth(0.4); pdf.rect(bx,by,bw,bh,'S');
             _textC(pdf, (isBlank?'FORM ID: ':'APPLICATION NO.: ')+badgeLabel, PW, by+6, 212,165,116, 9, 'bold');
         }
 
-        // â”€â”€ BODY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         var y = HDR+8;
         var dateStr = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
 
@@ -3765,7 +3823,7 @@
 
         y = _sectionLabel(pdf, (isCricket?'Cricket':'Football')+' Details', M, y, CW);
         if (isCricket) {
-            y = _field(pdf,'Previous Cricket Experience',(!isBlank&&data)?(data.experience||'None stated'):'', M,y,CW,14);
+            y = _field(pdf,'Previous Cricket Experience',(!isBlank&&data)?(data.experience||''):'', M,y,CW,14);
         } else {
             y = _fieldRow(pdf,'Preferred Position',(!isBlank&&data)?(data.position||'Not specified'):'',
                               'Previous Experience',(!isBlank&&data)?(data.experience||'None stated'):'', M,y,PW,M,12);
@@ -3832,17 +3890,21 @@
         }
     }
 
-    // ===== GENERATE + DELIVER (waits for logo) =====
+    // ===== GENERATE + DELIVER (waits for logo + sport image) =====
     function _generatePDF(sport, data, filename) {
         function _build() {
             var pdf = _buildPDF(sport, data);
             _deliverPDF(pdf, filename);
         }
-        if (_logoReady) { _build(); }
+        var isCric = (sport === 'cricket');
+        function _allReady() {
+            return _logoReady && (isCric ? _cricketImgReady : _footballImgReady);
+        }
+        if (_allReady()) { _build(); }
         else {
             var tries=0, t=setInterval(function(){
                 tries++;
-                if (_logoReady||tries>30){ clearInterval(t); _build(); }
+                if (_allReady()||tries>50){ clearInterval(t); _build(); }
             },100);
         }
     }
