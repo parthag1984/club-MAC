@@ -1124,7 +1124,7 @@
             display: flex; align-items: center; gap: 7px;
             transition: color 0.25s ease, padding-left 0.25s ease;
         }
-        .footer-links a::before { content: '›'; color: var(--gold); font-size: 16px; }
+        .footer-links a::before { content: 'â€º'; color: var(--gold); font-size: 16px; }
         .footer-links a:hover { color: var(--gold); padding-left: 5px; }
         .footer-contact-list { display: flex; flex-direction: column; gap: 14px; }
         .footer-contact-row {
@@ -1778,7 +1778,7 @@
             .leadership-grid { grid-template-columns: 1fr; }
 
             /* Hero */
-            .hero h1 { font-size: clamp(1.9rem, 10vw, 3rem); letter-spacing: -0.5px; }
+            .hero h1 { font-size: clamp(1.75rem, 10vw, 3rem); letter-spacing: -0.5px; }
             .hero-eyebrow { font-size: 9px; letter-spacing: 1.8px; }
             .hero-stats { gap: 4px; flex-wrap: wrap; justify-content: center; }
             .hero-stat { min-width: 70px; padding: 0 8px; flex: 0 0 auto; }
@@ -1994,7 +1994,7 @@
         }
         .wish-tab-badge.google { background: #e8f0fe; color: #1967d2; }
 
-        /* Post-submit Google review prompt — upgraded panel */
+        /* Post-submit Google review prompt â€” upgraded panel */
         .google-review-prompt {
             display: none; margin-top: 22px;
             background: #fff; border: 2px solid #4285F4;
@@ -2077,8 +2077,7 @@
             .google-review-cta { flex-direction: column; align-items: flex-start; }
         }
     </style>
-    <!-- PDF generation libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- PDF generation library (jsPDF native drawing â€” no html2canvas needed) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -2143,12 +2142,12 @@
     <!-- Content -->
     <div class="hero-content">
         <div class="hero-eyebrow">
-            <span>Est. 1945 &nbsp;·&nbsp; Majilpur, West Bengal</span>
+            <span>Est. 1945 &nbsp;Â·&nbsp; Majilpur, West Bengal</span>
         </div>
 
         <h1>Majilpur<br><span>Athletic Club</span></h1>
 
-        <p class="hero-sub">Excellence in Sports Training &nbsp;·&nbsp; Cricket &amp; Football</p>
+        <p class="hero-sub">Excellence in Sports Training &nbsp;Â·&nbsp; Cricket &amp; Football</p>
 
         <div class="hero-btns">
             <a href="#admission" class="hero-btn-primary">
@@ -2278,7 +2277,7 @@
                 <div class="program-card-body">
                     <span class="program-card-tag"><i class="fas fa-cricket"></i> &nbsp;Cricket</span>
                     <h3>Cricket Coaching Camp</h3>
-                    <p>From fundamentals to advanced strategy — our cricket programme develops batting, bowling, and fielding skills under district-level expert guidance.</p>
+                    <p>From fundamentals to advanced strategy â€” our cricket programme develops batting, bowling, and fielding skills under district-level expert guidance.</p>
                 </div>
             </div>
             <div class="program-card fade-in">
@@ -2382,7 +2381,7 @@
             <span class="section-tag">On The Calendar</span>
             <h2 class="section-title">Upcoming Events</h2>
             <div class="gold-line"></div>
-            <p class="section-subtitle">Mark your calendars — there's always something exciting happening at Majilpur Athletic Club.</p>
+            <p class="section-subtitle">Mark your calendars â€” there's always something exciting happening at Majilpur Athletic Club.</p>
         </div>
         <div class="events-grid">
             <div class="event-card fade-in">
@@ -2390,7 +2389,7 @@
                 <div class="event-card-body">
                     <div class="event-date-badge"><i class="fas fa-calendar-alt"></i> May 10, 2026</div>
                     <h3>Cricket Tournament</h3>
-                    <p>Our annual inter-club cricket tournament. Open to all skill levels — register early to secure your spot.</p>
+                    <p>Our annual inter-club cricket tournament. Open to all skill levels â€” register early to secure your spot.</p>
                 </div>
             </div>
             <div class="event-card fade-in">
@@ -2398,7 +2397,7 @@
                 <div class="event-card-body">
                     <div class="event-date-badge"><i class="fas fa-calendar-alt"></i> May 15, 2026</div>
                     <h3>Football Clinic</h3>
-                    <p>Free beginner football clinic. Learn fundamentals directly from our expert coaching staff — no experience needed.</p>
+                    <p>Free beginner football clinic. Learn fundamentals directly from our expert coaching staff â€” no experience needed.</p>
                 </div>
             </div>
             <div class="event-card fade-in">
@@ -2500,7 +2499,7 @@
                         <div class="form-group">
                             <label for="wisher-relation">Relation to Club</label>
                             <select class="form-control" id="wisher-relation">
-                                <option value="">Select…</option>
+                                <option value="">Selectâ€¦</option>
                                 <option>Club Member</option>
                                 <option>Parent / Guardian</option>
                                 <option>Alumni</option>
@@ -2515,7 +2514,7 @@
                     <div class="form-group">
                         <label for="wisher-message">Your Message <span>*</span></label>
                         <textarea class="form-control" id="wisher-message" rows="4"
-                                  placeholder="Share your wishes, memories, or words of encouragement…" required
+                                  placeholder="Share your wishes, memories, or words of encouragementâ€¦" required
                                   maxlength="300"></textarea>
                         <div class="wisher-char-count"><span id="wisher-char-num">0</span>/300</div>
                     </div>
@@ -2539,7 +2538,7 @@
                         <span>Also share your experience on</span>
                         <a href="https://www.google.com/maps/place/Majilpur+Athletic+Club/@22.1683125,88.4226875,17z/data=!3m1!4b1!4m6!3m5!1s0x3a024112fd3cc309:0x1e9cef4fb7373972!8m2!3d22.1683125!4d88.4226875!16s%2Fg%2F11fx7tpl_t?entry=ttu&g_ep=EgoyMDI2MDQwNi4wIKXMDSoASAFQAw%3D%3D"
                            target="_blank" rel="noopener noreferrer" class="google-review-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="18" height="18" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="18" height="18" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0;">
                                 <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
                                 <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
                                 <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
@@ -2572,16 +2571,16 @@
         <!-- Post-submit Google review prompt (shown after well-wishers form submit) -->
         <div class="google-review-prompt" id="googleReviewPrompt">
             <div class="grp-header">
-                <div class="grp-header-icon">⭐</div>
+                <div class="grp-header-icon">â­</div>
                 <div class="grp-header-text">
-                    <strong>Your wish has been posted! ✅</strong>
+                    <strong>Your wish has been posted! âœ…</strong>
                     <span>Want to also share it on Google Maps?</span>
                 </div>
             </div>
             <div class="grp-body">
                 <div class="grp-limitation-note">
                     <i class="fas fa-info-circle"></i>
-                    <span>Google does not allow websites to post reviews automatically — each review must be submitted by you directly on Google. But we've made it easy in 3 steps!</span>
+                    <span>Google does not allow websites to post reviews automatically â€” each review must be submitted by you directly on Google. But we've made it easy in 3 steps!</span>
                 </div>
                 <div class="grp-steps">
                     <div class="grp-step">
@@ -2589,14 +2588,14 @@
                         <div>Your message (ready to copy):</div>
                     </div>
                 </div>
-                <div class="grp-msg-box" id="grp-msg-preview">—</div>
+                <div class="grp-msg-box" id="grp-msg-preview">â€”</div>
                 <button class="grp-copy-btn" id="grpCopyBtn" onclick="copyGoogleReviewMsg()">
                     <i class="fas fa-copy"></i> Copy My Message
                 </button>
                 <div class="grp-steps">
                     <div class="grp-step">
                         <div class="grp-step-num">2</div>
-                        <div>Click below — Google Maps review page will open.</div>
+                        <div>Click below â€” Google Maps review page will open.</div>
                     </div>
                     <div class="grp-step">
                         <div class="grp-step-num">3</div>
@@ -2610,8 +2609,9 @@
                         <path fill="#fff" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
                         <path fill="#fff" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
                         <path fill="#fff" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                        <path fill="none" d="M0 0h48v48H0z"/>
                     </svg>
-                    Open Google Maps — Write My Review
+                    Open Google Maps â€” Write My Review
                 </a>
                 <span class="grp-dismiss" onclick="document.getElementById('googleReviewPrompt').style.display='none'">No thanks, dismiss</span>
             </div>
@@ -2637,7 +2637,7 @@
                         <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="contact-item-text">
                             <h4>Location</h4>
-                            <p>Majilpur Haridas Dutta Road, Joynagar Majilpur, Word no - 3<br>Kolkata, West Bengal — 743337</p>
+                            <p>Majilpur Haridas Dutta Road, Joynagar Majilpur, Word no - 3<br>Kolkata, West Bengal â€” 743337</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -2658,7 +2658,7 @@
                         <div class="contact-icon"><i class="fas fa-clock"></i></div>
                         <div class="contact-item-text">
                             <h4>Working Hours</h4>
-                            <p>Mon – Sat: 9:00 AM – 6:00 PM<br>Sunday: 10:00 AM – 3:00 PM</p>
+                            <p>Mon â€“ Sat: 9:00 AM â€“ 6:00 PM<br>Sunday: 10:00 AM â€“ 3:00 PM</p>
                         </div>
                     </div>
                 </div>
@@ -2725,7 +2725,7 @@
                     </div>
                     <div class="form-group">
                         <label for="contact-message">Message <span>*</span></label>
-                        <textarea class="form-control" id="contact-message" name="message" placeholder="Tell us how we can help you…" required></textarea>
+                        <textarea class="form-control" id="contact-message" name="message" placeholder="Tell us how we can help youâ€¦" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary form-submit">
                         <i class="fas fa-paper-plane"></i> Send Message
@@ -2796,10 +2796,10 @@
                 <div>
                     <p class="footer-col-heading">Contact Info</p>
                     <div class="footer-contact-list">
-                        <div class="footer-contact-row"><i class="fas fa-map-marker-alt"></i><span>Majilpur, Near XYZ Park,<br>Kolkata, West Bengal — 700000</span></div>
+                        <div class="footer-contact-row"><i class="fas fa-map-marker-alt"></i><span>Majilpur, Near XYZ Park,<br>Kolkata, West Bengal â€” 700000</span></div>
                         <div class="footer-contact-row"><i class="fas fa-phone-alt"></i><span>+91 XXXXXXXXXX</span></div>
                         <div class="footer-contact-row"><i class="fas fa-envelope"></i><span>info@majilpurathleticclub.com</span></div>
-                        <div class="footer-contact-row"><i class="fas fa-clock"></i><span>Mon–Sat: 9:00 AM – 6:00 PM</span></div>
+                        <div class="footer-contact-row"><i class="fas fa-clock"></i><span>Monâ€“Sat: 9:00 AM â€“ 6:00 PM</span></div>
                     </div>
                 </div>
             </div>
@@ -2830,10 +2830,10 @@
 
   Deployment workflow:
     1. After each cycle, note the last numbers from console:
-         MAC-CRIC-0042      →  set id="mac-cricket-seed"      value="42"
-         MAC-FTB-0015       →  set id="mac-football-seed"     value="15"
-         MAC-CRIC-OFF-0008  →  set id="mac-cric-off-seed"     value="8"
-         MAC-FTB-OFF-0005   →  set id="mac-ftb-off-seed"      value="5"
+         MAC-CRIC-0042      â†’  set id="mac-cricket-seed"      value="42"
+         MAC-FTB-0015       â†’  set id="mac-football-seed"     value="15"
+         MAC-CRIC-OFF-0008  â†’  set id="mac-cric-off-seed"     value="8"
+         MAC-FTB-OFF-0005   â†’  set id="mac-ftb-off-seed"      value="5"
     2. Re-deploy the HTML with the updated seed values.
   =====================================================================
 -->
@@ -2908,7 +2908,7 @@
                     </div>
                     <div class="form-group">
                         <label for="cricket-experience">Previous Cricket Experience</label>
-                        <textarea class="form-control" id="cricket-experience" name="experience" placeholder="Describe any prior cricket experience, coaching or matches played…"></textarea>
+                        <textarea class="form-control" id="cricket-experience" name="experience" placeholder="Describe any prior cricket experience, coaching or matches playedâ€¦"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary form-submit">
                         <i class="fas fa-paper-plane"></i> Submit Application
@@ -2921,7 +2921,7 @@
                 <h3>Application Submitted!</h3>
                 <div class="app-number-box" id="cricket-app-number-box">
                     <span class="app-number-label">Application Number</span>
-                    <span class="app-number-value" id="cricket-app-number">—</span>
+                    <span class="app-number-value" id="cricket-app-number">â€”</span>
                 </div>
                 <p>Thank you for your interest in our Cricket programme. Please save your application number. Our coaching team will get in touch with you within 24 hours.</p>
                 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
@@ -3013,7 +3013,7 @@
                     </div>
                     <div class="form-group">
                         <label for="football-experience">Previous Football Experience</label>
-                        <textarea class="form-control" id="football-experience" name="experience" placeholder="Describe any prior football experience, clubs or tournaments…"></textarea>
+                        <textarea class="form-control" id="football-experience" name="experience" placeholder="Describe any prior football experience, clubs or tournamentsâ€¦"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary form-submit">
                         <i class="fas fa-paper-plane"></i> Submit Application
@@ -3026,7 +3026,7 @@
                 <h3>Application Submitted!</h3>
                 <div class="app-number-box" id="football-app-number-box">
                     <span class="app-number-label">Application Number</span>
-                    <span class="app-number-value" id="football-app-number">—</span>
+                    <span class="app-number-value" id="football-app-number">â€”</span>
                 </div>
                 <p>Thank you for your interest in our Football programme. Please save your application number. Our coaching team will get in touch with you within 24 hours.</p>
                 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
@@ -3164,7 +3164,7 @@
 
 <script>
     /* ============================================================
-       SECURITY — disable right-click, F12 & common DevTools keys
+       SECURITY â€” disable right-click, F12 & common DevTools keys
        ============================================================ */
     (function () {
         // 1. Block right-click context menu
@@ -3177,11 +3177,11 @@
         document.addEventListener('keydown', function (e) {
             // F12
             if (e.key === 'F12') { e.preventDefault(); return false; }
-            // Ctrl+U  → view-source
+            // Ctrl+U  â†’ view-source
             if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) { e.preventDefault(); return false; }
-            // Ctrl+S  → save page
+            // Ctrl+S  â†’ save page
             if (e.ctrlKey && (e.key === 's' || e.key === 'S')) { e.preventDefault(); return false; }
-            // Ctrl+Shift+I / J / C  → DevTools panels
+            // Ctrl+Shift+I / J / C  â†’ DevTools panels
             if (e.ctrlKey && e.shiftKey) {
                 var k = e.key.toUpperCase();
                 if (k === 'I' || k === 'J' || k === 'C') { e.preventDefault(); return false; }
@@ -3225,8 +3225,8 @@
     })();
 
     /* ============================================================
-       CLUB LOGO — loaded from the real logo-sample.png, converted
-       to a base64 PNG via Canvas so html2canvas can render it
+       CLUB LOGO â€” loaded from the real logo-sample.png, converted
+       to a base64 PNG via Canvas so jsPDF can embed it
        inside generated PDFs on all platforms including iOS.
        MAC_LOGO_SRC starts as the SVG fallback crest, then is
        asynchronously replaced with the real PNG once it loads.
@@ -3252,7 +3252,7 @@
     var MAC_LOGO_SRC = _MAC_SVG_FALLBACK; // replaced below once real PNG loads
 
     // Load the real club logo (logo-sample.png) and convert to base64 PNG via Canvas.
-    // This ensures html2canvas can capture it correctly in all browsers including iOS Safari.
+    // jsPDF embeds it directly â€” works in all browsers including Safari / iOS.
     var _logoReady = false; // becomes true once MAC_LOGO_SRC is a real base64 PNG
     (function _loadRealLogo() {
         var img = new Image();
@@ -3297,17 +3297,17 @@
 
     // ===== WELL-WISHERS =====
     (function () {
-        // Seed data — includes mirrored Google Maps reviews (source:'google')
+        // Seed data â€” includes mirrored Google Maps reviews (source:'google')
         // and website community messages.
         // NOTE: Google Maps reviews are fetched manually and mirrored here.
         // To add fresh Google reviews, append entries with source:'google'.
         const seedWishes = [
-            // — Google Maps Reviews (mirrored from maps.google.com) —
+            // â€” Google Maps Reviews (mirrored from maps.google.com) â€”
             { name: 'Sourav Biswas',   relation: 'Google Review',      rating: 5, message: 'Excellent club with great facilities for both cricket and football. The coaches are very experienced and dedicated. My son has improved tremendously in just a few months. Highly recommended!', date: 'April 5, 2026', source: 'google' },
             { name: 'Ranjit Halder',   relation: 'Google Review',      rating: 5, message: 'Majilpur Athletic Club is a gem of the community. The training sessions are well-structured and the environment is very supportive. Great place for young athletes to grow!', date: 'March 20, 2026', source: 'google' },
             { name: 'Mita Chakraborty',relation: 'Google Review',      rating: 4, message: 'Very good coaching camp. My children enjoy the football sessions every weekend. The ground is well-maintained and the staff is courteous. Would love to see better changing room facilities.', date: 'March 2, 2026',  source: 'google' },
             { name: 'Avijit Paul',     relation: 'Google Review',      rating: 5, message: 'One of the best sports clubs in the Majilpur area. The discipline and sportsmanship values instilled here are commendable. We are proud to be associated with MAC!', date: 'February 10, 2026', source: 'google' },
-            // — Website Community Messages —
+            // â€” Website Community Messages â€”
             { name: 'Arpita Sen',      relation: 'Parent / Guardian',  rating: 5, message: 'My son has grown so much as a cricketer here. The coaches are dedicated and the environment is fantastic. Proud to be part of the MAC family!', date: 'March 28, 2026' },
             { name: 'Debashis Roy',    relation: 'Alumni',             rating: 5, message: 'Spent my best years training at Majilpur Athletic Club. The discipline and values I learned here have shaped my life. Wishing the club many more decades of glory!', date: 'March 15, 2026' },
             { name: 'Tanmoy Ghosh',    relation: 'Community Member',   rating: 4, message: 'A true gem for the Majilpur community. The tournaments organised here bring everyone together. Keep inspiring the youth!', date: 'February 22, 2026' },
@@ -3356,7 +3356,7 @@
             if (!list) return;
             count.textContent = wishes.length + (wishes.length === 1 ? ' message' : ' messages');
             if (wishes.length === 0) {
-                list.innerHTML = `<div class="wishers-empty"><i class="fas fa-heart"></i><p>No wishes yet — be the first to leave a message!</p></div>`;
+                list.innerHTML = `<div class="wishers-empty"><i class="fas fa-heart"></i><p>No wishes yet â€” be the first to leave a message!</p></div>`;
                 return;
             }
             list.innerHTML = wishes.map((w, idx) => `
@@ -3465,7 +3465,7 @@
         const btn     = document.getElementById('grpCopyBtn');
         if (!preview || !btn) return;
         const text = preview.textContent || '';
-        if (!text || text === '—') return;
+        if (!text || text === 'â€”') return;
 
         // Use modern Clipboard API with fallback
         if (navigator.clipboard && window.isSecureContext) {
@@ -3556,9 +3556,9 @@
         return appNum;
     }
 
-    // Generate offline/download form number — sport-specific
-    // Cricket  → MAC-CRIC-OFF-0001, MAC-CRIC-OFF-0002 …
-    // Football → MAC-FTB-OFF-0001,  MAC-FTB-OFF-0002  …
+    // Generate offline/download form number â€” sport-specific
+    // Cricket  â†’ MAC-CRIC-OFF-0001, MAC-CRIC-OFF-0002 â€¦
+    // Football â†’ MAC-FTB-OFF-0001,  MAC-FTB-OFF-0002  â€¦
     function generateOfflineNumber(sport) {
         const isCricket  = (sport === 'cricket');
         const key        = isCricket ? 'macCricOffSeq'   : 'macFtbOffSeq';
@@ -3578,310 +3578,283 @@
     // Stores last submitted data keyed by sport for on-demand download
     const _lastSubmission = {};
 
-    // ===== BUILD APPLICATION HTML (returns html string) =====
-    function buildApplicationHTML(sport, data) {
-        const isCricket = sport === 'cricket';
-        // Logo: use the globally-defined inline SVG crest (MAC_LOGO_SRC)
-        const logoImg = (typeof MAC_LOGO_SRC !== 'undefined' && MAC_LOGO_SRC)
-            ? `<img src="${MAC_LOGO_SRC}" alt="Majilpur Athletic Club Logo" style="height:78px;width:78px;object-fit:contain;display:block;margin:0 auto 10px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));">`
-            : `<div style="font-size:2.4em;margin-bottom:8px;">🏆</div>`;
-        return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MAC — ${isCricket ? 'Cricket' : 'Football'} ${data.offlineNum || ''} / ${data.appNumber}</title>
-<style>
-  *{box-sizing:border-box}
-  body{font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:20px}
-  .wrap{max-width:660px;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.13);overflow:hidden}
-  .hdr{background:linear-gradient(135deg,#1a3a52,#2a5a72);color:#fff;padding:28px 36px 24px;text-align:center}
-  .hdr h1{margin:0;font-size:1.5em;letter-spacing:1px}
-  .hdr p{margin:6px 0 0;opacity:.8;font-size:.9em}
-  .num-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-  .app-num{display:inline-block;padding:8px 22px;border-radius:8px;background:rgba(212,165,116,.18);border:1.5px dashed rgba(212,165,116,.7);color:#d4a574;font-size:1.1em;font-weight:700;letter-spacing:2px}
-  .num-label{display:block;font-size:.62em;letter-spacing:2px;text-transform:uppercase;opacity:.75;margin-bottom:3px}
-  .body{padding:32px 36px}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
-  .field label{display:block;font-size:.72em;font-weight:700;color:#1a3a52;text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px}
-  .field .val{background:#f9f7f4;border:1px solid #e5e7eb;border-radius:6px;padding:10px 14px;font-size:.9em;color:#333;min-height:38px;word-break:break-word}
-  .off-val{background:#eef2ff;border-color:#c7d2fe;color:#3730a3;font-weight:700}
-  .section-label{font-size:.7em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#d4a574;margin:24px 0 12px;border-bottom:2px solid #f0eff0;padding-bottom:6px}
-  .ftr{background:#0a0e27;color:rgba(255,255,255,.6);text-align:center;padding:18px;font-size:.8em}
-  .ftr strong{color:#d4a574}
-  @media print{body{background:#fff;padding:0}.wrap{box-shadow:none;border-radius:0}}
-</style>
-</head>
-<body>
-<div class="wrap">
-  <div class="hdr">
-    ${logoImg}
-    <h1>Majilpur Athletic Club</h1>
-    <p>${isCricket ? 'Cricket' : 'Football'} Coaching Camp — Application</p>
-    <div class="num-row">
-      <div class="app-num"><span class="num-label">Application No.</span>${data.appNumber}</div>
-    </div>
-  </div>
-  <div class="body">
-    <div class="section-label">Submission Details</div>
-    <div class="row">
-      <div class="field"><label>Application No.</label><div class="val" style="font-weight:700;color:#1a3a52">${data.appNumber}</div></div>
-      <div class="field"><label>Date Submitted</label><div class="val">${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})}</div></div>
-    </div>
-    <div class="section-label">Personal Details</div>
-    <div class="row">
-      <div class="field"><label>Full Name</label><div class="val">${data.name || '—'}</div></div>
-      <div class="field"><label>Date of Birth</label><div class="val">${data.dob ? new Date(data.dob).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}) : '—'}${data.age ? '&nbsp;(Age: ' + data.age + ')' : ''}</div></div>
-    </div>
-    <div class="row">
-      <div class="field"><label>Phone Number</label><div class="val">${data.phone || '—'}</div></div>
-      <div class="field"><label>Email Address</label><div class="val">${data.email || '—'}</div></div>
-    </div>
-    <div class="field" style="margin-bottom:18px"><label>Address</label><div class="val">${data.address || '—'}</div></div>
-    <div class="row">
-      <div class="field"><label>Father's / Mother's Name</label><div class="val">${data.parent || '—'}</div></div>
-      <div class="field"><label>School / Institution</label><div class="val">${data.school || '—'}</div></div>
-    </div>
-    <div class="section-label">${isCricket ? 'Cricket' : 'Football'} Details</div>
-    ${isCricket
-      ? `<div class="field"><label>Previous Cricket Experience</label><div class="val" style="min-height:60px">${data.experience || 'None stated'}</div></div>`
-      : `<div class="row">
-           <div class="field"><label>Preferred Position</label><div class="val">${data.position || 'Not specified'}</div></div>
-           <div class="field"><label>Previous Experience</label><div class="val">${data.experience || 'None stated'}</div></div>
-         </div>`
-    }
-  </div>
-  <div class="ftr"><strong>Majilpur Athletic Club</strong> &nbsp;·&nbsp; Est. 1945 &nbsp;·&nbsp; Majilpur, Kolkata, West Bengal 743337<br>info@majilpurathleticclub.com</div>
-</div>
-</body>
-</html>`;
-    }
-
-    // ===== PDF GENERATION HELPER =====
-    // Renders the HTML string into a hidden iframe, captures it with html2canvas,
-    // and scales the entire content to fit perfectly on one A4 page.
-    // ===== iOS / iPad detection =====
+    // ===== iOS / Safari detection =====
     var _isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var _isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent) || _isIOS;
 
-    // ===== PDF OPEN/DOWNLOAD helper =====
-    // Desktop / Android : triggers a real <a download> file download.
-    // iOS / iPadOS       : Safari cannot auto-download files — instead we
-    //                      convert the blob to a base64 data URL and open it
-    //                      directly in the current tab via window.location.href.
-    //                      Safari renders PDFs natively, no popup is shown,
-    //                      and the user can tap Share ↗ → Save to Files / Print.
-    function _deliverPDF(pdfBlob, filename) {
-        if (_isIOS) {
-            // iOS: navigate current tab to the PDF data URL — no popup, no blocker
-            var reader = new FileReader();
-            reader.onloadend = function () {
-                window.location.href = reader.result; // Safari opens PDF viewer inline
-            };
-            reader.readAsDataURL(pdfBlob);
-        } else {
-            // Desktop / Android: standard anchor-download
-            var blobUrl = URL.createObjectURL(pdfBlob);
-            var a = document.createElement('a');
-            a.href = blobUrl;
-            a.download = filename;
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            setTimeout(function () {
-                document.body.removeChild(a);
-                URL.revokeObjectURL(blobUrl);
-            }, 5000);
+    // ===== PURE jsPDF NATIVE DRAWING ENGINE =====
+    // No html2canvas â€” draws directly with jsPDF primitives.
+    // Works on ALL browsers including Safari / iOS.
+
+    function _fillRect(pdf, x, y, w, h, r, g, b) {
+        pdf.setFillColor(r, g, b); pdf.rect(x, y, w, h, 'F');
+    }
+    function _text(pdf, str, x, y, r, g, b, fs, style) {
+        pdf.setTextColor(r,g,b); pdf.setFontSize(fs||10);
+        pdf.setFont('helvetica', style||'normal');
+        pdf.text(String(str||''), x, y);
+    }
+    function _textC(pdf, str, PW, y, r, g, b, fs, style) {
+        pdf.setTextColor(r,g,b); pdf.setFontSize(fs||10);
+        pdf.setFont('helvetica', style||'normal');
+        pdf.text(String(str||''), PW/2, y, {align:'center'});
+    }
+    function _field(pdf, label, value, x, y, w, boxH) {
+        boxH = boxH||10;
+        pdf.setFontSize(7); pdf.setFont('helvetica','bold'); pdf.setTextColor(26,58,82);
+        pdf.text(label.toUpperCase(), x, y);
+        pdf.setFillColor(249,247,244); pdf.setDrawColor(229,231,235); pdf.setLineWidth(0.25);
+        pdf.rect(x, y+1.5, w, boxH, 'FD');
+        pdf.setFontSize(9); pdf.setFont('helvetica','normal'); pdf.setTextColor(51,51,51);
+        var lines = pdf.splitTextToSize(String(value||'\u2014'), w-4);
+        pdf.text(lines, x+2, y+1.5+3.5);
+        return y+1.5+boxH+4;
+    }
+    function _sectionLabel(pdf, label, x, y, w) {
+        pdf.setFontSize(7.5); pdf.setFont('helvetica','bold'); pdf.setTextColor(212,165,116);
+        pdf.text(label.toUpperCase(), x, y);
+        pdf.setDrawColor(212,165,116); pdf.setLineWidth(0.4);
+        pdf.line(x, y+1, x+w, y+1);
+        return y+6;
+    }
+    function _fieldRow(pdf, l1, v1, l2, v2, x, y, PW, M, boxH) {
+        var colW = (PW - M*2 - 6)/2;
+        var ny1 = _field(pdf, l1, v1, x, y, colW, boxH);
+        var ny2 = _field(pdf, l2, v2, x+colW+6, y, colW, boxH);
+        return Math.max(ny1, ny2);
+    }
+
+    // â”€â”€ Pentagon helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ï¿½ï¿½ï¿½â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    function _pentaPoints(cx, cy, r, rot) {
+        var pts = [];
+        for (var i=0; i<5; i++) {
+            var a = (i*72-90)*Math.PI/180 + (rot||0);
+            pts.push([cx+Math.cos(a)*r, cy+Math.sin(a)*r]);
         }
+        return pts;
+    }
+    function _drawPoly(pdf, pts, style) {
+        if (!pts||pts.length<3) return;
+        var lines = [];
+        for (var i=1; i<pts.length; i++)
+            lines.push([pts[i][0]-pts[i-1][0], pts[i][1]-pts[i-1][1]]);
+        lines.push([pts[0][0]-pts[pts.length-1][0], pts[0][1]-pts[pts.length-1][1]]);
+        pdf.lines(lines, pts[0][0], pts[0][1], [1,1], style||'F', true);
     }
 
+    // â”€â”€ Main PDF builder â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    function _buildPDF(sport, data) {
+        var jsPDF = window.jspdf && window.jspdf.jsPDF;
+        if (!jsPDF) { alert('PDF library not loaded. Please check your internet connection.'); return null; }
 
-    // ===== PDF GENERATION HELPER =====
-    // Renders HTML into a hidden element, captures with html2canvas, outputs A4 PDF.
-    // Fully compatible with iOS Safari, Android, and desktop browsers.
-    function _generatePDF(htmlString, filename, onDone) {
-        // Wait for logo to be ready (max 3 s) before rendering
-        if (!_logoReady) {
-            var _waitTries = 0;
-            var _waitTimer = setInterval(function () {
-                _waitTries++;
-                if (_logoReady || _waitTries > 30) {
-                    clearInterval(_waitTimer);
-                    _generatePDF(htmlString, filename, onDone);
-                }
-            }, 100);
-            return;
-        }
+        var isBlank   = !(data && data.appNumber);
+        var isCricket = (sport === 'cricket');
+        var pdf = new jsPDF({orientation:'portrait', unit:'mm', format:'a4'});
+        var PW=210, PH=297, M=14, CW=PW-M*2;
+        var HDR=68; // header height mm
 
-        var A4_W_MM = 210, A4_H_MM = 297, MARGIN = 8;
-        var iframeW = 794; // ≈ A4 width at 96dpi
+        // â”€â”€ HEADER BG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ï¿½ï¿½ï¿½â”€â”€â”€â”€
+        _fillRect(pdf, 0, 0, PW, HDR, 26, 58, 82);
+        _fillRect(pdf, 0, HDR-5, PW, 5, 20, 46, 66);
 
-        // ── Render container ────────────────────────────────────────────────
-        // Use a hidden <div> on iOS (iframe srcdoc unreliable on older iOS),
-        // use a hidden <iframe> on everything else for isolation.
-        var useDiv = _isIOS;
-        var renderEl, cleanupEl;
-
-        if (useDiv) {
-            // Render into an off-screen div — iOS fully supports this path
-            renderEl = document.createElement('div');
-            renderEl.setAttribute('style',
-                'position:fixed;left:-9999px;top:0;width:' + iframeW + 'px;' +
-                'height:auto;overflow:visible;background:#fff;z-index:-1;pointer-events:none;');
-            renderEl.innerHTML = htmlString;
-            document.body.appendChild(renderEl);
-            cleanupEl = renderEl;
-
-            // Give the browser one frame to lay out the DOM
-            setTimeout(function () {
-                _captureAndBuild(renderEl.querySelector('.wrap') || renderEl, cleanupEl, iframeW, A4_W_MM, A4_H_MM, MARGIN, filename, onDone);
-            }, 350);
-
-        } else {
-            // Desktop / Android: use iframe with srcdoc for clean isolation
-            var iframe = document.createElement('iframe');
-            iframe.setAttribute('style',
-                'position:fixed;left:-9999px;top:0;width:' + iframeW + 'px;' +
-                'height:1200px;border:none;visibility:hidden;pointer-events:none;');
-            // srcdoc avoids document.write and is well-supported on modern browsers
-            iframe.srcdoc = htmlString;
-            document.body.appendChild(iframe);
-            cleanupEl = iframe;
-
-            var _tries = 0;
-            var _poll = setInterval(function () {
-                _tries++;
-                var iDoc = iframe.contentDocument || (iframe.contentWindow && iframe.contentWindow.document);
-                var ready = iDoc && iDoc.readyState === 'complete' && iDoc.querySelector('.wrap');
-                if (ready || _tries > 30) {
-                    clearInterval(_poll);
-                    if (!ready) {
-                        console.error('[MAC] iframe did not load in time');
-                        if (document.body.contains(cleanupEl)) document.body.removeChild(cleanupEl);
-                        return;
-                    }
-                    var content = iDoc.querySelector('.wrap') || iDoc.body;
-                    var fullH = Math.max(iDoc.body.scrollHeight, content.scrollHeight, 200);
-                    iframe.style.height = fullH + 'px';
-                    // Extra frame for repaint
-                    setTimeout(function () {
-                        _captureAndBuild(content, cleanupEl, iframeW, A4_W_MM, A4_H_MM, MARGIN, filename, onDone);
-                    }, 200);
-                }
-            }, 100);
-        }
-    }
-
-    // ── Shared capture + PDF build ────────────────────────────────────────
-    function _captureAndBuild(contentEl, cleanupEl, iframeW, A4_W_MM, A4_H_MM, MARGIN, filename, onDone) {
-        html2canvas(contentEl, {
-            scale: 2,
-            useCORS: true,
-            allowTaint: true,
-            backgroundColor: '#ffffff',
-            windowWidth: iframeW,
-            width: iframeW,
-            scrollX: 0,
-            scrollY: 0,
-            logging: false
-        }).then(function (canvas) {
-            var jsPDF = window.jspdf && window.jspdf.jsPDF;
-            if (!jsPDF) { console.error('[MAC] jsPDF not loaded'); return; }
-
-            var pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-            var printW = A4_W_MM - MARGIN * 2;
-            var printH = A4_H_MM - MARGIN * 2;
-            var aspect = canvas.height / canvas.width;
-            var imgW = printW, imgH = printW * aspect;
-            if (imgH > printH) { imgH = printH; imgW = printH / aspect; }
-            var xOff = MARGIN + (printW - imgW) / 2;
-
-            var imgData = canvas.toDataURL('image/jpeg', 0.96);
-            pdf.addImage(imgData, 'JPEG', xOff, MARGIN, imgW, imgH);
-
-            // Deliver: blob approach works on all platforms including iOS
-            var pdfBlob = pdf.output('blob');
-            _deliverPDF(pdfBlob, filename);
-
-            if (document.body.contains(cleanupEl)) document.body.removeChild(cleanupEl);
-            if (typeof onDone === 'function') onDone();
-
-        }).catch(function (err) {
-            console.error('[MAC] html2canvas error:', err);
-            if (document.body.contains(cleanupEl)) document.body.removeChild(cleanupEl);
-        });
-    }
-
-    // ===== ON-DEMAND DOWNLOAD (called by Download button in success panel) =====
-    function downloadApplicationForm(sport) {
-        const data = _lastSubmission[sport];
-        if (!data) return;
-        // Generate sport-specific offline/download ID
-        const offlineNum    = generateOfflineNumber(sport);   // MAC-CRIC-OFF-XXXX or MAC-FTB-OFF-XXXX
-        data.offlineNum     = offlineNum;
-        const html  = buildApplicationHTML(sport, data);
-        // Filename:  MAC-CRIC-OFF-0001_MAC-CRIC-0001_Rahul_Sharma.pdf
-        const fname = `${offlineNum}_${data.appNumber}_${(data.name || 'Application').replace(/\s+/g,'_')}.pdf`;
-        _generatePDF(html, fname, function() {
-            console.log(`[MAC] Download complete. ID: ${offlineNum} | App: ${data.appNumber} | File: ${fname}`);
-        });
-    }
-
-    // ===== MODAL FUNCTIONS (overlay pattern) =====
-    function openModal(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        // Reset success panels and form on each open
-        const success = el.querySelector('.modal-success');
-        const formWrap = el.querySelector('[id$="-form-wrap"]');
-        if (success) success.style.display = 'none';
-        if (formWrap) {
-            formWrap.style.display = '';
-            const form = formWrap.querySelector('form');
-            if (form) form.reset();
-            // Clear readonly age fields
-            formWrap.querySelectorAll('input[readonly]').forEach(i => i.value = '');
-        }
-        // Clear app number display
-        const appNumEl = el.querySelector('.app-number-value');
-        if (appNumEl) appNumEl.textContent = '—';
-    }
-
-    function closeModal(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.classList.remove('open');
-        document.body.style.overflow = '';
-    }
-
-    // Close on backdrop click
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('modal-overlay')) {
-            e.target.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-    });
-
-    // Close on Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            document.querySelectorAll('.modal-overlay.open').forEach(m => {
-                m.classList.remove('open');
+        // â”€â”€ SPORT VECTOR ART â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        if (isCricket) {
+            // Left: stumps + bat + ball
+            var stx=18, sty=10, sth=32, stgap=5;
+            pdf.setDrawColor(212,165,116); pdf.setLineWidth(1.2);
+            [stx, stx+stgap, stx+stgap*2].forEach(function(sx){
+                pdf.line(sx, sty, sx, sty+sth);
+                pdf.setLineWidth(0.8); pdf.line(sx-1,sty,sx+1,sty); pdf.setLineWidth(1.2);
             });
-            document.body.style.overflow = '';
+            pdf.setLineWidth(0.7); pdf.line(stx-1,sty,stx+stgap*2+1,sty);
+            pdf.setLineWidth(2.8); pdf.line(10,48,34,20);
+            pdf.setLineWidth(1.3); pdf.line(34,20,38,14);
+            pdf.setFillColor(180,30,30); pdf.circle(8,38,4,'F');
+            pdf.setDrawColor(255,200,200); pdf.setLineWidth(0.4);
+            pdf.line(5,36,11,36); pdf.line(4,38,12,38); pdf.line(5,40,11,40);
+            // Right: stumps + bat + ball (mirror)
+            var stx2=PW-28;
+            pdf.setDrawColor(212,165,116); pdf.setLineWidth(1.2);
+            [stx2, stx2+stgap, stx2+stgap*2].forEach(function(sx){
+                pdf.line(sx,sty,sx,sty+sth);
+                pdf.setLineWidth(0.8); pdf.line(sx-1,sty,sx+1,sty); pdf.setLineWidth(1.2);
+            });
+            pdf.setLineWidth(0.7); pdf.line(stx2-1,sty,stx2+stgap*2+1,sty);
+            pdf.setLineWidth(2.8); pdf.line(PW-10,48,PW-34,20);
+            pdf.setLineWidth(1.3); pdf.line(PW-34,20,PW-38,14);
+            pdf.setFillColor(180,30,30); pdf.circle(PW-8,38,4,'F');
+            pdf.setDrawColor(255,200,200); pdf.setLineWidth(0.4);
+            pdf.line(PW-11,36,PW-5,36); pdf.line(PW-12,38,PW-4,38); pdf.line(PW-11,40,PW-5,40);
+        } else {
+            // Left: football
+            var fcx=22, fcy=30, fcr=17;
+            pdf.setDrawColor(212,165,116); pdf.setLineWidth(0.8);
+            pdf.setFillColor(255,255,255); pdf.circle(fcx,fcy,fcr,'FD');
+            pdf.setFillColor(30,30,30);
+            _drawPoly(pdf, _pentaPoints(fcx,fcy,5.5,0), 'F');
+            pdf.setFillColor(60,60,60);
+            for (var pi=0; pi<5; pi++) {
+                var a1=(pi*72-90)*Math.PI/180;
+                _drawPoly(pdf, _pentaPoints(fcx+Math.cos(a1)*10.5, fcy+Math.sin(a1)*10.5, 4.2, a1+Math.PI), 'F');
+            }
+            pdf.setDrawColor(212,165,116); pdf.setLineWidth(1); pdf.circle(fcx,fcy,fcr,'D');
+            // Right: football
+            var fcx2=PW-22;
+            pdf.setFillColor(255,255,255); pdf.circle(fcx2,fcy,fcr,'FD');
+            pdf.setFillColor(30,30,30);
+            _drawPoly(pdf, _pentaPoints(fcx2,fcy,5.5,0), 'F');
+            pdf.setFillColor(60,60,60);
+            for (var pi2=0; pi2<5; pi2++) {
+                var a2=(pi2*72-90)*Math.PI/180;
+                _drawPoly(pdf, _pentaPoints(fcx2+Math.cos(a2)*10.5, fcy+Math.sin(a2)*10.5, 4.2, a2+Math.PI), 'F');
+            }
+            pdf.setDrawColor(212,165,116); pdf.setLineWidth(1); pdf.circle(fcx2,fcy,fcr,'D');
         }
-    });
 
-    // ===== HELPER: Calculate age from DOB string =====
-    function calculateAge(dobStr) {
-        const dob = new Date(dobStr);
-        const today = new Date();
-        let age = today.getFullYear() - dob.getFullYear();
-        const m = today.getMonth() - dob.getMonth();
-        if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
-        return age;
+        // â”€â”€ LOGO (logo-sample.png centred) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        var logoSz=28, logoX=PW/2-logoSz/2, logoY=6;
+        if (typeof MAC_LOGO_SRC==='string' && MAC_LOGO_SRC.indexOf('data:image/png')===0) {
+            try { pdf.addImage(MAC_LOGO_SRC,'PNG',logoX,logoY,logoSz,logoSz); } catch(e){}
+        } else {
+            // Fallback circle badge
+            pdf.setFillColor(212,165,116); pdf.circle(PW/2, logoY+logoSz/2, logoSz/2, 'F');
+            pdf.setTextColor(26,58,82); pdf.setFontSize(11); pdf.setFont('helvetica','bold');
+            pdf.text('MAC', PW/2, logoY+logoSz/2+4, {align:'center'});
+        }
+
+        // â”€â”€ HEADER TEXT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        _textC(pdf, 'MAJILPUR ATHLETIC CLUB', PW, 40, 212,165,116, 13, 'bold');
+        _textC(pdf, (isCricket?'Cricket':'Football')+' Coaching Camp  \u2014  '+(isBlank?'Admission Form':'Application'), PW, 47, 255,255,255, 9, 'normal');
+        _textC(pdf, 'Est. 1945', PW, 53, 180,140,90, 7.5, 'italic');
+
+        // â”€â”€ BADGE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        var badgeLabel = isBlank ? (data&&data.offlineNum?data.offlineNum:'') : (data.appNumber||'');
+        if (badgeLabel) {
+            var bw=76, bh=9, bx=PW/2-bw/2, by=57;
+            pdf.setFillColor(40,70,100); pdf.rect(bx,by,bw,bh,'F');
+            pdf.setDrawColor(212,165,116); pdf.setLineWidth(0.4); pdf.rect(bx,by,bw,bh,'S');
+            _textC(pdf, (isBlank?'FORM ID: ':'APPLICATION NO.: ')+badgeLabel, PW, by+6, 212,165,116, 9, 'bold');
+        }
+
+        // â”€â”€ BODY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        var y = HDR+8;
+        var dateStr = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+
+        y = _sectionLabel(pdf, isBlank?'Form Details':'Submission Details', M, y, CW);
+        if (!isBlank) {
+            y = _fieldRow(pdf,'Application No.',data.appNumber,'Date Submitted',dateStr, M,y,PW,M,9);
+        } else {
+            y = _fieldRow(pdf,'Form ID',(data&&data.offlineNum)||'','Date',dateStr, M,y,PW,M,9);
+        }
+
+        y = _sectionLabel(pdf,'Personal Details', M, y, CW);
+        if (!isBlank && data) {
+            var dobStr = data.dob ? new Date(data.dob).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}) : '\u2014';
+            if (data.age) dobStr += '  (Age: '+data.age+')';
+            y = _fieldRow(pdf,'Full Name',data.name,'Date of Birth & Age',dobStr, M,y,PW,M,9);
+            y = _fieldRow(pdf,'Phone Number',data.phone,'Email Address',data.email||'\u2014', M,y,PW,M,9);
+            y = _field(pdf,'Full Address',data.address, M,y,CW,12);
+            y = _fieldRow(pdf,"Father's / Mother's Name",data.parent,'School / Institution',data.school, M,y,PW,M,9);
+        } else {
+            y = _fieldRow(pdf,'Full Name *','','Date of Birth & Age *','', M,y,PW,M,9);
+            y = _fieldRow(pdf,'Phone Number *','','Email Address (optional)','', M,y,PW,M,9);
+            y = _field(pdf,'Full Address *','', M,y,CW,14);
+            y = _fieldRow(pdf,"Father's / Mother's Name *",'',"School / Institution *",'', M,y,PW,M,9);
+        }
+
+        y = _sectionLabel(pdf, (isCricket?'Cricket':'Football')+' Details', M, y, CW);
+        if (isCricket) {
+            y = _field(pdf,'Previous Cricket Experience',(!isBlank&&data)?(data.experience||'None stated'):'', M,y,CW,14);
+        } else {
+            y = _fieldRow(pdf,'Preferred Position',(!isBlank&&data)?(data.position||'Not specified'):'',
+                              'Previous Experience',(!isBlank&&data)?(data.experience||'None stated'):'', M,y,PW,M,12);
+        }
+
+        // Signature row
+        y += 2;
+        var sigW=(CW-6)/2;
+        pdf.setFontSize(7); pdf.setFont('helvetica','bold'); pdf.setTextColor(26,58,82);
+        pdf.text('APPLICANT / GUARDIAN SIGNATURE', M, y);
+        pdf.setDrawColor(26,58,82); pdf.setLineWidth(0.5);
+        pdf.line(M, y+10, M+sigW, y+10);
+        pdf.setFontSize(6.5); pdf.setFont('helvetica','normal'); pdf.setTextColor(153,153,153);
+        pdf.text('Signature with date', M, y+13);
+        var rx=M+sigW+6;
+        pdf.setFontSize(7); pdf.setFont('helvetica','bold'); pdf.setTextColor(26,58,82);
+        pdf.text('PARENT / GUARDIAN NAME & CONTACT', rx, y);
+        pdf.line(rx, y+10, rx+sigW, y+10);
+        pdf.setFontSize(6.5); pdf.setFont('helvetica','normal'); pdf.setTextColor(153,153,153);
+        pdf.text('If applicant is a minor', rx, y+13);
+        y += 18;
+
+        // Office use (blank forms only)
+        if (isBlank) {
+            pdf.setDrawColor(176,190,197); pdf.setLineWidth(0.4);
+            pdf.setLineDashPattern([1.5,1.5],0);
+            pdf.rect(M,y,CW,22,'S');
+            pdf.setLineDashPattern([],0);
+            pdf.setFontSize(7); pdf.setFont('helvetica','bold'); pdf.setTextColor(136,136,136);
+            pdf.text('FOR OFFICE USE ONLY', M+3, y+5);
+            var ow=(CW-6)/3;
+            ['Received By','Verified By','Enrolment Date'].forEach(function(lbl,i){
+                var ox=M+3+i*(ow+3);
+                pdf.setFontSize(6.5); pdf.setFont('helvetica','bold'); pdf.setTextColor(170,170,170);
+                pdf.text(lbl.toUpperCase(), ox, y+10);
+                pdf.setFillColor(249,247,244); pdf.setDrawColor(176,190,197); pdf.setLineWidth(0.25);
+                pdf.rect(ox, y+11.5, ow-3, 7, 'FD');
+            });
+            y += 26;
+        }
+
+        // Footer
+        _fillRect(pdf, 0, PH-18, PW, 18, 10,14,39);
+        _textC(pdf,'Majilpur Athletic Club  \u00B7  Est. 1945  \u00B7  Majilpur, Kolkata, West Bengal 743337', PW, PH-10, 212,165,116, 8,'bold');
+        _textC(pdf,'info@majilpurathleticclub.com'+(badgeLabel?'   |   '+badgeLabel:''), PW, PH-5.5, 160,160,160, 7,'normal');
+
+        return pdf;
+    }
+
+    // ===== DELIVER PDF =====
+    // Safari/iOS: pdf.output('datauristring') â†’ window.location.href (synchronous, no popup)
+    // Others    : pdf.save(filename) â€” browser download dialog
+    function _deliverPDF(pdf, filename) {
+        if (!pdf) return;
+        try {
+            if (_isSafari) {
+                window.location.href = pdf.output('datauristring');
+            } else {
+                pdf.save(filename);
+            }
+        } catch(e) {
+            console.error('[MAC] PDF delivery error:', e);
+            try { window.open(pdf.output('bloburl'),'_blank'); } catch(e2){}
+        }
+    }
+
+    // ===== GENERATE + DELIVER (waits for logo) =====
+    function _generatePDF(sport, data, filename) {
+        function _build() {
+            var pdf = _buildPDF(sport, data);
+            _deliverPDF(pdf, filename);
+        }
+        if (_logoReady) { _build(); }
+        else {
+            var tries=0, t=setInterval(function(){
+                tries++;
+                if (_logoReady||tries>30){ clearInterval(t); _build(); }
+            },100);
+        }
+    }
+
+    // ===== ON-DEMAND DOWNLOAD (after form submit) =====
+    function downloadApplicationForm(sport) {
+        var data = _lastSubmission[sport];
+        if (!data) return;
+        var offlineNum = generateOfflineNumber(sport);
+        data.offlineNum = offlineNum;
+        var fname = offlineNum+'_'+data.appNumber+'_'+(data.name||'Application').replace(/\s+/g,'_')+'.pdf';
+        _generatePDF(sport, data, fname);
     }
 
     // ===== CRICKET FORM SUBMIT =====
@@ -3904,7 +3877,6 @@
             type: 'Cricket'
         };
         _lastSubmission['cricket'] = data;
-        // Show app number in success panel
         document.getElementById('cricket-app-number').textContent = appNumber;
         showPhoneNotification(data);
         showSmsNotification(data);
@@ -3913,7 +3885,6 @@
         document.getElementById('cricket-form-wrap').style.display = 'none';
         document.getElementById('cricket-success').style.display = 'block';
         this.reset();
-        // Reset age field after form reset
         document.getElementById('cricket-age').value = '';
     });
 
@@ -3938,7 +3909,6 @@
             type: 'Football'
         };
         _lastSubmission['football'] = data;
-        // Show app number in success panel
         document.getElementById('football-app-number').textContent = appNumber;
         showPhoneNotification(data);
         showSmsNotification(data);
@@ -3947,11 +3917,125 @@
         document.getElementById('football-form-wrap').style.display = 'none';
         document.getElementById('football-success').style.display = 'block';
         this.reset();
-        // Reset age field after form reset
         document.getElementById('football-age').value = '';
     });
 
-    // ===== CONTACT FORM SUBMIT =====
+    // ===== HELPER: Calculate age from DOB string =====
+    function calculateAge(dobStr) {
+        const dob = new Date(dobStr);
+        const today = new Date();
+        let age = today.getFullYear() - dob.getFullYear();
+        const m = today.getMonth() - dob.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+        return age;
+    }
+
+    // ===== DOWNLOAD FORM (blank) =====
+    function downloadForm(sport) {
+        var offlineNum = generateOfflineNumber(sport);
+        var fname = offlineNum+'_'+(sport==='cricket'?'Cricket':'Football')+'_Admission_Form.pdf';
+        _generatePDF(sport, {offlineNum: offlineNum}, fname);
+    }
+
+    // ===== MODAL FUNCTIONS =====
+    function openModal(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        const success = el.querySelector('.modal-success');
+        const formWrap = el.querySelector('[id$="-form-wrap"]');
+        if (success) success.style.display = 'none';
+        if (formWrap) {
+            formWrap.style.display = '';
+            const form = formWrap.querySelector('form');
+            if (form) form.reset();
+            formWrap.querySelectorAll('input[readonly]').forEach(i => i.value = '');
+        }
+        const appNumEl = el.querySelector('.app-number-value');
+        if (appNumEl) appNumEl.textContent = 'â€”';
+    }
+    function closeModal(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal-overlay')) {
+            e.target.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Show Phone Notification
+    function showPhoneNotification(formData) {
+        let notification = document.getElementById('phone-notification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'phone-notification';
+            notification.innerHTML = `<div class="notification-icon"><i class="fas fa-check-circle"></i></div><div class="notification-body"><div class="notification-title">MESSAGE RECEIVED</div><div class="notification-text" id="notification-message"></div></div><button class="notification-close" onclick="closeNotification()"><i class="fas fa-times"></i></button>`;
+            document.body.appendChild(notification);
+        }
+        const message = formData.type === 'Contact Form' ? `${formData.name} - ${formData.subject}` : `${formData.name} (${formData.type}) - Will contact soon`;
+        document.getElementById('notification-message').textContent = message;
+        notification.classList.add('show');
+        setTimeout(() => notification.classList.remove('show'), 5000);
+    }
+    function closeNotification() {
+        const n = document.getElementById('phone-notification');
+        if (n) n.classList.remove('show');
+    }
+    function showSmsNotification(formData) {
+        let s = document.getElementById('sms-notification');
+        if (!s) {
+            s = document.createElement('div'); s.id = 'sms-notification';
+            s.innerHTML = `<i class="fas fa-envelope"></i><div id="sms-notification-text"><div id="sms-notification-title">SMS NOTIFICATION</div><div id="sms-notification-message"></div></div>`;
+            document.body.appendChild(s);
+        }
+        document.getElementById('sms-notification-message').textContent = formData.type==='Contact Form' ? `Contact inquiry received. SMS sent to ${formData.phone}` : `Confirmation sent to ${formData.phone}`;
+        s.classList.add('show');
+        setTimeout(() => s.classList.remove('show'), 6000);
+    }
+    function showNtfyPushNotification(formData) {
+        let n = document.getElementById('ntfy-push-notification');
+        if (!n) {
+            n = document.createElement('div'); n.id = 'ntfy-push-notification';
+            n.innerHTML = `<div class="ntfy-push-icon"><i class="fas fa-bell"></i></div><div class="ntfy-push-body"><div class="ntfy-push-title">ALERT</div><div class="ntfy-push-message" id="ntfy-push-message"></div></div><button class="ntfy-push-close" onclick="closeNtfyNotification()"><i class="fas fa-times"></i></button>`;
+            document.body.appendChild(n);
+        }
+        document.getElementById('ntfy-push-message').textContent = `${formData.name} (${formData.type}) - ${formData.phone}`;
+        n.classList.add('show');
+        setTimeout(() => n.classList.remove('show'), 7000);
+    }
+    function closeNtfyNotification() {
+        const n = document.getElementById('ntfy-push-notification');
+        if (n) n.classList.remove('show');
+    }
+    function sendNtfyAlert(formData) {
+        const ntfyTopic = 'mac-alert';
+        let message, title;
+        if (formData.type === 'Contact Form') {
+            title = 'Contact Form Submission';
+            message = `ðŸ“§ NEW CONTACT INQUIRY\n\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`;
+        } else {
+            title = `${formData.type} Coaching Camp Application`;
+            message = `ðŸ† NEW ${formData.type.toUpperCase()} APPLICATION\n\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}`;
+        }
+        fetch(`https://ntfy.sh/${ntfyTopic}`, {
+            method: 'POST',
+            headers: {'Content-Type':'text/plain','Title':title},
+            body: message
+        }).catch(error => console.error('Error sending ntfy.sh alert:', error));
+    }
+
+    // ===== CONTACT FORM =====
     if (document.getElementById('contactForm')) {
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -3967,294 +4051,12 @@
             showSmsNotification(formData);
             showNtfyPushNotification(formData);
             sendNtfyAlert(formData);
-            // Show confirmation note inline
             const note = this.querySelector('.form-note');
-            if (note) { note.textContent = '✅ Message sent! We\'ll get back to you within 24 hours.'; note.style.color = '#10b981'; note.style.fontWeight = '700'; }
+            if (note) { note.textContent = 'âœ… Message sent! We\'ll get back to you within 24 hours.'; note.style.color='#10b981'; note.style.fontWeight='700'; }
             this.reset();
         });
     }
 
-    // Show Phone Notification
-    function showPhoneNotification(formData) {
-        let notification = document.getElementById('phone-notification');
-        if (!notification) {
-            notification = document.createElement('div');
-            notification.id = 'phone-notification';
-            notification.innerHTML = `
-                <div class="notification-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <div class="notification-body">
-                    <div class="notification-title">MESSAGE RECEIVED</div>
-                    <div class="notification-text" id="notification-message"></div>
-                </div>
-                <button class="notification-close" onclick="closeNotification()">
-                    <i class="fas fa-times"></i>
-                </button>
-            `;
-            document.body.appendChild(notification);
-        }
-
-        // Update notification content
-        const message = formData.type === 'Contact Form'
-            ? `${formData.name} - ${formData.subject}`
-            : `${formData.name} (${formData.type}) - Will contact soon`;
-
-        document.getElementById('notification-message').textContent = message;
-
-        // Show notification
-        notification.classList.add('show');
-
-        // Auto close after 5 seconds
-        setTimeout(() => {
-            notification.classList.remove('show');
-        }, 5000);
-    }
-
-    function closeNotification() {
-        const notification = document.getElementById('phone-notification');
-        if (notification) {
-            notification.classList.remove('show');
-        }
-    }
-
-    // Show SMS Notification
-    function showSmsNotification(formData) {
-        let smsNotif = document.getElementById('sms-notification');
-        if (!smsNotif) {
-            smsNotif = document.createElement('div');
-            smsNotif.id = 'sms-notification';
-            smsNotif.innerHTML = `
-                <i class="fas fa-envelope"></i>
-                <div id="sms-notification-text">
-                    <div id="sms-notification-title">SMS NOTIFICATION</div>
-                    <div id="sms-notification-message"></div>
-                </div>
-            `;
-            document.body.appendChild(smsNotif);
-        }
-
-        // Update SMS notification content
-        const message = formData.type === 'Contact Form'
-            ? `Contact inquiry received. SMS sent to ${formData.phone}`
-            : `Confirmation sent to ${formData.phone}`;
-
-        document.getElementById('sms-notification-title').textContent = 'SMS NOTIFICATION';
-        document.getElementById('sms-notification-message').textContent = message;
-
-        // Show SMS notification
-        smsNotif.classList.add('show');
-
-        // Auto close after 6 seconds
-        setTimeout(() => {
-            smsNotif.classList.remove('show');
-        }, 6000);
-    }
-
-    // Show ntfy.sh Push Notification
-    function showNtfyPushNotification(formData) {
-        let ntfyNotif = document.getElementById('ntfy-push-notification');
-        if (!ntfyNotif) {
-            ntfyNotif = document.createElement('div');
-            ntfyNotif.id = 'ntfy-push-notification';
-            ntfyNotif.innerHTML = `
-                <div class="ntfy-push-icon">
-                    <i class="fas fa-bell"></i>
-                </div>
-                <div class="ntfy-push-body">
-                    <div class="ntfy-push-title">ALERT</div>
-                    <div class="ntfy-push-message" id="ntfy-push-message"></div>
-                </div>
-                <button class="ntfy-push-close" onclick="closeNtfyNotification()">
-                    <i class="fas fa-times"></i>
-                </button>
-            `;
-            document.body.appendChild(ntfyNotif);
-        }
-
-        // Update ntfy notification content
-        document.getElementById('ntfy-push-message').textContent =
-            `${formData.name} (${formData.type}) - ${formData.phone}`;
-
-        // Show ntfy notification
-        ntfyNotif.classList.add('show');
-
-        // Auto close after 7 seconds
-        setTimeout(() => {
-            ntfyNotif.classList.remove('show');
-        }, 7000);
-    }
-
-    function closeNtfyNotification() {
-        const ntfyNotif = document.getElementById('ntfy-push-notification');
-        if (ntfyNotif) {
-            ntfyNotif.classList.remove('show');
-        }
-    }
-
-    // Send ntfy.sh Alert via Push Notification
-    function sendNtfyAlert(formData) {
-        const ntfyTopic = 'mac-alert'; // ntfy.sh topic
-
-        let message, title;
-        if (formData.type === 'Contact Form') {
-            title = `Contact Form Submission`;
-            message = `📧 NEW CONTACT INQUIRY\n\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`;
-        } else {
-            title = `${formData.type} Coaching Camp Application`;
-            message = `🏆 NEW ${formData.type.toUpperCase()} APPLICATION\n\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}`;
-        }
-
-        // Send to ntfy.sh
-        fetch(`https://ntfy.sh/${ntfyTopic}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'text/plain',
-                'Title': title
-            },
-            body: message
-        })
-            .then(response => {
-                console.log('✅ ntfy.sh Alert Sent Successfully');
-                console.log('Topic:', ntfyTopic);
-                console.log('Title:', title);
-                console.log('Message:', message);
-            })
-            .catch(error => {
-                console.error('Error sending ntfy.sh alert:', error);
-            });
-    }
-
-    // Download Form Function — same look & feel as filled application form, fields left blank
-    function downloadForm(sport) {
-        const offlineNum = generateOfflineNumber(sport);
-        const html  = buildBlankFormHTML(sport, offlineNum);
-        const fname = `${offlineNum}_${sport === 'cricket' ? 'Cricket' : 'Football'}_Admission_Form.pdf`;
-        _generatePDF(html, fname, function() {
-            console.log(`[MAC] Blank form download: ${offlineNum} | File: ${fname}`);
-        });
-    }
-
-    // Builds a blank (empty-field) version of the application form — identical styling to buildApplicationHTML
-    function buildBlankFormHTML(sport, offlineNum) {
-        const isCricket = sport === 'cricket';
-        const today     = new Date().toLocaleDateString('en-IN', {day:'numeric', month:'long', year:'numeric'});
-        // Logo: use the globally-defined inline SVG crest (MAC_LOGO_SRC)
-        const logoImg = (typeof MAC_LOGO_SRC !== 'undefined' && MAC_LOGO_SRC)
-            ? `<img src="${MAC_LOGO_SRC}" alt="Majilpur Athletic Club Logo" style="height:78px;width:78px;object-fit:contain;display:block;margin:0 auto 10px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));">`
-            : `<div style="font-size:2.4em;margin-bottom:8px;">🏆</div>`;
-        // Reuse the exact same CSS & layout as buildApplicationHTML
-        return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MAC — ${isCricket ? 'Cricket' : 'Football'} Admission Form ${offlineNum}</title>
-<style>
-  *{box-sizing:border-box}
-  body{font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:20px}
-  .wrap{max-width:660px;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.13);overflow:hidden}
-  .hdr{background:linear-gradient(135deg,#1a3a52,#2a5a72);color:#fff;padding:28px 36px 24px;text-align:center}
-  .hdr h1{margin:0;font-size:1.5em;letter-spacing:1px}
-  .hdr p{margin:6px 0 0;opacity:.8;font-size:.9em}
-  .num-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-  .app-num{display:inline-block;padding:8px 22px;border-radius:8px;background:rgba(212,165,116,.18);border:1.5px dashed rgba(212,165,116,.7);color:#d4a574;font-size:1.1em;font-weight:700;letter-spacing:2px}
-  .num-label{display:block;font-size:.62em;letter-spacing:2px;text-transform:uppercase;opacity:.75;margin-bottom:3px}
-  .body{padding:32px 36px}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
-  .field label{display:block;font-size:.72em;font-weight:700;color:#1a3a52;text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px}
-  .field .val{background:#f9f7f4;border:1px solid #e5e7eb;border-radius:6px;padding:10px 14px;font-size:.9em;color:#333;min-height:38px;word-break:break-word}
-  .field .val.blank{background:#fff;border-bottom:2px solid #1a3a52;border-top:none;border-left:none;border-right:none;border-radius:0;color:transparent}
-  .field .val.blank-box{background:#fff;border:1.5px solid #b0bec5}
-  .section-label{font-size:.7em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#d4a574;margin:24px 0 12px;border-bottom:2px solid #f0eff0;padding-bottom:6px}
-  .ftr{background:#0a0e27;color:rgba(255,255,255,.6);text-align:center;padding:18px;font-size:.8em}
-  .ftr strong{color:#d4a574}
-  .sig-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
-  .sig-block label{display:block;font-size:.68em;font-weight:700;color:#1a3a52;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
-  .sig-line{border-bottom:1.5px solid #1a3a52;height:36px;margin-bottom:4px}
-  .sig-hint{font-size:.65em;color:#999}
-  .office-box{border:1.5px dashed #b0bec5;border-radius:7px;padding:14px 18px;margin-top:20px}
-  .office-title{font-size:.65em;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin-bottom:10px}
-  .office-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  .office-row label{font-size:.62em;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:4px}
-  @media print{body{background:#fff;padding:0}.wrap{box-shadow:none;border-radius:0}}
-</style>
-</head>
-<body>
-<div class="wrap">
-  <div class="hdr">
-    ${logoImg}
-    <h1>Majilpur Athletic Club</h1>
-    <p>${isCricket ? '🏏 Cricket' : '⚽ Football'} Coaching Camp — Admission Form</p>
-    <div class="num-row">
-      <div class="app-num"><span class="num-label">Form ID</span>${offlineNum}</div>
-    </div>
-  </div>
-  <div class="body">
-    <div class="section-label">Form Details</div>
-    <div class="row">
-      <div class="field"><label>Form ID</label><div class="val" style="font-weight:700;color:#1a3a52">${offlineNum}</div></div>
-      <div class="field"><label>Date</label><div class="val">${today}</div></div>
-    </div>
-
-    <div class="section-label">Personal Details</div>
-    <div class="row">
-      <div class="field"><label>Full Name <span style="color:#e53e3e">*</span></label><div class="val blank-box">&nbsp;</div></div>
-      <div class="field"><label>Date of Birth &amp; Age <span style="color:#e53e3e">*</span></label><div class="val blank-box">&nbsp;</div></div>
-    </div>
-    <div class="row">
-      <div class="field"><label>Phone Number <span style="color:#e53e3e">*</span></label><div class="val blank-box">&nbsp;</div></div>
-      <div class="field"><label>Email Address <span style="color:#888;font-weight:400">(optional)</span></label><div class="val blank-box">&nbsp;</div></div>
-    </div>
-    <div class="field" style="margin-bottom:18px"><label>Full Address <span style="color:#e53e3e">*</span></label><div class="val blank-box" style="min-height:54px">&nbsp;</div></div>
-    <div class="row">
-      <div class="field"><label>Father's / Mother's Name <span style="color:#e53e3e">*</span></label><div class="val blank-box">&nbsp;</div></div>
-      <div class="field"><label>School / Institution <span style="color:#e53e3e">*</span></label><div class="val blank-box">&nbsp;</div></div>
-    </div>
-
-    <div class="section-label">${isCricket ? 'Cricket' : 'Football'} Details</div>
-    ${isCricket
-      ? `<div class="field"><label>Previous Cricket Experience</label><div class="val blank-box" style="min-height:60px">&nbsp;</div></div>`
-      : `<div class="row">
-           <div class="field"><label>Preferred Position</label>
-             <div class="val blank-box" style="font-size:.82em;color:#555">
-               ☐ Goalkeeper &nbsp; ☐ Defender &nbsp; ☐ Midfielder<br>☐ Forward / Striker &nbsp; ☐ Not sure yet
-             </div>
-           </div>
-           <div class="field"><label>Previous Football Experience</label><div class="val blank-box" style="min-height:60px">&nbsp;</div></div>
-         </div>`
-    }
-
-    <div class="sig-row">
-      <div class="sig-block">
-        <label>Applicant / Guardian Signature</label>
-        <div class="sig-line"></div>
-        <div class="sig-hint">Signature with date</div>
-      </div>
-      <div class="sig-block">
-        <label>Parent / Guardian Name &amp; Contact</label>
-        <div class="sig-line"></div>
-        <div class="sig-hint">If applicant is a minor</div>
-      </div>
-    </div>
-
-    <div class="office-box">
-      <div class="office-title">🔒 For Office Use Only</div>
-      <div class="office-row">
-        <div><label>Received By</label><div class="val blank-box">&nbsp;</div></div>
-        <div><label>Verified By</label><div class="val blank-box">&nbsp;</div></div>
-        <div><label>Enrolment Date</label><div class="val blank-box">&nbsp;</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="ftr"><strong>Majilpur Athletic Club</strong> &nbsp;·&nbsp; Est. 1945 &nbsp;·&nbsp; Majilpur, Kolkata, West Bengal 743337<br>info@majilpurathleticclub.com &nbsp;·&nbsp; Form ID: ${offlineNum}</div>
-</div>
-</body>
-</html>`;
-    }
-
-    function getCricketFormHTML() { return buildBlankFormHTML('cricket', generateOfflineNumber('cricket')); }
-    function getFootballFormHTML() { return buildBlankFormHTML('football', generateOfflineNumber('football')); }
 
     /* ========== FADE-IN ON SCROLL ========== */
     (function () {
@@ -4369,71 +4171,7 @@
         if (statsEl) observer.observe(statsEl);
     })();
 
-    function getFootballFormHTML() {
-        return `
-<!DOCTYPE html>
-<html>
-<head>
-<title>Football Coaching Camp Application Form</title>
-<style>
-    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
-    .container { max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid #1a3a52; padding-bottom: 20px; }
-    .header h1 { color: #1a3a52; margin: 0; font-size: 1.8em; }
-    .header p { color: #00bcd4; margin: 5px 0; }
-    .form-group { margin-bottom: 20px; }
-    label { display: block; margin-bottom: 5px; color: #1a3a52; font-weight: bold; }
-    input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: Arial; }
-    input:focus, textarea:focus { outline: none; border-color: #00bcd4; box-shadow: 0 0 5px rgba(0,188,212,0.3); }
-    .button { text-align: center; margin-top: 30px; }
-    button { background-color: #1a3a52; color: white; padding: 12px 30px; border: none; border-radius: 4px; cursor: pointer; font-size: 1em; }
-    button:hover { background-color: #00bcd4; }
-</style>
-</head>
-<body>
-<div class="container">
-    <div class="header">
-        <h1>⚽ Majilpur Athletic Club</h1>
-        <p>Football Coaching Camp Application Form</p>
-    </div>
-    <form>
-        <div class="form-group">
-            <label>Full Name *</label>
-            <input type="text" required>
-        </div>
-        <div class="form-group">
-            <label>Age *</label>
-            <input type="number" required>
-        </div>
-        <div class="form-group">
-            <label>Contact Number *</label>
-            <input type="tel" required>
-        </div>
-        <div class="form-group">
-            <label>Email *</label>
-            <input type="email" required>
-        </div>
-        <div class="form-group">
-            <label>Address *</label>
-            <textarea rows="3" required></textarea>
-        </div>
-        <div class="form-group">
-            <label>Preferred Position (Forward, Midfielder, Goalkeeper, etc.)</label>
-            <input type="text">
-        </div>
-        <div class="form-group">
-            <label>Previous Football Experience</label>
-            <textarea rows="3"></textarea>
-        </div>
-        <div class="button">
-            <button type="print" onclick="window.print()">Print Form</button>
-        </div>
-    </form>
-</div>
-</body>
-</html>
-        `;
-    }
 </script>
 </body>
 </html>
+
