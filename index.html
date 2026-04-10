@@ -3225,32 +3225,61 @@
     })();
 
     /* ============================================================
-       CLUB LOGO — inline SVG crest used in all generated PDFs.
-       No external file dependency — works offline & in iframes.
-       To use a real PNG instead, set MAC_LOGO_SRC to a base64 URI:
-         var MAC_LOGO_SRC = 'data:image/png;base64,<BASE64_DATA>';
+       CLUB LOGO — loaded from the real logo-sample.png, converted
+       to a base64 PNG via Canvas so html2canvas can render it
+       inside generated PDFs on all platforms including iOS.
+       MAC_LOGO_SRC starts as the SVG fallback crest, then is
+       asynchronously replaced with the real PNG once it loads.
        ============================================================ */
-    var MAC_LOGO_SRC = (function () {
+    // SVG fallback crest (used until real PNG loads)
+    var _MAC_SVG_FALLBACK = (function () {
         var svg =
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130">' +
             '<circle cx="65" cy="65" r="63" fill="#1a3a52" stroke="#d4a574" stroke-width="3.5"/>' +
             '<circle cx="65" cy="65" r="54" fill="none" stroke="rgba(212,165,116,0.3)" stroke-width="1"/>' +
-            // Shield
             '<path d="M65 20 L96 35 L96 66 Q96 90 65 106 Q34 90 34 66 L34 35 Z" fill="rgba(212,165,116,0.10)" stroke="#d4a574" stroke-width="1.5" stroke-linejoin="round"/>' +
-            // Crossed bat & ball (cricket) icon inside shield
             '<line x1="52" y1="80" x2="78" y2="54" stroke="#d4a574" stroke-width="3" stroke-linecap="round"/>' +
             '<circle cx="51" cy="81" r="5" fill="none" stroke="#d4a574" stroke-width="2"/>' +
             '<line x1="78" y1="54" x2="86" y2="46" stroke="#d4a574" stroke-width="4" stroke-linecap="round"/>' +
-            // "MAC" text
             '<text x="65" y="53" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#d4a574" letter-spacing="3">MAC</text>' +
-            // "EST 1945" text
             '<text x="65" y="66" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="rgba(212,165,116,0.9)" letter-spacing="1.5">EST. 1945</text>' +
-            // Bottom club name arc
             '<path id="_macArc" d="M 22,78 A 46,46 0 0,0 108,78" fill="none"/>' +
             '<text font-family="Arial,sans-serif" font-size="7" fill="rgba(255,255,255,0.55)">' +
             '<textPath href="#_macArc" startOffset="50%" text-anchor="middle" letter-spacing="1.2">MAJILPUR ATHLETIC CLUB</textPath></text>' +
             '</svg>';
         return 'data:image/svg+xml,' + encodeURIComponent(svg);
+    })();
+    var MAC_LOGO_SRC = _MAC_SVG_FALLBACK; // replaced below once real PNG loads
+
+    // Load the real club logo (logo-sample.png) and convert to base64 PNG via Canvas.
+    // This ensures html2canvas can capture it correctly in all browsers including iOS Safari.
+    var _logoReady = false; // becomes true once MAC_LOGO_SRC is a real base64 PNG
+    (function _loadRealLogo() {
+        var img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = function () {
+            try {
+                var c = document.createElement('canvas');
+                c.width  = img.naturalWidth  || img.width  || 200;
+                c.height = img.naturalHeight || img.height || 200;
+                var ctx = c.getContext('2d');
+                ctx.drawImage(img, 0, 0, c.width, c.height);
+                var b64 = c.toDataURL('image/png');
+                if (b64 && b64.length > 100) {
+                    MAC_LOGO_SRC = b64; // upgrade to real PNG
+                    console.log('[MAC] Logo loaded as base64 PNG (' + Math.round(b64.length / 1024) + ' KB)');
+                }
+            } catch (e) {
+                console.warn('[MAC] Could not convert logo to base64 (CORS/taint):', e.message);
+            }
+            _logoReady = true;
+        };
+        img.onerror = function () {
+            console.warn('[MAC] logo-sample.png not found, using SVG fallback.');
+            _logoReady = true;
+        };
+        // Use a cache-busting timestamp so browsers always reload from disk
+        img.src = './images/logo-sample.png?' + Date.now();
     })();
 
     // ===== SYNC AGE FROM DOB =====
@@ -3631,74 +3660,189 @@
     // ===== PDF GENERATION HELPER =====
     // Renders the HTML string into a hidden iframe, captures it with html2canvas,
     // and scales the entire content to fit perfectly on one A4 page.
+    // ===== iOS / iPad detection =====
+    var _isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+                 (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+    // ===== PDF OPEN/DOWNLOAD helper =====
+    // On desktop/Android → triggers a real file download via <a download>.
+    // On iOS/iPad        → converts blob to base64 data URL (blob URLs can't be
+    //                      opened in new tabs on iOS Safari due to security restrictions).
+    //                      A modal shows a tap-to-open button using the data URL.
+    function _deliverPDF(pdfBlob, filename) {
+        if (_isIOS) {
+            // iOS: blob URL new-tab is blocked by Safari — use base64 data URL instead
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                var dataUrl = reader.result; // data:application/pdf;base64,...
+                _showIOSGuide(dataUrl, filename);
+            };
+            reader.readAsDataURL(pdfBlob);
+        } else {
+            // Desktop / Android: standard anchor-download
+            var blobUrl = URL.createObjectURL(pdfBlob);
+            var a = document.createElement('a');
+            a.href = blobUrl;
+            a.download = filename;
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(function () {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(blobUrl);
+            }, 5000);
+        }
+    }
+
+    // ===== iOS guide overlay =====
+    function _showIOSGuide(dataUrl, filename) {
+        // Remove any existing overlay
+        var old = document.getElementById('__mac_ios_overlay');
+        if (old) old.remove();
+
+        var ov = document.createElement('div');
+        ov.id = '__mac_ios_overlay';
+        ov.setAttribute('style',
+            'position:fixed;inset:0;z-index:2147483646;background:rgba(10,14,39,0.92);' +
+            'display:flex;flex-direction:column;align-items:center;justify-content:center;' +
+            'padding:32px 24px;gap:16px;');
+
+        // The anchor uses target="_blank" so Safari opens the PDF in-browser.
+        // On iOS 13+ the download attribute on data URLs is also supported — but
+        // Safari may still prompt "Open in …" — either way the PDF is accessible.
+        ov.innerHTML =
+            '<div style="background:#fff;border-radius:18px;padding:32px 28px;max-width:380px;width:100%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,.4);">' +
+            '<div style="font-size:2.8rem;margin-bottom:8px;">📄</div>' +
+            '<h3 style="font-family:Georgia,serif;color:#1a3a52;font-size:1.25rem;margin:0 0 10px;">PDF Ready</h3>' +
+            '<p style="font-size:.88rem;color:#555;line-height:1.6;margin:0 0 18px;">' +
+            'Your PDF is ready. Tap <strong>Open PDF</strong> to view it in Safari, then tap the ' +
+            '<strong>Share ↗</strong> icon and choose <strong>Save to Files</strong> or <strong>Print</strong>.</p>' +
+            '<a href="' + dataUrl + '" download="' + filename + '" target="_blank" rel="noopener" ' +
+            'style="display:block;background:linear-gradient(135deg,#d4a574,#e8c96b);color:#1a3a52;' +
+            'font-family:Arial,sans-serif;font-weight:700;font-size:.95rem;padding:14px 20px;' +
+            'border-radius:10px;text-decoration:none;margin-bottom:12px;">' +
+            '📂 Open PDF</a>' +
+            '<button onclick="(function(){var o=document.getElementById(\'__mac_ios_overlay\');if(o)o.remove();})()" ' +
+            'style="background:none;border:1px solid #ddd;border-radius:8px;padding:10px 20px;' +
+            'font-size:.85rem;color:#888;cursor:pointer;width:100%;">Close</button>' +
+            '</div>';
+        document.body.appendChild(ov);
+    }
+
+    // ===== PDF GENERATION HELPER =====
+    // Renders HTML into a hidden element, captures with html2canvas, outputs A4 PDF.
+    // Fully compatible with iOS Safari, Android, and desktop browsers.
     function _generatePDF(htmlString, filename, onDone) {
-        // A4 dimensions in mm
-        const A4_W_MM = 210;
-        const A4_H_MM = 297;
-        const MARGIN  = 8; // mm margin on all sides
-
-        // Render iframe at A4 width (96 dpi equivalent: 210mm ≈ 794px)
-        const iframeW = 794;
-
-        const iframe = document.createElement('iframe');
-        iframe.style.cssText = 'position:fixed;left:-9999px;top:-9999px;width:' + iframeW + 'px;height:1px;border:none;visibility:hidden;';
-        document.body.appendChild(iframe);
-
-        const iDoc = iframe.contentDocument || iframe.contentWindow.document;
-        iDoc.open();
-        iDoc.write(htmlString);
-        iDoc.close();
-
-        iframe.onload = function() {
-            const content = iDoc.querySelector('.wrap') || iDoc.body;
-
-            // Expand iframe to full content height so nothing is clipped
-            const fullH = Math.max(iDoc.body.scrollHeight, content.scrollHeight, 100);
-            iframe.style.height = fullH + 'px';
-
-            html2canvas(content, {
-                scale: 2,                    // 2× for sharp output
-                useCORS: true,
-                allowTaint: true,
-                backgroundColor: '#ffffff',
-                windowWidth: iframeW,
-                width: iframeW,
-                scrollX: 0,
-                scrollY: 0
-            }).then(function(canvas) {
-                const { jsPDF } = window.jspdf;
-                const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-
-                // Available print area inside margins
-                const printW = A4_W_MM - MARGIN * 2;
-                const printH = A4_H_MM - MARGIN * 2;
-
-                // Scale image proportionally to fit within the print area
-                const canvasAspect = canvas.height / canvas.width;
-                let imgW = printW;
-                let imgH = printW * canvasAspect;
-
-                // If still taller than the printable height, scale down further
-                if (imgH > printH) {
-                    imgH = printH;
-                    imgW = printH / canvasAspect;
+        // Wait for logo to be ready (max 3 s) before rendering
+        if (!_logoReady) {
+            var _waitTries = 0;
+            var _waitTimer = setInterval(function () {
+                _waitTries++;
+                if (_logoReady || _waitTries > 30) {
+                    clearInterval(_waitTimer);
+                    _generatePDF(htmlString, filename, onDone);
                 }
+            }, 100);
+            return;
+        }
 
-                // Centre horizontally on the page
-                const xOffset = MARGIN + (printW - imgW) / 2;
-                const yOffset = MARGIN;
+        var A4_W_MM = 210, A4_H_MM = 297, MARGIN = 8;
+        var iframeW = 794; // ≈ A4 width at 96dpi
 
-                const imgData = canvas.toDataURL('image/jpeg', 0.97);
-                pdf.addImage(imgData, 'JPEG', xOffset, yOffset, imgW, imgH);
+        // ── Render container ────────────────────────────────────────────────
+        // Use a hidden <div> on iOS (iframe srcdoc unreliable on older iOS),
+        // use a hidden <iframe> on everything else for isolation.
+        var useDiv = _isIOS;
+        var renderEl, cleanupEl;
 
-                pdf.save(filename);
-                document.body.removeChild(iframe);
-                if (typeof onDone === 'function') onDone();
-            }).catch(function(err) {
-                console.error('[MAC] PDF generation failed:', err);
-                document.body.removeChild(iframe);
-            });
-        };
+        if (useDiv) {
+            // Render into an off-screen div — iOS fully supports this path
+            renderEl = document.createElement('div');
+            renderEl.setAttribute('style',
+                'position:fixed;left:-9999px;top:0;width:' + iframeW + 'px;' +
+                'height:auto;overflow:visible;background:#fff;z-index:-1;pointer-events:none;');
+            renderEl.innerHTML = htmlString;
+            document.body.appendChild(renderEl);
+            cleanupEl = renderEl;
+
+            // Give the browser one frame to lay out the DOM
+            setTimeout(function () {
+                _captureAndBuild(renderEl.querySelector('.wrap') || renderEl, cleanupEl, iframeW, A4_W_MM, A4_H_MM, MARGIN, filename, onDone);
+            }, 350);
+
+        } else {
+            // Desktop / Android: use iframe with srcdoc for clean isolation
+            var iframe = document.createElement('iframe');
+            iframe.setAttribute('style',
+                'position:fixed;left:-9999px;top:0;width:' + iframeW + 'px;' +
+                'height:1200px;border:none;visibility:hidden;pointer-events:none;');
+            // srcdoc avoids document.write and is well-supported on modern browsers
+            iframe.srcdoc = htmlString;
+            document.body.appendChild(iframe);
+            cleanupEl = iframe;
+
+            var _tries = 0;
+            var _poll = setInterval(function () {
+                _tries++;
+                var iDoc = iframe.contentDocument || (iframe.contentWindow && iframe.contentWindow.document);
+                var ready = iDoc && iDoc.readyState === 'complete' && iDoc.querySelector('.wrap');
+                if (ready || _tries > 30) {
+                    clearInterval(_poll);
+                    if (!ready) {
+                        console.error('[MAC] iframe did not load in time');
+                        if (document.body.contains(cleanupEl)) document.body.removeChild(cleanupEl);
+                        return;
+                    }
+                    var content = iDoc.querySelector('.wrap') || iDoc.body;
+                    var fullH = Math.max(iDoc.body.scrollHeight, content.scrollHeight, 200);
+                    iframe.style.height = fullH + 'px';
+                    // Extra frame for repaint
+                    setTimeout(function () {
+                        _captureAndBuild(content, cleanupEl, iframeW, A4_W_MM, A4_H_MM, MARGIN, filename, onDone);
+                    }, 200);
+                }
+            }, 100);
+        }
+    }
+
+    // ── Shared capture + PDF build ────────────────────────────────────────
+    function _captureAndBuild(contentEl, cleanupEl, iframeW, A4_W_MM, A4_H_MM, MARGIN, filename, onDone) {
+        html2canvas(contentEl, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#ffffff',
+            windowWidth: iframeW,
+            width: iframeW,
+            scrollX: 0,
+            scrollY: 0,
+            logging: false
+        }).then(function (canvas) {
+            var jsPDF = window.jspdf && window.jspdf.jsPDF;
+            if (!jsPDF) { console.error('[MAC] jsPDF not loaded'); return; }
+
+            var pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+            var printW = A4_W_MM - MARGIN * 2;
+            var printH = A4_H_MM - MARGIN * 2;
+            var aspect = canvas.height / canvas.width;
+            var imgW = printW, imgH = printW * aspect;
+            if (imgH > printH) { imgH = printH; imgW = printH / aspect; }
+            var xOff = MARGIN + (printW - imgW) / 2;
+
+            var imgData = canvas.toDataURL('image/jpeg', 0.96);
+            pdf.addImage(imgData, 'JPEG', xOff, MARGIN, imgW, imgH);
+
+            // Deliver: blob approach works on all platforms including iOS
+            var pdfBlob = pdf.output('blob');
+            _deliverPDF(pdfBlob, filename);
+
+            if (document.body.contains(cleanupEl)) document.body.removeChild(cleanupEl);
+            if (typeof onDone === 'function') onDone();
+
+        }).catch(function (err) {
+            console.error('[MAC] html2canvas error:', err);
+            if (document.body.contains(cleanupEl)) document.body.removeChild(cleanupEl);
+        });
     }
 
     // ===== ON-DEMAND DOWNLOAD (called by Download button in success panel) =====
