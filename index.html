@@ -3665,17 +3665,18 @@
                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
     // ===== PDF OPEN/DOWNLOAD helper =====
-    // On desktop/Android → triggers a real file download via <a download>.
-    // On iOS/iPad        → converts blob to base64 data URL (blob URLs can't be
-    //                      opened in new tabs on iOS Safari due to security restrictions).
-    //                      A modal shows a tap-to-open button using the data URL.
+    // Desktop / Android : triggers a real <a download> file download.
+    // iOS / iPadOS       : Safari cannot auto-download files — instead we
+    //                      convert the blob to a base64 data URL and open it
+    //                      directly in the current tab via window.location.href.
+    //                      Safari renders PDFs natively, no popup is shown,
+    //                      and the user can tap Share ↗ → Save to Files / Print.
     function _deliverPDF(pdfBlob, filename) {
         if (_isIOS) {
-            // iOS: blob URL new-tab is blocked by Safari — use base64 data URL instead
+            // iOS: navigate current tab to the PDF data URL — no popup, no blocker
             var reader = new FileReader();
             reader.onloadend = function () {
-                var dataUrl = reader.result; // data:application/pdf;base64,...
-                _showIOSGuide(dataUrl, filename);
+                window.location.href = reader.result; // Safari opens PDF viewer inline
             };
             reader.readAsDataURL(pdfBlob);
         } else {
@@ -3694,40 +3695,6 @@
         }
     }
 
-    // ===== iOS guide overlay =====
-    function _showIOSGuide(dataUrl, filename) {
-        // Remove any existing overlay
-        var old = document.getElementById('__mac_ios_overlay');
-        if (old) old.remove();
-
-        var ov = document.createElement('div');
-        ov.id = '__mac_ios_overlay';
-        ov.setAttribute('style',
-            'position:fixed;inset:0;z-index:2147483646;background:rgba(10,14,39,0.92);' +
-            'display:flex;flex-direction:column;align-items:center;justify-content:center;' +
-            'padding:32px 24px;gap:16px;');
-
-        // The anchor uses target="_blank" so Safari opens the PDF in-browser.
-        // On iOS 13+ the download attribute on data URLs is also supported — but
-        // Safari may still prompt "Open in …" — either way the PDF is accessible.
-        ov.innerHTML =
-            '<div style="background:#fff;border-radius:18px;padding:32px 28px;max-width:380px;width:100%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,.4);">' +
-            '<div style="font-size:2.8rem;margin-bottom:8px;">📄</div>' +
-            '<h3 style="font-family:Georgia,serif;color:#1a3a52;font-size:1.25rem;margin:0 0 10px;">PDF Ready</h3>' +
-            '<p style="font-size:.88rem;color:#555;line-height:1.6;margin:0 0 18px;">' +
-            'Your PDF is ready. Tap <strong>Open PDF</strong> to view it in Safari, then tap the ' +
-            '<strong>Share ↗</strong> icon and choose <strong>Save to Files</strong> or <strong>Print</strong>.</p>' +
-            '<a href="' + dataUrl + '" download="' + filename + '" target="_blank" rel="noopener" ' +
-            'style="display:block;background:linear-gradient(135deg,#d4a574,#e8c96b);color:#1a3a52;' +
-            'font-family:Arial,sans-serif;font-weight:700;font-size:.95rem;padding:14px 20px;' +
-            'border-radius:10px;text-decoration:none;margin-bottom:12px;">' +
-            '📂 Open PDF</a>' +
-            '<button onclick="(function(){var o=document.getElementById(\'__mac_ios_overlay\');if(o)o.remove();})()" ' +
-            'style="background:none;border:1px solid #ddd;border-radius:8px;padding:10px 20px;' +
-            'font-size:.85rem;color:#888;cursor:pointer;width:100%;">Close</button>' +
-            '</div>';
-        document.body.appendChild(ov);
-    }
 
     // ===== PDF GENERATION HELPER =====
     // Renders HTML into a hidden element, captures with html2canvas, outputs A4 PDF.
